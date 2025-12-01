@@ -226,6 +226,76 @@ Difficulty: {item['difficulty']}/5
         else:
             return False
 
+    def launch_claude_grading(self, item, user_answer):
+        """Launch Claude web to grade user's answer in MLE interview style"""
+        # Create the grading prompt
+        prompt = f"""You are conducting an MLE (Machine Learning Engineer) interview. Please grade the following answer.
+
+**Interview Question:**
+{item['question']}
+
+**Candidate's Answer:**
+{user_answer}
+
+**Reference Answer:**
+{item['answer']}
+
+Please provide:
+1. **Score**: Rate 1-5 (1=insufficient, 5=excellent)
+2. **What was good**: Highlight correct points and strong aspects
+3. **What was missing**: Key concepts or details that should have been mentioned
+4. **Interview feedback**: Would this answer pass an MLE interview? What would make it stronger?
+
+Keep the feedback constructive and specific."""
+
+        # Platform-specific browser launch
+        if sys.platform == 'darwin':  # macOS
+            import urllib.parse
+            import time
+
+            # URL-encode the prompt
+            encoded_prompt = urllib.parse.quote(prompt)
+
+            # Open Claude.ai with the prompt pre-filled using URL parameter
+            url = f'https://claude.ai/new?q={encoded_prompt}'
+
+            subprocess.run(['open', url])
+
+            # Wait for browser to load, then auto-submit with AppleScript
+            time.sleep(3)  # Give browser time to load
+
+            applescript = '''
+            tell application "System Events"
+                keystroke return
+            end tell
+            '''
+
+            subprocess.run(['osascript', '-e', applescript])
+
+            return True
+
+        elif sys.platform == 'linux':
+            # Copy to clipboard (try xclip or xsel)
+            try:
+                subprocess.run(['xclip', '-selection', 'clipboard'], input=prompt.encode('utf-8'), check=True)
+            except FileNotFoundError:
+                try:
+                    subprocess.run(['xsel', '--clipboard'], input=prompt.encode('utf-8'), check=True)
+                except FileNotFoundError:
+                    return False
+            # Open Claude web
+            subprocess.run(['xdg-open', 'https://claude.ai/new'])
+            return True
+
+        elif sys.platform == 'win32':  # Windows
+            # Copy to clipboard
+            subprocess.run(['clip'], input=prompt.encode('utf-16le'), check=True)
+            # Open Claude web
+            subprocess.run(['start', 'https://claude.ai/new'], shell=True)
+            return True
+        else:
+            return False
+
     def update_item_state(self, item_id, correct):
         """Update SRS state after reviewing an item"""
         if item_id not in self.state['items']:
@@ -280,7 +350,8 @@ Difficulty: {item['difficulty']}/5
             print(item['question'])
             print("-" * 70)
 
-            input("\n[Press ENTER to reveal answer]")
+            print("\n[Type your answer below, or press ENTER to skip]")
+            user_answer = input("Your answer: ").strip()
 
             print("\n" + "=" * 70)
             print("ANSWER")
@@ -299,11 +370,31 @@ Difficulty: {item['difficulty']}/5
             while True:
                 print("\nOptions:")
                 print("  1-3: Rate your understanding (1=no idea, 2=partial, 3=got it)")
+                if user_answer:
+                    print("  a: Get your answer graded by Claude (MLE interview style)")
                 print("  c: Chat about this topic (deep dive with context)")
                 print("  s: Skip to next item")
                 response = input("\nYour choice: ").strip().lower()
 
-                if response == 'c':
+                if response == 'a' and user_answer:
+                    # Answer grading mode
+                    print("\n" + "=" * 70)
+                    print("📊 ANSWER GRADING MODE")
+                    print("=" * 70)
+                    print(f"\nOpening Claude to grade your answer for: {item['title']}\n")
+
+                    success = self.launch_claude_grading(item, user_answer)
+
+                    if success:
+                        print("✓ Claude web opened with your answer for grading!")
+                        print("✓ Claude will grade your answer as if this were an MLE interview.\n")
+                    else:
+                        print("⚠ Could not auto-launch browser.\n")
+
+                    input("[Press ENTER when done reviewing to continue...]")
+                    continue
+
+                elif response == 'c':
                     # Chat mode - automatically launch Claude Web
                     print("\n" + "=" * 70)
                     print("💬 CHAT MODE")
@@ -343,7 +434,10 @@ Difficulty: {item['difficulty']}/5
                 elif response in ['1', '2', '3']:
                     break
 
-                print("Please enter 1, 2, 3, c, or s")
+                if user_answer:
+                    print("Please enter 1, 2, 3, a, c, or s")
+                else:
+                    print("Please enter 1, 2, 3, c, or s")
 
             correct = response == '3'
             self.update_item_state(item['id'], correct)

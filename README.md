@@ -91,12 +91,28 @@ python ml_fundamentals/study.py --stats
 The system uses **spaced repetition** (SRS) to optimize retention:
 
 1. **Item selection**: Prioritizes items you haven't seen or got wrong
-2. **Study**: Review question, think through answer, reveal solution
-3. **Self-assessment**: Rate yourself 1-3:
-   - `1`: No idea (review soon)
-   - `2`: Partial understanding (review moderately soon)
-   - `3`: Got it (review much later)
-4. **Adaptive scheduling**: Items you know well appear less frequently
+2. **Study**: Review question, type your answer (optional)
+3. **Reveal solution**: See the correct answer and compare
+4. **Interactive options**:
+   - `1-3`: Rate yourself (1=no idea, 2=partial, 3=got it)
+   - `a`: Get your answer graded by Claude (MLE interview style) ⭐ NEW
+   - `c`: Chat with Claude for deep dive discussion
+   - `s`: Skip to next item
+5. **Adaptive scheduling**: Items you know well appear less frequently
+
+### Visualize Progress
+
+Open the interactive progress dashboard:
+
+```bash
+open progress.html  # Opens in your default browser
+```
+
+Features:
+- 📊 Overall stats (total/studied/mastered items)
+- 📈 Progress by category with visual bars
+- 🔥 Study activity heatmap
+- ✅ Item-level details (streak, interval, status)
 
 ### Recommended Schedule
 
@@ -168,6 +184,36 @@ Detailed answer with:
 ## Follow-up Questions
 - Related questions interviewers might ask
 ```
+
+## Topic Dependencies
+
+**Currently: Independent Topics**
+
+The study items are designed to be **mostly independent** - you can study them in any order. The spaced repetition system will automatically surface items based on what you need to review, not on a dependency tree.
+
+**However, there is a natural progression:**
+
+1. **Start with Foundations** (if new to ML):
+   - Backpropagation, gradient descent, activation functions
+   - These underpin everything else
+
+2. **Then Transformers** (core architecture):
+   - Attention mechanism → Self-attention → Multi-head → Transformer blocks
+   - These build on each other conceptually
+
+3. **Then branch out** to:
+   - Modern LLM architecture (uses transformer knowledge)
+   - Training techniques (uses foundation knowledge)
+   - RLHF & alignment (uses training knowledge)
+   - Distributed training (advanced topic)
+
+**The beauty of SRS**: Even if you encounter an advanced topic early, the system will show it to you again. By the time it's due for review, you'll have covered the prerequisites naturally.
+
+**No explicit dependency tracking** is implemented because:
+- Topics can be understood at multiple levels
+- Review reinforces connections between topics
+- Real interviews may jump around topics
+- Flexibility allows you to focus on weak areas
 
 ## Study Tips
 
