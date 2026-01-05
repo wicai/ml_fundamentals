@@ -1,0 +1,727 @@
+{
+  "items": {
+    "c003_multihead_attention": {
+      "last_seen": "2025-12-01T22:06:56.990984",
+      "interval": 1,
+      "ease_factor": 2.3,
+      "correct_streak": 0
+    },
+    "q002_gpt_architecture_type": {
+      "last_seen": "2025-12-02T18:10:15.865509",
+      "interval": 2.5,
+      "ease_factor": 2.6,
+      "correct_streak": 1
+    },
+    "c002_self_attention": {
+      "last_seen": "2025-12-02T18:24:48.218664",
+      "interval": 1,
+      "ease_factor": 2.3,
+      "correct_streak": 0
+    },
+    "c001_attention_mechanism": {
+      "last_seen": "2025-12-02T18:32:27.472270",
+      "interval": 1,
+      "ease_factor": 2.3,
+      "correct_streak": 0
+    },
+    "c006_causal_masking": {
+      "last_seen": "2025-12-02T18:53:53.605493",
+      "interval": 2.5,
+      "ease_factor": 2.6,
+      "correct_streak": 1
+    },
+    "q001_attention_formula": {
+      "last_seen": "2025-12-02T18:54:38.779972",
+      "interval": 2.5,
+      "ease_factor": 2.6,
+      "correct_streak": 1
+    },
+    "c004_positional_encoding": {
+      "last_seen": "2025-12-02T18:54:55.901188",
+      "interval": 1,
+      "ease_factor": 2.3,
+      "correct_streak": 0
+    },
+    "c005_layer_normalization": {
+      "last_seen": "2025-12-02T19:03:53.508179",
+      "interval": 1,
+      "ease_factor": 2.3,
+      "correct_streak": 0
+    },
+    "c009_gpt_architecture": {
+      "last_seen": "2025-12-03T13:21:21.143739",
+      "interval": 1,
+      "ease_factor": 2.3,
+      "correct_streak": 0
+    },
+    "c007_transformer_block": {
+      "last_seen": "2025-12-03T13:25:11.218589",
+      "interval": 1,
+      "ease_factor": 2.3,
+      "correct_streak": 0
+    },
+    "c008_tokenization": {
+      "last_seen": "2025-12-03T13:33:30.647217",
+      "interval": 1,
+      "ease_factor": 2.3,
+      "correct_streak": 0
+    },
+    "c010_scaling_laws": {
+      "last_seen": "2025-12-03T15:50:29.846146",
+      "interval": 1,
+      "ease_factor": 2.3,
+      "correct_streak": 0
+    },
+    "c011_pretraining_objective": {
+      "last_seen": "2025-12-03T15:53:52.433892",
+      "interval": 1,
+      "ease_factor": 2.3,
+      "correct_streak": 0
+    },
+    "c012_mixed_precision": {
+      "last_seen": "2025-12-03T16:20:38.808929",
+      "interval": 1,
+      "ease_factor": 2.3,
+      "correct_streak": 0
+    },
+    "c015_learning_rate_schedule": {
+      "last_seen": "2025-12-03T18:24:20.864258",
+      "interval": 1,
+      "ease_factor": 2.3,
+      "correct_streak": 0
+    },
+    "c013_gradient_accumulation": {
+      "last_seen": "2025-12-03T21:25:38.369905",
+      "interval": 1,
+      "ease_factor": 2.3,
+      "correct_streak": 0
+    },
+    "c017_supervised_finetuning": {
+      "last_seen": "2025-12-03T22:13:48.711628",
+      "interval": 1,
+      "ease_factor": 2.3,
+      "correct_streak": 0
+    },
+    "c014_adamw_optimizer": {
+      "last_seen": "2025-12-04T15:34:54.925640",
+      "interval": 1,
+      "ease_factor": 2.3,
+      "correct_streak": 0
+    },
+    "c016_gradient_clipping": {
+      "last_seen": "2025-12-04T19:00:35.117313",
+      "interval": 1,
+      "ease_factor": 2.3,
+      "correct_streak": 0
+    },
+    "q003_adam_hyperparameters": {
+      "last_seen": "2025-12-04T19:01:43.273400",
+      "interval": 1,
+      "ease_factor": 2.3,
+      "correct_streak": 0
+    },
+    "c018_rlhf_overview": {
+      "last_seen": "2025-12-13T19:35:34.685150",
+      "interval": 1,
+      "ease_factor": 2.3,
+      "correct_streak": 0
+    },
+    "c019_reward_model": {
+      "last_seen": "2025-12-13T19:40:41.468568",
+      "interval": 1,
+      "ease_factor": 2.3,
+      "correct_streak": 0
+    },
+    "c020_ppo_algorithm": {
+      "last_seen": "2025-12-19T00:18:15.562834",
+      "interval": 1,
+      "ease_factor": 2.3,
+      "correct_streak": 0
+    },
+    "c021_dpo": {
+      "last_seen": "2025-12-19T01:00:57.995749",
+      "interval": 1,
+      "ease_factor": 2.3,
+      "correct_streak": 0
+    },
+    "c022_constitutional_ai": {
+      "last_seen": "2025-12-19T01:06:54.722062",
+      "interval": 1,
+      "ease_factor": 2.3,
+      "correct_streak": 0
+    },
+    "c024_cross_entropy_loss": {
+      "last_seen": "2025-12-19T01:28:03.868042",
+      "interval": 1,
+      "ease_factor": 2.3,
+      "correct_streak": 0
+    },
+    "attention_gradient": {
+      "last_seen": "2025-12-19T01:33:45.684857",
+      "interval": 1,
+      "ease_factor": 2.3,
+      "correct_streak": 0
+    },
+    "c023_backpropagation": {
+      "last_seen": "2025-12-19T01:36:06.933501",
+      "interval": 1,
+      "ease_factor": 2.3,
+      "correct_streak": 0
+    },
+    "c026_weight_decay": {
+      "last_seen": "2025-12-19T01:36:51.526944",
+      "interval": 1,
+      "ease_factor": 2.3,
+      "correct_streak": 0
+    },
+    "c025_dropout": {
+      "last_seen": "2025-12-23T17:58:02.005981",
+      "interval": 1,
+      "ease_factor": 2.3,
+      "correct_streak": 0
+    },
+    "q006_lora_rank": {
+      "last_seen": "2025-12-23T18:05:28.958016",
+      "interval": 1,
+      "ease_factor": 2.3,
+      "correct_streak": 0
+    },
+    "c027_batch_size_effects": {
+      "last_seen": "2025-12-23T18:11:07.363866",
+      "interval": 1,
+      "ease_factor": 2.3,
+      "correct_streak": 0
+    },
+    "c028_kv_cache": {
+      "last_seen": "2025-12-23T18:44:29.791608",
+      "interval": 1,
+      "ease_factor": 2.3,
+      "correct_streak": 0
+    },
+    "c029_mqa_gqa": {
+      "last_seen": "2025-12-23T18:48:16.168040",
+      "interval": 1,
+      "ease_factor": 2.3,
+      "correct_streak": 0
+    },
+    "c032_inference_optimizations": {
+      "last_seen": "2025-12-23T19:23:46.367525",
+      "interval": 1,
+      "ease_factor": 2.3,
+      "correct_streak": 0
+    },
+    "c030_flash_attention": {
+      "last_seen": "2026-01-04T14:18:40.869591",
+      "interval": 1,
+      "ease_factor": 2.3,
+      "correct_streak": 0
+    },
+    "c033_perplexity": {
+      "last_seen": "2026-01-04T14:43:54.772961",
+      "interval": 1,
+      "ease_factor": 2.3,
+      "correct_streak": 0
+    },
+    "q005_kv_cache_purpose": {
+      "last_seen": "2026-01-04T14:55:22.299163",
+      "interval": 1,
+      "ease_factor": 2.3,
+      "correct_streak": 0
+    },
+    "c031_quantization": {
+      "last_seen": "2026-01-04T15:00:29.752212",
+      "interval": 1,
+      "ease_factor": 2.3,
+      "correct_streak": 0
+    },
+    "c035_chain_of_thought": {
+      "last_seen": "2026-01-04T15:06:48.047905",
+      "interval": 1,
+      "ease_factor": 2.3,
+      "correct_streak": 0
+    },
+    "c034_few_shot_learning": {
+      "last_seen": "2026-01-04T15:11:37.546121",
+      "interval": 1,
+      "ease_factor": 2.3,
+      "correct_streak": 0
+    },
+    "c036_benchmarks": {
+      "last_seen": "2026-01-04T15:21:00.733560",
+      "interval": 1,
+      "ease_factor": 2.3,
+      "correct_streak": 0
+    }
+  },
+  "session_history": [
+    {
+      "timestamp": "2025-12-01T21:21:25.261166",
+      "num_items": 1,
+      "results": [
+        {
+          "item_id": "c003_multihead_attention",
+          "title": "Multi-Head Attention",
+          "rating": 2
+        }
+      ],
+      "avg_rating": 2.0
+    },
+    {
+      "timestamp": "2025-12-02T11:51:03.067955",
+      "num_items": 2,
+      "results": [
+        {
+          "item_id": "q002_gpt_architecture_type",
+          "title": "GPT Architecture Type",
+          "rating": 3
+        },
+        {
+          "item_id": "c002_self_attention",
+          "title": "Self-Attention vs Cross-Attention",
+          "rating": 2
+        }
+      ],
+      "avg_rating": 2.5
+    },
+    {
+      "timestamp": "2025-12-02T18:24:51.063596",
+      "num_items": 1,
+      "results": [
+        {
+          "item_id": "c001_attention_mechanism",
+          "title": "Attention Mechanism",
+          "rating": 2
+        }
+      ],
+      "avg_rating": 2.0
+    },
+    {
+      "timestamp": "2025-12-02T18:45:23.964902",
+      "num_items": 2,
+      "results": [
+        {
+          "item_id": "c006_causal_masking",
+          "title": "Causal/Autoregressive Masking",
+          "rating": 3
+        },
+        {
+          "item_id": "q001_attention_formula",
+          "title": "Attention Formula",
+          "rating": 3
+        }
+      ],
+      "avg_rating": 3.0
+    },
+    {
+      "timestamp": "2025-12-02T18:54:40.875550",
+      "num_items": 1,
+      "results": [
+        {
+          "item_id": "c004_positional_encoding",
+          "title": "Positional Encoding",
+          "rating": 1
+        }
+      ],
+      "avg_rating": 1.0
+    },
+    {
+      "timestamp": "2025-12-02T18:54:57.230069",
+      "num_items": 1,
+      "results": [
+        {
+          "item_id": "c005_layer_normalization",
+          "title": "Layer Normalization",
+          "rating": 2
+        }
+      ],
+      "avg_rating": 2.0
+    },
+    {
+      "timestamp": "2025-12-03T13:14:25.815609",
+      "num_items": 1,
+      "results": [
+        {
+          "item_id": "c009_gpt_architecture",
+          "title": "GPT Architecture (Decoder-Only)",
+          "rating": 2
+        }
+      ],
+      "avg_rating": 2.0
+    },
+    {
+      "timestamp": "2025-12-03T13:21:22.953506",
+      "num_items": 1,
+      "results": [
+        {
+          "item_id": "c007_transformer_block",
+          "title": "Transformer Block Architecture",
+          "rating": 1
+        }
+      ],
+      "avg_rating": 1.0
+    },
+    {
+      "timestamp": "2025-12-03T13:25:12.881167",
+      "num_items": 1,
+      "results": [
+        {
+          "item_id": "c008_tokenization",
+          "title": "Tokenization for LLMs",
+          "rating": 1
+        }
+      ],
+      "avg_rating": 1.0
+    },
+    {
+      "timestamp": "2025-12-03T13:33:32.428162",
+      "num_items": 1,
+      "results": [
+        {
+          "item_id": "c010_scaling_laws",
+          "title": "Scaling Laws for LLMs",
+          "rating": 2
+        }
+      ],
+      "avg_rating": 2.0
+    },
+    {
+      "timestamp": "2025-12-03T15:50:31.818379",
+      "num_items": 1,
+      "results": [
+        {
+          "item_id": "c011_pretraining_objective",
+          "title": "Pretraining Objective for LLMs",
+          "rating": 2
+        }
+      ],
+      "avg_rating": 2.0
+    },
+    {
+      "timestamp": "2025-12-03T15:58:41.301988",
+      "num_items": 1,
+      "results": [
+        {
+          "item_id": "c012_mixed_precision",
+          "title": "Mixed Precision Training",
+          "rating": 2
+        }
+      ],
+      "avg_rating": 2.0
+    },
+    {
+      "timestamp": "2025-12-03T16:20:40.149008",
+      "num_items": 1,
+      "results": [
+        {
+          "item_id": "c015_learning_rate_schedule",
+          "title": "Learning Rate Schedules",
+          "rating": 2
+        }
+      ],
+      "avg_rating": 2.0
+    },
+    {
+      "timestamp": "2025-12-03T18:24:22.098572",
+      "num_items": 1,
+      "results": [
+        {
+          "item_id": "c013_gradient_accumulation",
+          "title": "Gradient Accumulation",
+          "rating": 2
+        }
+      ],
+      "avg_rating": 2.0
+    },
+    {
+      "timestamp": "2025-12-03T21:25:40.243305",
+      "num_items": 1,
+      "results": [
+        {
+          "item_id": "c017_supervised_finetuning",
+          "title": "Supervised Fine-Tuning (SFT)",
+          "rating": 1
+        }
+      ],
+      "avg_rating": 1.0
+    },
+    {
+      "timestamp": "2025-12-03T22:13:50.233738",
+      "num_items": 1,
+      "results": [
+        {
+          "item_id": "c014_adamw_optimizer",
+          "title": "AdamW Optimizer",
+          "rating": 2
+        }
+      ],
+      "avg_rating": 2.0
+    },
+    {
+      "timestamp": "2025-12-04T15:34:57.064551",
+      "num_items": 1,
+      "results": [
+        {
+          "item_id": "c016_gradient_clipping",
+          "title": "Gradient Clipping",
+          "rating": 2
+        }
+      ],
+      "avg_rating": 2.0
+    },
+    {
+      "timestamp": "2025-12-04T19:00:36.834211",
+      "num_items": 1,
+      "results": [
+        {
+          "item_id": "q003_adam_hyperparameters",
+          "title": "Adam Hyperparameters",
+          "rating": 2
+        }
+      ],
+      "avg_rating": 2.0
+    },
+    {
+      "timestamp": "2025-12-13T19:09:35.473083",
+      "num_items": 1,
+      "results": [
+        {
+          "item_id": "c018_rlhf_overview",
+          "title": "RLHF Overview",
+          "rating": 2
+        }
+      ],
+      "avg_rating": 2.0
+    },
+    {
+      "timestamp": "2025-12-13T19:35:36.920808",
+      "num_items": 1,
+      "results": [
+        {
+          "item_id": "c019_reward_model",
+          "title": "Reward Models in RLHF",
+          "rating": 2
+        }
+      ],
+      "avg_rating": 2.0
+    },
+    {
+      "timestamp": "2025-12-18T18:36:12.473830",
+      "num_items": 1,
+      "results": [
+        {
+          "item_id": "c020_ppo_algorithm",
+          "title": "PPO for RLHF",
+          "rating": 2
+        }
+      ],
+      "avg_rating": 2.0
+    },
+    {
+      "timestamp": "2025-12-19T00:18:17.634385",
+      "num_items": 1,
+      "results": [
+        {
+          "item_id": "c021_dpo",
+          "title": "Direct Preference Optimization (DPO)",
+          "rating": 2
+        }
+      ],
+      "avg_rating": 2.0
+    },
+    {
+      "timestamp": "2025-12-19T01:02:23.107332",
+      "num_items": 1,
+      "results": [
+        {
+          "item_id": "c022_constitutional_ai",
+          "title": "Constitutional AI",
+          "rating": 2
+        }
+      ],
+      "avg_rating": 2.0
+    },
+    {
+      "timestamp": "2025-12-19T01:06:55.780878",
+      "num_items": 2,
+      "results": [
+        {
+          "item_id": "c024_cross_entropy_loss",
+          "title": "Cross-Entropy Loss",
+          "rating": 2
+        },
+        {
+          "item_id": "attention_gradient",
+          "title": "Attention Score Gradient Derivation",
+          "rating": 1
+        }
+      ],
+      "avg_rating": 1.5
+    },
+    {
+      "timestamp": "2025-12-19T01:33:46.877871",
+      "num_items": 1,
+      "results": [
+        {
+          "item_id": "c023_backpropagation",
+          "title": "Backpropagation",
+          "rating": 1
+        }
+      ],
+      "avg_rating": 1.0
+    },
+    {
+      "timestamp": "2025-12-19T01:36:07.833928",
+      "num_items": 1,
+      "results": [
+        {
+          "item_id": "c026_weight_decay",
+          "title": "Weight Decay / L2 Regularization",
+          "rating": 1
+        }
+      ],
+      "avg_rating": 1.0
+    },
+    {
+      "timestamp": "2025-12-23T17:25:25.099794",
+      "num_items": 1,
+      "results": [
+        {
+          "item_id": "c025_dropout",
+          "title": "Dropout Regularization",
+          "rating": 2
+        }
+      ],
+      "avg_rating": 2.0
+    },
+    {
+      "timestamp": "2025-12-23T17:58:03.245009",
+      "num_items": 2,
+      "results": [
+        {
+          "item_id": "q006_lora_rank",
+          "title": "LoRA Rank",
+          "rating": 2
+        },
+        {
+          "item_id": "c027_batch_size_effects",
+          "title": "Batch Size Effects",
+          "rating": 2
+        }
+      ],
+      "avg_rating": 2.0
+    },
+    {
+      "timestamp": "2025-12-23T18:15:31.775789",
+      "num_items": 1,
+      "results": [
+        {
+          "item_id": "c028_kv_cache",
+          "title": "KV Cache for Inference",
+          "rating": 2
+        }
+      ],
+      "avg_rating": 2.0
+    },
+    {
+      "timestamp": "2025-12-23T18:44:31.324070",
+      "num_items": 1,
+      "results": [
+        {
+          "item_id": "c029_mqa_gqa",
+          "title": "Multi-Query & Grouped-Query Attention",
+          "rating": 2
+        }
+      ],
+      "avg_rating": 2.0
+    },
+    {
+      "timestamp": "2025-12-23T18:48:17.560295",
+      "num_items": 1,
+      "results": [
+        {
+          "item_id": "c032_inference_optimizations",
+          "title": "Inference Optimizations",
+          "rating": 2
+        }
+      ],
+      "avg_rating": 2.0
+    },
+    {
+      "timestamp": "2026-01-04T13:13:03.720452",
+      "num_items": 1,
+      "results": [
+        {
+          "item_id": "c030_flash_attention",
+          "title": "Flash Attention",
+          "rating": 2
+        }
+      ],
+      "avg_rating": 2.0
+    },
+    {
+      "timestamp": "2026-01-04T14:18:43.119605",
+      "num_items": 2,
+      "results": [
+        {
+          "item_id": "c033_perplexity",
+          "title": "Perplexity",
+          "rating": 2
+        },
+        {
+          "item_id": "q005_kv_cache_purpose",
+          "title": "KV Cache Purpose",
+          "rating": 2
+        }
+      ],
+      "avg_rating": 2.0
+    },
+    {
+      "timestamp": "2026-01-04T14:55:24.350949",
+      "num_items": 1,
+      "results": [
+        {
+          "item_id": "c031_quantization",
+          "title": "Quantization for LLMs",
+          "rating": 1
+        }
+      ],
+      "avg_rating": 1.0
+    },
+    {
+      "timestamp": "2026-01-04T15:00:31.349498",
+      "num_items": 1,
+      "results": [
+        {
+          "item_id": "c035_chain_of_thought",
+          "title": "Chain-of-Thought Prompting",
+          "rating": 2
+        }
+      ],
+      "avg_rating": 2.0
+    },
+    {
+      "timestamp": "2026-01-04T15:07:33.984540",
+      "num_items": 1,
+      "results": [
+        {
+          "item_id": "c034_few_shot_learning",
+          "title": "Few-Shot Learning & In-Context Learning",
+          "rating": 2
+        }
+      ],
+      "avg_rating": 2.0
+    },
+    {
+      "timestamp": "2026-01-04T15:12:00.106906",
+      "num_items": 1,
+      "results": [
+        {
+          "item_id": "c036_benchmarks",
+          "title": "LLM Evaluation Benchmarks",
+          "rating": 2
+        }
+      ],
+      "avg_rating": 2.0
+    }
+  ]
+}
