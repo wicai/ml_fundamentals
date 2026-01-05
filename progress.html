@@ -405,7 +405,30 @@
 
             } catch (e) {
                 console.error('Error loading progress:', e);
-                document.getElementById('stats').innerHTML = '<p style="color: #f85149;">Error loading progress data. Make sure .study_state.json exists.</p>';
+
+                // Show helpful first-time message
+                document.getElementById('stats').innerHTML = `
+                    <div class="stat-card" style="grid-column: 1 / -1; text-align: left;">
+                        <h2 style="color: #58a6ff; margin-bottom: 15px;">👋 Welcome!</h2>
+                        <p style="color: #e6edf3; margin-bottom: 10px;">
+                            No progress data found yet. To get started:
+                        </p>
+                        <ol style="color: #8b949e; margin-left: 20px; line-height: 1.8;">
+                            <li>Run your first study session: <code style="background: #0d1117; padding: 2px 6px; border-radius: 3px; color: #58a6ff;">./study</code> or <code style="background: #0d1117; padding: 2px 6px; border-radius: 3px; color: #58a6ff;">python3 study.py -n 5</code></li>
+                            <li>Study a few items and rate yourself</li>
+                            <li>Refresh this page to see your progress!</li>
+                        </ol>
+                        <p style="color: #8b949e; margin-top: 15px; font-size: 0.9em;">
+                            The <code style="background: #0d1117; padding: 2px 6px; border-radius: 3px;">.study_state.json</code> file will be created automatically after your first session.
+                        </p>
+                    </div>
+                `;
+                document.getElementById('categories').innerHTML = '';
+                document.getElementById('heatmap').innerHTML = `
+                    <p style="color: #8b949e;">
+                        Your study activity will appear here once you complete your first session.
+                    </p>
+                `;
             }
         }
 

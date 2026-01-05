@@ -53,15 +53,20 @@ class StudySession:
                 meta['tags'] = [t.strip() for t in line.split(':**')[1].split(',')]
 
         # Extract question and answer (handle different formats)
-        # Try "Question" first, then "Prompt" for deep dive items
+        # Try "Question" first, then "Prompt" for deep dive items, then "Problem" for derivations
         question_match = re.search(r'## Question\s*\n(.*?)(?=\n## )', content, re.DOTALL)
         if not question_match:
             question_match = re.search(r'## Prompt\s*\n(.*?)(?=\n## |$)', content, re.DOTALL)
+        if not question_match:
+            question_match = re.search(r'## Problem\s*\n(.*?)(?=\n## |$)', content, re.DOTALL)
 
         answer_match = re.search(r'## Answer\s*\n(.*?)(?=\n## |$)', content, re.DOTALL)
         if not answer_match:
             # For deep/derive items, use "Notes" as the answer
             answer_match = re.search(r'## Notes\s*\n(.*?)$', content, re.DOTALL)
+        if not answer_match:
+            # For derivation items, use "Instructions" as the answer/guidance
+            answer_match = re.search(r'## Instructions\s*\n(.*?)(?=\n## |$)', content, re.DOTALL)
 
         followup_match = re.search(r'## Follow-up Questions\s*\n(.*?)$', content, re.DOTALL)
 
@@ -118,7 +123,7 @@ class StudySession:
     def select_items(self, count=10, weights=None):
         """Select items for study session"""
         if weights is None:
-            weights = {'concepts': 0.7, 'quiz': 0.2, 'deep': 0.05, 'derive': 0.05}
+            weights = {'concepts': 0.7, 'quiz': 0.2, 'deep': 0.0, 'derive': 0.1}
 
         selected = []
 
@@ -138,6 +143,14 @@ class StudySession:
             pool_size = min(len(items), n * 3)
             pool = items[:pool_size]
             selected.extend(random.sample(pool, min(n, len(pool))))
+
+        # Ensure we always return at least one item if requested and available
+        if count > 0 and len(selected) == 0:
+            # Get all available items and pick the highest priority one
+            all_items = self.get_all_items()
+            if all_items:
+                all_items.sort(key=self.calculate_priority, reverse=True)
+                selected.append(all_items[0])
 
         random.shuffle(selected)
         return selected
@@ -340,6 +353,14 @@ Keep the feedback constructive and specific."""
 
         results = []
 
+        # Initialize current session in history
+        current_session = {
+            'timestamp': datetime.now().isoformat(),
+            'num_items': len(items),
+            'results': []
+        }
+        self.state['session_history'].append(current_session)
+
         for i, item in enumerate(items, 1):
             print(f"\n{'=' * 70}")
             print(f"ITEM {i}/{len(items)} - {item['category'].upper()}")
@@ -441,11 +462,19 @@ Keep the feedback constructive and specific."""
 
             correct = response == '3'
             self.update_item_state(item['id'], correct)
-            results.append({
+
+            result = {
                 'item_id': item['id'],
                 'title': item['title'],
                 'rating': int(response)
-            })
+            }
+            results.append(result)
+
+            # Update current session results and save state after each question
+            current_session['results'] = results
+            current_session['num_items'] = len(results)  # Update to actual count
+            current_session['avg_rating'] = sum(r['rating'] for r in results) / len(results)
+            self.save_state()
 
         # Session summary
         print("\n" + "=" * 70)
@@ -456,22 +485,13 @@ Keep the feedback constructive and specific."""
         print(f"\nAverage rating: {avg_rating:.1f}/3")
         print(f"Items mastered (3/3): {sum(1 for r in results if r['rating'] == 3)}/{len(results)}")
 
-        # Save session to history
-        self.state['session_history'].append({
-            'timestamp': datetime.now().isoformat(),
-            'num_items': len(items),
-            'avg_rating': avg_rating,
-            'results': results
-        })
-
-        self.save_state()
-        print("\n✓ Progress saved\n")
+        print("\n✓ Progress saved after each question\n")
 
 def main():
     import argparse
     parser = argparse.ArgumentParser(description='ML Fundamentals Study Tool')
-    parser.add_argument('-n', '--num-items', type=int, default=10,
-                        help='Number of items to study (default: 10)')
+    parser.add_argument('-n', '--num-items', type=int, default=1,
+                        help='Number of items to study (default: 1)')
     parser.add_argument('-t', '--type', choices=['concepts', 'quiz', 'deep', 'derive'],
                         help='Focus on specific item type')
     parser.add_argument('--stats', action='store_true',

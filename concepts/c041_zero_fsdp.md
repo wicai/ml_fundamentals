@@ -14,10 +14,10 @@ What is ZeRO/FSDP and how does it reduce memory usage for training?
 ```
 Model parameters: 7B × 2 bytes (fp16) = 14GB
 Gradients: 14GB (same size as params)
-Optimizer states (Adam): 28GB (m and v, fp32)
+Optimizer states (Adam): 56GB (m and v, fp32: 7B × 4 bytes × 2 states)
 Activations: 10-100GB (depends on batch size)
 
-Total: ~66GB minimum (without activations!)
+Total: ~84GB minimum (without activations!)
 ```
 
 **ZeRO (Zero Redundancy Optimizer)** - DeepSpeed

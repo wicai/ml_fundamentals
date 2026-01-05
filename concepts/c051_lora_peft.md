@@ -66,16 +66,19 @@ Most effective on:
 
 **Hyperparameters:**
 
-- **Rank (r)**: 8-64 typical
+- **Rank (r)**: 4-16 typical (2025)
   - Higher = more capacity, more memory
-  - 16 is sweet spot for most tasks
+  - Start with 8, increase only if needed
+  - Many tasks work well with r=4 or r=8
 
-- **Alpha (scaling)**: Often 2*r
+- **Alpha (scaling)**: Typically r (scaling factor = 1)
   - Scales the LoRA contribution: W + (alpha/r)*B*A
+  - Default: alpha = r (no scaling)
 
 - **Target modules**: Which layers get LoRA
-  - Q,V is common
-  - Q,K,V,O for more capacity
+  - Modern default: All linear layers (Q,K,V,O + FFN)
+  - Minimal: Q,K or Q,V for efficiency
+  - More modules usually better than higher rank
 
 **Variants:**
 
@@ -92,9 +95,9 @@ Most effective on:
 
 **Limitations:**
 
-- Slightly worse than full fine-tuning (small gap)
-- Not as effective for very different domains
-- Rank selection can be tricky
+- Can match full fine-tuning with proper config (sufficient rank + all linear layers)
+- May need higher rank for very different domains or complex tasks
+- Slightly lower bound on capacity vs full fine-tuning
 
 **Inference:**
 ```

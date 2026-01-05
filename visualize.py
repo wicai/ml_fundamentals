@@ -10,7 +10,9 @@ from flask import Flask, render_template, jsonify
 from study import StudySession
 
 app = Flask(__name__)
-session = StudySession()
+
+# Disable caching for API responses
+app.config['SEND_FILE_MAX_AGE_DEFAULT'] = 0
 
 @app.route('/')
 def index():
@@ -19,6 +21,9 @@ def index():
 @app.route('/api/progress')
 def get_progress():
     """Get all progress data for visualization"""
+
+    # Reload session state from disk to get fresh data
+    session = StudySession()
 
     # Get all items
     all_items = session.get_all_items()
@@ -67,7 +72,7 @@ def get_progress():
     mastered_items = sum(1 for s in session.state['items'].values()
                          if s.get('correct_streak', 0) >= 3)
 
-    return jsonify({
+    response = jsonify({
         'categories': categories,
         'history': history,
         'stats': {
@@ -78,10 +83,18 @@ def get_progress():
             'mastery_pct': round(mastered_items / total_items * 100, 1) if total_items > 0 else 0
         }
     })
+    response.headers['Cache-Control'] = 'no-store, no-cache, must-revalidate, max-age=0'
+    response.headers['Pragma'] = 'no-cache'
+    response.headers['Expires'] = '0'
+    return response
 
 @app.route('/api/heatmap')
 def get_heatmap():
     """Get study activity heatmap data"""
+
+    # Reload session state from disk to get fresh data
+    session = StudySession()
+
     history = session.state.get('session_history', [])
 
     # Aggregate by date
@@ -100,7 +113,11 @@ def get_heatmap():
             activity[date]['avg_rating'] * (activity[date]['sessions'] - 1) + h['avg_rating']
         ) / activity[date]['sessions']
 
-    return jsonify(activity)
+    response = jsonify(activity)
+    response.headers['Cache-Control'] = 'no-store, no-cache, must-revalidate, max-age=0'
+    response.headers['Pragma'] = 'no-cache'
+    response.headers['Expires'] = '0'
+    return response
 
 if __name__ == '__main__':
     print("=" * 70)

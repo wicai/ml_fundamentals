@@ -21,7 +21,7 @@ For h heads:
 All heads share single K, V
   Q has h heads (separate projections)
   K, V have 1 head (shared across all Q heads)
-  KV cache: 2 * 1 * seq_len * d_model/h (h× smaller!)
+  KV cache: 2 * seq_len * head_dim (h× smaller, where head_dim = d_model/h)
 ```
 
 **Grouped-Query Attention (GQA):**

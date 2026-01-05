@@ -227,7 +227,10 @@
 
     <script>
         async function loadProgress() {
-            const response = await fetch('/api/progress');
+            // Add timestamp to prevent caching
+            const response = await fetch(`/api/progress?t=${Date.now()}`, {
+                cache: 'no-store'
+            });
             const data = await response.json();
 
             // Render stats
@@ -314,7 +317,10 @@
         }
 
         async function loadHeatmap() {
-            const response = await fetch('/api/heatmap');
+            // Add timestamp to prevent caching
+            const response = await fetch(`/api/heatmap?t=${Date.now()}`, {
+                cache: 'no-store'
+            });
             const data = await response.json();
 
             if (Object.keys(data).length === 0) {
