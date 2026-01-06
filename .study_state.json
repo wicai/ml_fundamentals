@@ -254,6 +254,42 @@
       "interval": 1,
       "ease_factor": 2.3,
       "correct_streak": 0
+    },
+    "q008_batch_vs_layer_norm": {
+      "last_seen": "2026-01-05T16:28:36.778224",
+      "interval": 2.5,
+      "ease_factor": 2.6,
+      "correct_streak": 1
+    },
+    "c045_beam_search": {
+      "last_seen": "2026-01-05T16:52:17.825028",
+      "interval": 1,
+      "ease_factor": 2.3,
+      "correct_streak": 0
+    },
+    "c056_initialization": {
+      "last_seen": "2026-01-05T16:53:07.099706",
+      "interval": 2.5,
+      "ease_factor": 2.6,
+      "correct_streak": 1
+    },
+    "c038_data_parallelism": {
+      "last_seen": "2026-01-05T17:03:10.623473",
+      "interval": 1,
+      "ease_factor": 2.3,
+      "correct_streak": 0
+    },
+    "c048_function_calling": {
+      "last_seen": "2026-01-05T18:16:50.533017",
+      "interval": 1,
+      "ease_factor": 2.3,
+      "correct_streak": 0
+    },
+    "q012_flash_attention_benefit": {
+      "last_seen": "2026-01-05T18:36:31.128492",
+      "interval": 2.5,
+      "ease_factor": 2.6,
+      "correct_streak": 1
     }
   },
   "session_history": [
@@ -761,6 +797,50 @@
           "item_id": "c007_transformer_block",
           "title": "Transformer Block Architecture",
           "rating": 2
+        }
+      ],
+      "avg_rating": 2.5
+    },
+    {
+      "timestamp": "2026-01-05T16:17:36.933968",
+      "num_items": 4,
+      "results": [
+        {
+          "item_id": "q008_batch_vs_layer_norm",
+          "title": "Batch Norm vs Layer Norm",
+          "rating": 3
+        },
+        {
+          "item_id": "c045_beam_search",
+          "title": "Beam Search",
+          "rating": 2
+        },
+        {
+          "item_id": "c056_initialization",
+          "title": "Weight Initialization",
+          "rating": 3
+        },
+        {
+          "item_id": "c038_data_parallelism",
+          "title": "Data Parallelism",
+          "rating": 2
+        }
+      ],
+      "avg_rating": 2.5
+    },
+    {
+      "timestamp": "2026-01-05T18:11:35.888065",
+      "num_items": 2,
+      "results": [
+        {
+          "item_id": "c048_function_calling",
+          "title": "Function Calling / Tool Use",
+          "rating": 2
+        },
+        {
+          "item_id": "q012_flash_attention_benefit",
+          "title": "Flash Attention Benefit",
+          "rating": 3
         }
       ],
       "avg_rating": 2.5

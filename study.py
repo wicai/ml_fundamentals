@@ -82,12 +82,12 @@ class StudySession:
             'followup': followup_match.group(1).strip() if followup_match else ''
         }
 
-    def get_all_items(self, item_type=None):
-        """Get all study items, optionally filtered by type"""
+    def get_all_items(self, item_type=None, tag_filter=None):
+        """Get all study items, optionally filtered by type and/or tag"""
         items = []
 
         if item_type is None:
-            dirs = ['concepts', 'quiz', 'deep', 'derive']
+            dirs = ['concepts', 'quiz', 'deep', 'derive', 'coding']
         else:
             dirs = [item_type]
 
@@ -95,7 +95,10 @@ class StudySession:
             dir_path = self.base_dir / dir_name
             if dir_path.exists():
                 for filepath in sorted(dir_path.glob('*.md')):
-                    items.append(self.parse_item(filepath))
+                    item = self.parse_item(filepath)
+                    # Filter by tag if specified
+                    if tag_filter is None or tag_filter.lower() in [t.lower() for t in item['tags']]:
+                        items.append(item)
 
         return items
 
@@ -120,10 +123,10 @@ class StudySession:
 
         return priority
 
-    def select_items(self, count=10, weights=None):
+    def select_items(self, count=10, weights=None, tag_filter=None):
         """Select items for study session"""
         if weights is None:
-            weights = {'concepts': 0.7, 'quiz': 0.2, 'deep': 0.0, 'derive': 0.1}
+            weights = {'concepts': 0.6, 'quiz': 0.2, 'deep': 0.0, 'derive': 0.1, 'coding': 0.1}
 
         selected = []
 
@@ -132,7 +135,7 @@ class StudySession:
             if n == 0 and random.random() < weight * count:
                 n = 1  # Probabilistically include at least one
 
-            items = self.get_all_items(item_type)
+            items = self.get_all_items(item_type, tag_filter=tag_filter)
             if not items:
                 continue
 
@@ -147,7 +150,7 @@ class StudySession:
         # Ensure we always return at least one item if requested and available
         if count > 0 and len(selected) == 0:
             # Get all available items and pick the highest priority one
-            all_items = self.get_all_items()
+            all_items = self.get_all_items(tag_filter=tag_filter)
             if all_items:
                 all_items.sort(key=self.calculate_priority, reverse=True)
                 selected.append(all_items[0])
@@ -241,8 +244,36 @@ Difficulty: {item['difficulty']}/5
 
     def launch_claude_grading(self, item, user_answer):
         """Launch Claude web to grade user's answer in MLE interview style"""
-        # Create the grading prompt
-        prompt = f"""You are conducting an MLE (Machine Learning Engineer) interview. Please grade the following answer.
+        # Check if this is a coding question
+        is_coding = item['category'] == 'coding' or 'coding' in item['tags']
+
+        if is_coding:
+            # Code review style prompt
+            prompt = f"""You are conducting an MLE (Machine Learning Engineer) coding interview. Please review the following implementation.
+
+**Coding Task:**
+{item['question']}
+
+**Candidate's Implementation:**
+```python
+{user_answer}
+```
+
+**Reference Implementation:**
+{item['answer']}
+
+Please provide:
+1. **Score**: Rate 1-5 (1=doesn't work, 5=excellent implementation)
+2. **Correctness**: Does it work? Any bugs or logical errors?
+3. **Code quality**: Clean, readable, well-structured?
+4. **What was good**: Highlight strengths in the implementation
+5. **What could be improved**: Missing edge cases, efficiency issues, style issues
+6. **Interview feedback**: Would this pass an MLE interview? What would make it stronger?
+
+Keep the feedback constructive and specific."""
+        else:
+            # Conceptual question prompt
+            prompt = f"""You are conducting an MLE (Machine Learning Engineer) interview. Please grade the following answer.
 
 **Interview Question:**
 {item['question']}
@@ -336,14 +367,16 @@ Keep the feedback constructive and specific."""
 
         state['last_seen'] = datetime.now().isoformat()
 
-    def run_session(self, num_items=10):
+    def run_session(self, num_items=10, tag_filter=None):
         """Run an interactive study session"""
         print("=" * 70)
         print("ML FUNDAMENTALS STUDY SESSION")
+        if tag_filter:
+            print(f"Filter: {tag_filter}")
         print("=" * 70)
         print()
 
-        items = self.select_items(num_items)
+        items = self.select_items(num_items, tag_filter=tag_filter)
 
         if not items:
             print("No study items found. Please add content to the directories.")
@@ -371,8 +404,71 @@ Keep the feedback constructive and specific."""
             print(item['question'])
             print("-" * 70)
 
-            print("\n[Type your answer below, or press ENTER to skip]")
-            user_answer = input("Your answer: ").strip()
+            # Handle coding questions differently
+            is_coding = item['category'] == 'coding' or 'coding' in item['tags']
+
+            if is_coding:
+                print("\n💻 CODING QUESTION")
+
+                # Create coding directory if it doesn't exist
+                coding_dir = self.base_dir / 'coding'
+                coding_dir.mkdir(exist_ok=True)
+
+                # Create a file for this coding problem
+                coding_file = coding_dir / f"{item['id']}_solution.py"
+
+                # Write the problem as a comment in the file
+                with open(coding_file, 'w') as f:
+                    f.write('"""\n')
+                    f.write(f"{item['title']}\n")
+                    f.write("=" * 70 + "\n\n")
+                    f.write(f"{item['question']}\n")
+                    f.write('"""\n\n')
+                    f.write("# Your solution here:\n\n")
+
+                # Open in VS Code
+                try:
+                    subprocess.run(['code', str(coding_file)])
+                    print(f"✓ Opened {coding_file.name} in VS Code")
+                except FileNotFoundError:
+                    print(f"⚠ VS Code not found. File created at: {coding_file}")
+                    print("Install 'code' command: Open VS Code → Cmd+Shift+P → 'Shell Command: Install code command'")
+
+                print("\nImplement your solution, then come back here.")
+                print("\nOptions:")
+                print("  ENTER: Continue when ready (reads from file)")
+                print("  p: Paste your solution manually")
+                print("  s: Skip to see answer")
+
+                choice = input("\nYour choice: ").strip().lower()
+
+                if choice == 'p':
+                    print("\n📝 Paste your code (type 'END' on a new line when done):")
+                    lines = []
+                    while True:
+                        line = input()
+                        if line.strip() == 'END':
+                            break
+                        lines.append(line)
+                    user_answer = '\n'.join(lines)
+                elif choice == 's':
+                    user_answer = ''
+                else:
+                    # Read from the file
+                    try:
+                        with open(coding_file, 'r') as f:
+                            content = f.read()
+                            # Extract only the code after the docstring
+                            if '# Your solution here:' in content:
+                                user_answer = content.split('# Your solution here:')[1].strip()
+                            else:
+                                user_answer = content
+                    except Exception as e:
+                        print(f"⚠ Could not read file: {e}")
+                        user_answer = ''
+            else:
+                print("\n[Type your answer below, or press ENTER to skip]")
+                user_answer = input("Your answer: ").strip()
 
             print("\n" + "=" * 70)
             print("ANSWER")
@@ -492,10 +588,12 @@ def main():
     parser = argparse.ArgumentParser(description='ML Fundamentals Study Tool')
     parser.add_argument('-n', '--num-items', type=int, default=1,
                         help='Number of items to study (default: 1)')
-    parser.add_argument('-t', '--type', choices=['concepts', 'quiz', 'deep', 'derive'],
+    parser.add_argument('-t', '--type', choices=['concepts', 'quiz', 'deep', 'derive', 'coding'],
                         help='Focus on specific item type')
     parser.add_argument('--stats', action='store_true',
                         help='Show study statistics')
+    parser.add_argument('tag', nargs='?', default=None,
+                        help='Filter by tag (e.g., safety, agents, coding)')
 
     args = parser.parse_args()
 
@@ -521,9 +619,9 @@ def main():
             weights = {args.type: 1.0}
 
         if weights:
-            session.run_session(args.num_items)
+            session.run_session(args.num_items, tag_filter=args.tag)
         else:
-            session.run_session(args.num_items)
+            session.run_session(args.num_items, tag_filter=args.tag)
 
 if __name__ == '__main__':
     main()
