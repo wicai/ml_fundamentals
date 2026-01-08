@@ -417,22 +417,52 @@ Keep the feedback constructive and specific."""
                 # Create a file for this coding problem
                 coding_file = coding_dir / f"{item['id']}_solution.py"
 
-                # Write the problem as a comment in the file
-                with open(coding_file, 'w') as f:
-                    f.write('"""\n')
-                    f.write(f"{item['title']}\n")
-                    f.write("=" * 70 + "\n\n")
-                    f.write(f"{item['question']}\n")
-                    f.write('"""\n\n')
-                    f.write("# Your solution here:\n\n")
+                # Write the problem as comments in the file
+                # Extract code skeleton vs description
+                question_text = item['question']
 
-                # Open in VS Code
+                # Find code blocks (between ```python and ```)
+                code_blocks = []
+                parts = question_text.split('```python')
+                description = parts[0]  # Everything before first code block
+
+                for part in parts[1:]:
+                    if '```' in part:
+                        code, rest = part.split('```', 1)
+                        code_blocks.append(code.strip())
+                        description += rest
+                    else:
+                        description += part
+
+                with open(coding_file, 'w') as f:
+                    # Write description as comments
+                    f.write(f"# {item['title']}\n")
+                    f.write("# " + "=" * 68 + "\n#\n")
+
+                    for line in description.strip().split('\n'):
+                        f.write(f"# {line}\n")
+
+                    f.write("#\n")
+                    f.write("# " + "=" * 68 + "\n\n")
+
+                    # Write code skeleton as actual code
+                    if code_blocks:
+                        for code_block in code_blocks:
+                            f.write(code_block)
+                            f.write("\n\n")
+                    else:
+                        f.write("# Your solution here:\n\n")
+
+                # Open in VS Code (using macOS 'open' command to avoid Cursor conflict)
                 try:
-                    subprocess.run(['code', str(coding_file)])
+                    if sys.platform == 'darwin':  # macOS
+                        subprocess.run(['open', '-a', 'Visual Studio Code', str(coding_file)])
+                    else:
+                        subprocess.run(['code', str(coding_file)])
                     print(f"✓ Opened {coding_file.name} in VS Code")
-                except FileNotFoundError:
-                    print(f"⚠ VS Code not found. File created at: {coding_file}")
-                    print("Install 'code' command: Open VS Code → Cmd+Shift+P → 'Shell Command: Install code command'")
+                except Exception as e:
+                    print(f"⚠ Could not open VS Code: {e}")
+                    print(f"File created at: {coding_file}")
 
                 print("\nImplement your solution, then come back here.")
                 print("\nOptions:")
@@ -463,6 +493,86 @@ Keep the feedback constructive and specific."""
                                 user_answer = content.split('# Your solution here:')[1].strip()
                             else:
                                 user_answer = content
+
+                        # Auto-test the solution if user wrote code
+                        if user_answer.strip():
+                            print("\n" + "=" * 70)
+                            print("🧪 TESTING YOUR SOLUTION")
+                            print("=" * 70 + "\n")
+
+                            # Create test file with user's solution + test code from answer
+                            test_file = coding_dir / f"{item['id']}_test.py"
+
+                            # Extract test code from answer section (between Testing and next ##)
+                            test_code_match = re.search(r'\*\*Testing[^*]*?\*\*.*?```python\s*(.*?)```', item['answer'], re.DOTALL)
+
+                            if test_code_match:
+                                test_code = test_code_match.group(1).strip()
+
+                                # Write test file
+                                with open(test_file, 'w') as f:
+                                    # Standard imports with error handling
+                                    f.write("from typing import *\n")
+                                    f.write("try:\n")
+                                    f.write("    import torch\n")
+                                    f.write("    import torch.nn as nn\n")
+                                    f.write("    import torch.nn.functional as F\n")
+                                    f.write("except ImportError:\n")
+                                    f.write("    print('ERROR: PyTorch not installed. Run: pip3 install torch')\n")
+                                    f.write("    exit(1)\n")
+                                    f.write("import math\n")
+                                    f.write("try:\n")
+                                    f.write("    import numpy as np\n")
+                                    f.write("except ImportError:\n")
+                                    f.write("    print('ERROR: NumPy not installed. Run: pip3 install numpy')\n")
+                                    f.write("    exit(1)\n\n")
+                                    f.write("# User's solution\n")
+                                    f.write(user_answer)
+                                    f.write("\n\n# Tests\n")
+                                    f.write(test_code)
+
+                                # Run tests
+                                try:
+                                    # Try python3 first, fall back to python
+                                    python_cmd = 'python3' if subprocess.run(['which', 'python3'], capture_output=True).returncode == 0 else 'python'
+
+                                    result = subprocess.run(
+                                        [python_cmd, str(test_file)],
+                                        capture_output=True,
+                                        text=True,
+                                        timeout=10,
+                                        cwd=str(coding_dir)
+                                    )
+
+                                    if result.returncode == 0:
+                                        print("✅ Tests passed!")
+                                        print("\nOutput:")
+                                        print(result.stdout)
+                                    else:
+                                        print("❌ Tests failed!")
+                                        if result.stderr:
+                                            print("\nError:")
+                                            print(result.stderr[:500])  # Limit error output
+                                        if result.stdout:
+                                            print("\nOutput:")
+                                            print(result.stdout[:500])
+
+                                except subprocess.TimeoutExpired:
+                                    print("⚠ Tests timed out (>10s)")
+                                except Exception as e:
+                                    print(f"⚠ Could not run tests: {e}")
+
+                                # Clean up test file
+                                try:
+                                    test_file.unlink()
+                                except:
+                                    pass
+                            else:
+                                print("⚠ No tests found in problem description")
+
+                            print("\n" + "=" * 70)
+                            input("\n[Press ENTER to see reference answer...]")
+
                     except Exception as e:
                         print(f"⚠ Could not read file: {e}")
                         user_answer = ''

@@ -15,8 +15,12 @@ Your implementation should:
 
 **Function signature:**
 ```python
+from typing import Union
+import torch
+import torch.nn as nn
+
 class LayerNorm(nn.Module):
-    def __init__(self, normalized_shape, eps=1e-5):
+    def __init__(self, normalized_shape: Union[int, tuple], eps: float = 1e-5) -> None:
         """
         Args:
             normalized_shape: int or tuple, the shape to normalize over
@@ -24,7 +28,7 @@ class LayerNorm(nn.Module):
         """
         pass
 
-    def forward(self, x):
+    def forward(self, x: torch.Tensor) -> torch.Tensor:
         """
         Args:
             x: tensor of shape (..., normalized_shape)
@@ -44,11 +48,12 @@ class LayerNorm(nn.Module):
 
 **Reference implementation:**
 ```python
+from typing import Union
 import torch
 import torch.nn as nn
 
 class LayerNorm(nn.Module):
-    def __init__(self, normalized_shape, eps=1e-5):
+    def __init__(self, normalized_shape: Union[int, tuple], eps: float = 1e-5) -> None:
         super().__init__()
         self.eps = eps
 
@@ -56,7 +61,7 @@ class LayerNorm(nn.Module):
         self.gamma = nn.Parameter(torch.ones(normalized_shape))
         self.beta = nn.Parameter(torch.zeros(normalized_shape))
 
-    def forward(self, x):
+    def forward(self, x: torch.Tensor) -> torch.Tensor:
         # Compute mean and variance across last dimension
         # keepdim=True maintains shape for broadcasting
         mean = x.mean(dim=-1, keepdim=True)
