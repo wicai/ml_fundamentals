@@ -7,6 +7,12 @@
 ## Question
 What are prompt injection attacks on agents? How do you defend against them?
 
+## What to Cover
+- **Set context by**: Explaining why prompt injection is more dangerous for agents than chatbots (agents take real actions)
+- **Must mention**: Attack vectors (direct injection, indirect via tool results, jailbreaks, multi-step), defense strategies (input validation, delimiters, privilege levels, output filtering, constitutional AI), detection techniques
+- **Show depth by**: Giving concrete attack/defense examples and discussing open problems (perfect defense impossible, capability-safety tradeoff)
+- **Avoid**: Only describing attacks without providing mitigation strategies and production best practices
+
 ## Answer
 **Prompt injection** = Malicious input that tricks agent into unintended behavior.
 

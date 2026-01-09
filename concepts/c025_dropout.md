@@ -7,6 +7,12 @@
 ## Question
 What is dropout and when should you use it? How does it work in transformers?
 
+## What to Cover
+- **Set context by**: Framing dropout as an ensemble/robustness regularization technique
+- **Must mention**: The algorithm (mask + scale), typical values (0.1 for transformers), where applied in transformers (attention, residual, FFN)
+- **Show depth by**: Noting the modern trend (large LLMs use less/no dropout), the scaling gotcha (1/(1-p))
+- **Avoid**: Describing dropout without mentioning the inference-time scaling or transformer-specific placement
+
 ## Answer
 **Dropout**: Randomly zero out activations during training with probability p.
 

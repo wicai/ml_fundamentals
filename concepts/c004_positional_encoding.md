@@ -7,6 +7,12 @@
 ## Question
 Why do transformers need positional encodings and what are the main approaches?
 
+## What to Cover
+- **Set context by**: Explaining attention is permutation-invariant ("dog bites man" = "man bites dog" without position info)
+- **Must mention**: At least 3 approaches (sinusoidal, learned absolute, RoPE) with pros/cons of each
+- **Show depth by**: Noting the modern trend toward RoPE for length generalization
+- **Avoid**: Only describing sinusoidal encoding and skipping modern approaches (RoPE is now standard)
+
 ## Answer
 **Problem**: Attention is permutation-invariant - it can't distinguish between "dog bites man" and "man bites dog" without position information.
 

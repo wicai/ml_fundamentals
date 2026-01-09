@@ -7,6 +7,12 @@
 ## Question
 What is gradient clipping and why is it important for training transformers?
 
+## What to Cover
+- **Set context by**: Explaining exploding gradients in deep networks
+- **Must mention**: Global norm clipping (the standard approach), typical threshold (1.0), why it's needed for transformers specifically
+- **Show depth by**: Noting that frequent clipping indicates deeper issues (LR too high, data problems)
+- **Avoid**: Only describing clip-by-value (rarely used) instead of clip-by-global-norm
+
 ## Answer
 **Gradient Clipping**: Limit gradient magnitude to prevent instability.
 

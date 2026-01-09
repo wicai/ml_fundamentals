@@ -7,6 +7,12 @@
 ## Question
 What's the difference between batch normalization and layer normalization? Why do transformers use layer norm?
 
+## What to Cover
+- **Set context by**: Explaining normalization stabilizes training by standardizing activations
+- **Must mention**: The dimension difference (BN across batch, LN across features), why transformers use LN (batch independence, variable sequences, inference with batch=1)
+- **Show depth by**: Mentioning RMSNorm (LLaMA, faster), pre-norm vs post-norm placement, and other variants (GroupNorm, InstanceNorm)
+- **Avoid**: Only describing formulas without explaining why transformers specifically need layer norm
+
 ## Answer
 **Normalization**: Standardize activations to stabilize training.
 

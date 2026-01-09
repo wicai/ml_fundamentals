@@ -7,6 +7,12 @@
 ## Question
 What are the different strategies for fine-tuning LLMs and when should you use each?
 
+## What to Cover
+- **Set context by**: Explaining fine-tuning adapts pretrained models to specific tasks
+- **Must mention**: Main strategies (full fine-tuning, LoRA, QLoRA), when to use each, key hyperparameters (LR, epochs, rank)
+- **Show depth by**: Discussing preventing catastrophic forgetting (replay, regularization) and best practices (quality > quantity, start with LoRA)
+- **Avoid**: Only describing LoRA without discussing full fine-tuning and when it's appropriate
+
 ## Answer
 **Fine-tuning**: Adapt pretrained model to specific task/domain.
 

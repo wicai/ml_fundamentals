@@ -7,6 +7,12 @@
 ## Question
 What are common failure modes for AI agents? How do you design for reliability and recovery?
 
+## What to Cover
+- **Set context by**: Listing concrete failure modes agents encounter in production
+- **Must mention**: Common failures (infinite loops, hallucinated tools, unhandled tool errors, context overflow, irreversible mistakes, cost runaway, wrong tool selection, silent failures), prevention strategies, recovery approaches (retry, fallback, checkpointing)
+- **Show depth by**: Discussing reliability best practices (fail fast, idempotency, comprehensive logging, health checks) and how to measure reliability metrics
+- **Avoid**: Only listing failure modes without explaining prevention and recovery strategies
+
 ## Answer
 **Common failure modes:**
 

@@ -7,6 +7,12 @@
 ## Question
 What is weight decay and how does it differ from L2 regularization in Adam/AdamW?
 
+## What to Cover
+- **Set context by**: Noting that L2 and weight decay are equivalent for SGD but NOT for Adam
+- **Must mention**: Why they differ in Adam (adaptive LR normalizes the L2 gradient), how AdamW fixes this (decoupled decay), typical values (0.01-0.1)
+- **Show depth by**: Showing the code difference (L2 adds to gradient, weight decay is separate step)
+- **Avoid**: Treating L2 and weight decay as synonyms—this is the core misconception the question tests
+
 ## Answer
 **L2 Regularization** (traditional):
 ```

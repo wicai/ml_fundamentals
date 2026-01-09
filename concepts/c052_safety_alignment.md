@@ -7,6 +7,12 @@
 ## Question
 What are the main safety challenges for LLMs and how are they addressed?
 
+## What to Cover
+- **Set context by**: Categorizing safety challenges (harmful content, bias, privacy, misuse, overreliance)
+- **Must mention**: Mitigation at training-time (data filtering, RLHF, Constitutional AI, red-teaming) and inference-time (guardrails, filtering)
+- **Show depth by**: Discussing the capability-safety tension, jailbreaks, and open problems (steerable safety, robustness)
+- **Avoid**: Only listing challenges without explaining mitigation strategies or discussing the tradeoffs
+
 ## Answer
 **Safety challenges:**
 

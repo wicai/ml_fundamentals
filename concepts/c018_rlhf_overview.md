@@ -7,6 +7,12 @@
 ## Question
 What is RLHF (Reinforcement Learning from Human Feedback) and why is it used?
 
+## What to Cover
+- **Set context by**: Explaining what SFT alone can't solve (hard to specify "good" behavior, comparison easier than generation)
+- **Must mention**: The three stages (SFT, Reward Model, RL/PPO), the KL penalty purpose, examples of models using RLHF
+- **Show depth by**: Mentioning challenges (expensive, reward hacking, distribution shift) and alternatives (DPO)
+- **Avoid**: Only describing the pipeline without explaining *why* comparison-based learning is better than direct supervision
+
 ## Answer
 **RLHF**: Train a language model to maximize human preferences using RL.
 

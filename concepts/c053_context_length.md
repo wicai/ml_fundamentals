@@ -7,6 +7,12 @@
 ## Question
 What limits context length in transformers and how are modern models extending it?
 
+## What to Cover
+- **Set context by**: Explaining why long context matters (documents, conversations, codebases)
+- **Must mention**: The limitations (O(n²) attention, KV cache memory, position encoding degradation), extension approaches (ALiBi, RoPE scaling, Flash Attention, sparse attention)
+- **Show depth by**: Mentioning the "lost in the middle" problem and discussing when RAG is better than giant context
+- **Avoid**: Only listing limitations without explaining the solutions and their tradeoffs
+
 ## Answer
 **Context length**: Maximum number of tokens the model can process at once.
 

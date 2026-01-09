@@ -7,6 +7,12 @@
 ## Question
 Compare CNNs, RNNs, and Transformers. When would you use each?
 
+## What to Cover
+- **Set context by**: Framing these as three paradigms for sequence/spatial processing
+- **Must mention**: Key properties of each (CNN: local/parallel, RNN: sequential/memory, Transformer: global/parallel), complexity tradeoffs, best use cases (images, language, time series)
+- **Show depth by**: Discussing historical progression (RNN→Transformer for NLP), hybrid models (Conformer, ViT), and modern recommendations
+- **Avoid**: Just describing each architecture without comparing them and explaining when to use which
+
 ## Answer
 **Three paradigms for sequence/spatial processing:**
 

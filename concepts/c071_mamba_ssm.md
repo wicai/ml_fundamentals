@@ -7,6 +7,12 @@
 ## Question
 What is Mamba and how do state space models differ from transformers?
 
+## What to Cover
+- **Set context by**: Explaining the transformer limitations that SSMs address (O(n²) attention, O(n) KV cache)
+- **Must mention**: SSM recurrence formula, Mamba's key innovations (selective state spaces, hardware-aware implementation), complexity advantages (O(1) per-token inference)
+- **Show depth by**: Comparing to transformers (in-context learning weaker), mentioning hybrid models (Jamba), and current adoption status
+- **Avoid**: Getting lost in SSM math without explaining practical tradeoffs vs transformers
+
 ## Answer
 **State Space Models (SSMs)**: Alternative to attention using recurrent state updates.
 

@@ -7,6 +7,12 @@
 ## Question
 How do researchers understand what LLMs are doing internally? What is mechanistic interpretability?
 
+## What to Cover
+- **Set context by**: Explaining why interpretability matters (debugging, alignment, trust)
+- **Must mention**: Main approaches (attention visualization, activation patching, probing, mechanistic interp), key findings (induction heads, superposition)
+- **Show depth by**: Mentioning specific techniques (sparse autoencoders, activation steering) and limitations (scalability, polysemantic neurons)
+- **Avoid**: Only describing attention visualization without covering mechanistic interpretability (the deeper approach)
+
 ## Answer
 **Goal**: Understand how LLMs work internally, not just inputs/outputs.
 

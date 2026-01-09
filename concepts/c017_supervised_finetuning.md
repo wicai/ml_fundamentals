@@ -7,6 +7,12 @@
 ## Question
 What is supervised fine-tuning and how does it differ from pretraining?
 
+## What to Cover
+- **Set context by**: Placing SFT in the training pipeline (pretrain → SFT → RLHF)
+- **Must mention**: The data format (prompt, completion pairs), key differences from pretraining (data size, compute, objective), what SFT teaches (instruction following, format, style)
+- **Show depth by**: Noting gotchas (data quality > quantity, can reduce capabilities if overfitted)
+- **Avoid**: Conflating SFT with full alignment (SFT alone doesn't prevent harmful outputs)
+
 ## Answer
 **Supervised Fine-Tuning (SFT)**: Continue training pretrained LLM on high-quality demonstrations of desired behavior.
 

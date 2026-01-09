@@ -7,6 +7,12 @@
 ## Question
 What is speculative decoding and how does it speed up LLM inference?
 
+## What to Cover
+- **Set context by**: Explaining the sequential bottleneck in autoregressive generation
+- **Must mention**: The algorithm (draft with small model, verify with large model in parallel), why it's mathematically exact, typical speedups (2-3×)
+- **Show depth by**: Discussing draft model strategies (smaller version, distilled model) and variants (Medusa, lookahead decoding)
+- **Avoid**: Skipping the explanation of why large model verification can be done in parallel (same cost as 1 token)
+
 ## Answer
 **Problem**: Autoregressive generation is sequential - must generate one token at a time.
 

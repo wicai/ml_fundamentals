@@ -7,6 +7,12 @@
 ## Question
 What is the attention mechanism and why is it better than RNNs for sequence modeling?
 
+## What to Cover
+- **Set context by**: Briefly stating the problem attention solves (sequence modeling bottlenecks in RNNs)
+- **Must mention**: The attention formula, parallelization advantage, O(1) path for long-range dependencies, gradient flow benefits
+- **Show depth by**: Mentioning the O(n²) complexity tradeoff and why it's still worth it in practice
+- **Avoid**: Only describing what attention does without explaining *why* it's better than alternatives
+
 ## Answer
 Attention is a mechanism that computes a weighted sum of values based on the similarity between a query and keys.
 

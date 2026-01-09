@@ -7,6 +7,12 @@
 ## Question
 What is the pretraining objective for models like GPT? Why does next-token prediction work so well?
 
+## What to Cover
+- **Set context by**: Noting the simplicity of next-token prediction and its surprising effectiveness
+- **Must mention**: The loss function (cross-entropy), why it's self-supervised, dense training signal, and the "compression = understanding" insight
+- **Show depth by**: Contrasting with other objectives (masked LM, denoising) and explaining why autoregressive won
+- **Avoid**: Only stating the formula without explaining *why* this simple objective produces capable models
+
 ## Answer
 **Objective: Autoregressive Language Modeling**
 ```

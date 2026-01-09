@@ -7,6 +7,12 @@
 ## Question
 What are the key considerations and patterns for designing LLM APIs?
 
+## What to Cover
+- **Set context by**: Framing LLM API design goals (clean, efficient, safe interface)
+- **Must mention**: Core patterns (completion, chat, streaming), key parameters (temperature, top_p, max_tokens), advanced features (function calling, logprobs)
+- **Show depth by**: Discussing rate limiting, error handling, pricing models, and best practices (streaming for UX, version pinning)
+- **Avoid**: Only describing request/response format without discussing production concerns (rate limits, errors)
+
 ## Answer
 **Goal**: Provide clean, efficient, safe interface to LLM.
 

@@ -7,6 +7,12 @@
 ## Question
 How do vision-language models like GPT-4V and CLIP work?
 
+## What to Cover
+- **Set context by**: Distinguishing the two paradigms (contrastive like CLIP, generative like GPT-4V)
+- **Must mention**: CLIP architecture and contrastive training, generative VLM architecture (vision encoder + projector + LLM), training stages (alignment pretraining, instruction tuning)
+- **Show depth by**: Discussing challenges (high-res images, hallucination) and mentioning specific models (LLaVA, CLIP)
+- **Avoid**: Only describing one paradigm without comparing contrastive vs generative approaches
+
 ## Answer
 **Vision-Language Models**: Process both images and text.
 

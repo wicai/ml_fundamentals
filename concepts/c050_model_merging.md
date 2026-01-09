@@ -7,6 +7,12 @@
 ## Question
 What is model merging and when is it useful?
 
+## What to Cover
+- **Set context by**: Explaining model merging as combining weights from multiple models without retraining
+- **Must mention**: Methods (linear interpolation, task arithmetic, TIES), use cases (multi-task, model soups), when it works well (same architecture, same initialization)
+- **Show depth by**: Mentioning real examples (community models on HuggingFace) and gotchas (layer norm, embeddings)
+- **Avoid**: Only describing linear averaging without mentioning more sophisticated methods or limitations
+
 ## Answer
 **Model Merging**: Combine weights from multiple models to create a single model.
 

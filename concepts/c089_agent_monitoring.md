@@ -7,6 +7,12 @@
 ## Question
 How do you monitor and debug AI agents in production? What metrics and tools do you use?
 
+## What to Cover
+- **Set context by**: Explaining why agents are hard to debug (non-deterministic, multi-step, complex tool interactions)
+- **Must mention**: Key metrics (success rate, latency, cost, error types), logging architecture (structured logs, trace visualization), debugging techniques (replay, step-by-step inspection), and monitoring tools (LangSmith, Langfuse, W&B)
+- **Show depth by**: Discussing alerting strategies, common debugging scenarios (loops, hallucinated tools, cost spikes), and production best practices
+- **Avoid**: Only mentioning tools without explaining what metrics to track and how to debug failures
+
 ## Answer
 **Challenge**: Agents are hard to debug because:
 - Non-deterministic behavior

@@ -7,6 +7,12 @@
 ## Question
 How does batch size affect training? What are the trade-offs of large vs small batches?
 
+## What to Cover
+- **Set context by**: Framing the core tradeoff (speed/stability vs generalization)
+- **Must mention**: Small batch pros/cons (noise=exploration, slower), large batch pros/cons (faster, worse generalization), linear scaling rule
+- **Show depth by**: Mentioning critical batch size concept and modern LLM practice (start small, increase over training)
+- **Avoid**: Only listing pros/cons without explaining the linear scaling rule (LR scales with batch size)
+
 ## Answer
 **Batch size impact:**
 

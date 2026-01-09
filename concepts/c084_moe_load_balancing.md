@@ -7,6 +7,12 @@
 ## Question
 What is the load balancing problem in Mixture of Experts and how do we solve it?
 
+## What to Cover
+- **Set context by**: Explaining why load imbalance happens (self-reinforcing feedback loop where popular experts get more training)
+- **Must mention**: Solutions (auxiliary load balancing loss, capacity factor and dropping, expert choice routing), how to tune (α≈0.01), metrics to track
+- **Show depth by**: Giving examples from real systems (Switch Transformer, Mixtral) and discussing tradeoffs (too much balancing hurts routing quality)
+- **Avoid**: Only describing the problem without explaining the solutions and how to tune them
+
 ## Answer
 **Load balancing problem**: In MoE models, some experts get overused while others are underused, wasting capacity.
 

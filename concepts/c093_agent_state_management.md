@@ -7,6 +7,12 @@
 ## Question
 How do agents manage state across multiple steps and conversations? What are the key design patterns?
 
+## What to Cover
+- **Set context by**: Explaining the types of state agents need (conversation, task, user/persistent)
+- **Must mention**: State management patterns (stateless, in-memory, persisted DB, event sourcing, tiered storage), state lifecycle (state machine), distributed state, and state versioning for rollback
+- **Show depth by**: Discussing state anti-patterns (global state, unvalidated state) and tradeoffs between approaches (speed vs persistence vs debuggability)
+- **Avoid**: Only describing one approach without comparing storage strategies and their tradeoffs
+
 ## Answer
 **State** = Information the agent needs to remember across steps/time.
 

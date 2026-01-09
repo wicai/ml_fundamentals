@@ -7,6 +7,12 @@
 ## Question
 How do agents manage limited context windows? What strategies optimize context usage?
 
+## What to Cover
+- **Set context by**: Explaining the context problem (system prompt + history + tools + retrieved docs = overflow)
+- **Must mention**: Context management strategies (summarization, sliding window, hierarchical compression, selective inclusion, tool result compression, caching, retrieval offloading), token budget allocation, adaptive compression
+- **Show depth by**: Discussing tradeoffs between strategies and how long-context models change the calculus
+- **Avoid**: Only describing one strategy without comparing approaches and their tradeoffs
+
 ## Answer
 **The context problem:**
 

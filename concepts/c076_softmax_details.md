@@ -7,6 +7,12 @@
 ## Question
 What is the softmax function and why do we subtract the max for numerical stability?
 
+## What to Cover
+- **Set context by**: Explaining softmax converts logits to probabilities
+- **Must mention**: The numerical stability problem (overflow/underflow with large values), why subtracting max works (mathematically equivalent), the fused softmax+cross-entropy gradient
+- **Show depth by**: Mentioning LogSumExp trick, temperature, and masked softmax for attention
+- **Avoid**: Only giving the formula without explaining the numerical stability issues that motivated the max-subtraction trick
+
 ## Answer
 **Softmax**: Convert logits to probability distribution.
 

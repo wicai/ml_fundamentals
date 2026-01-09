@@ -7,6 +7,12 @@
 ## Question
 What problem does Flash Attention solve and how does it work at a high level?
 
+## What to Cover
+- **Set context by**: Explaining that standard attention is memory-bound (n² matrices), not compute-bound
+- **Must mention**: The key ideas (tiling, fused kernel, recomputation), benefits (O(n) memory, 2-4× speedup), the tradeoff (compute for memory I/O)
+- **Show depth by**: Mentioning Flash Attention 2, PyTorch 2.0 integration, and adoption (LLaMA 2, GPT-4)
+- **Avoid**: Getting lost in implementation details—high-level understanding is what's tested
+
 ## Answer
 **Problem**: Standard attention is memory-bound, not compute-bound.
 

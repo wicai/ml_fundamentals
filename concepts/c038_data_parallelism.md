@@ -7,6 +7,12 @@
 ## Question
 What is data parallelism and how is it implemented for distributed training?
 
+## What to Cover
+- **Set context by**: Explaining DP as the simplest distributed training approach (replicate model, split data)
+- **Must mention**: The algorithm (micro-batches, all-reduce gradients, synchronous update), DDP vs FSDP, communication overhead
+- **Show depth by**: Discussing ring all-reduce efficiency, sync vs async variants, and when model parallelism is needed instead
+- **Avoid**: Skipping the all-reduce communication cost or conflating DP with DDP
+
 ## Answer
 **Data Parallelism (DP)**: Replicate model on multiple GPUs, split data across GPUs.
 

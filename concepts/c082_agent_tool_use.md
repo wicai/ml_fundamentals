@@ -7,6 +7,12 @@
 ## Question
 How do agents use tools and function calling? What are best practices?
 
+## What to Cover
+- **Set context by**: Explaining what tool use enables (agents can call external functions/APIs)
+- **Must mention**: How it works (tool definition, LLM outputs structured call, system executes, result fed back), best practices (clear descriptions, validation, error handling)
+- **Show depth by**: Discussing pitfalls (hallucinated tools, wrong arguments, infinite loops, security) and advanced patterns (chaining, parallel calling)
+- **Avoid**: Only showing API syntax without explaining best practices and common pitfalls
+
 ## Answer
 **Tool use = Agents can call external functions/APIs**
 

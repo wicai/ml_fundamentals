@@ -296,6 +296,18 @@
       "interval": 2.5,
       "ease_factor": 2.6,
       "correct_streak": 1
+    },
+    "c080_agent_eval": {
+      "last_seen": "2026-01-08T19:03:11.077110",
+      "interval": 1,
+      "ease_factor": 2.3,
+      "correct_streak": 0
+    },
+    "c084_agent_safety": {
+      "last_seen": "2026-01-08T20:16:08.190126",
+      "interval": 1,
+      "ease_factor": 2.3,
+      "correct_streak": 0
     }
   },
   "session_history": [
@@ -862,6 +874,23 @@
         }
       ],
       "avg_rating": 3.0
+    },
+    {
+      "timestamp": "2026-01-08T18:19:53.535964",
+      "num_items": 2,
+      "results": [
+        {
+          "item_id": "c080_agent_eval",
+          "title": "Agent Evaluation & Benchmarks",
+          "rating": 2
+        },
+        {
+          "item_id": "c084_agent_safety",
+          "title": "Agent Safety and Alignment",
+          "rating": 2
+        }
+      ],
+      "avg_rating": 2.0
     }
   ]
 }

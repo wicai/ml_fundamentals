@@ -7,6 +7,12 @@
 ## Question
 What is perplexity and why is it used to evaluate language models?
 
+## What to Cover
+- **Set context by**: Giving the intuitive interpretation ("model is confused among k options on average")
+- **Must mention**: The formula (exp of cross-entropy), connection to next-token prediction, interpretability advantage
+- **Show depth by**: Discussing limitations (low PPL ≠ good downstream performance, vocabulary-dependent, distribution-dependent)
+- **Avoid**: Only giving the formula without the intuition or limitations
+
 ## Answer
 **Perplexity**: Measure of how "surprised" a model is by test data. Lower = better.
 

@@ -7,6 +7,12 @@
 ## Question
 Why is AdamW the standard optimizer for LLMs? How does it differ from Adam?
 
+## What to Cover
+- **Set context by**: Briefly explaining adaptive learning rate optimizers vs SGD
+- **Must mention**: The key difference (decoupled weight decay), typical hyperparameters (β1=0.9, β2=0.95), memory overhead (2x for m and v)
+- **Show depth by**: Explaining why L2 regularization ≠ weight decay in Adam (the core insight)
+- **Avoid**: Only reciting the Adam formulas without explaining the AdamW correction
+
 ## Answer
 **Adam** (original):
 ```

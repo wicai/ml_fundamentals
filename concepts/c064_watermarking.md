@@ -7,6 +7,12 @@
 ## Question
 How can you watermark LLM-generated text to detect it later?
 
+## What to Cover
+- **Set context by**: Explaining use cases (detecting AI content, attribution, academic integrity)
+- **Must mention**: The main algorithm (green/red list based on previous token), detection via statistical test, properties (imperceptible, robust, removable)
+- **Show depth by**: Discussing evasion attacks (paraphrasing, encoding) and limitations (open models, short text)
+- **Avoid**: Only describing watermarking without discussing its limitations and the arms race
+
 ## Answer
 **Goal**: Embed imperceptible signal in generated text that proves it came from your model.
 

@@ -7,6 +7,12 @@
 ## Question
 What are the key components and challenges of serving LLMs in production?
 
+## What to Cover
+- **Set context by**: Framing serving as achieving low latency and high throughput at scale
+- **Must mention**: Key components (batching, KV cache management, load balancing, autoscaling), serving frameworks (vLLM, TensorRT-LLM, TGI), main challenges (latency, cost, memory, cold start)
+- **Show depth by**: Discussing architecture patterns (replicas, disaggregated prefill/decode) and best practices
+- **Avoid**: Only listing components without explaining the challenges and tradeoffs (latency vs throughput)
+
 ## Answer
 **Serving LLM** = Make model available for inference at scale with low latency and high throughput.
 

@@ -7,6 +7,12 @@
 ## Question
 What learning rate schedule is used for LLM pretraining and why?
 
+## What to Cover
+- **Set context by**: Noting LR is often the most important hyperparameter
+- **Must mention**: Warmup phase (why: stability, Adam statistics), cosine decay (why: smooth, empirically better), typical values (max_lr ~3e-4, warmup ~2000 steps)
+- **Show depth by**: Mentioning alternatives (constant LR after warmup) and when they work
+- **Avoid**: Giving formulas without explaining *why* warmup and decay are needed
+
 ## Answer
 **Standard LLM schedule: Cosine decay with warmup**
 

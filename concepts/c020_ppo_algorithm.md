@@ -7,6 +7,12 @@
 ## Question
 How does PPO (Proximal Policy Optimization) work in the context of RLHF?
 
+## What to Cover
+- **Set context by**: Explaining PPO's role as the RL algorithm that optimizes against the reward model
+- **Must mention**: The objective (reward - KL penalty), why KL penalty is critical (stability, capability preservation), clipping mechanism (ε=0.2)
+- **Show depth by**: Mentioning RLHF-specific challenges (large action space, sparse rewards) and the DPO alternative
+- **Avoid**: Getting lost in generic PPO details without connecting to the RLHF context
+
 ## Answer
 **PPO**: RL algorithm that optimizes policy while preventing too-large updates.
 

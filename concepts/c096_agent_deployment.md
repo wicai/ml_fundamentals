@@ -7,6 +7,12 @@
 ## Question
 How do you deploy AI agents to production? What are the key considerations?
 
+## What to Cover
+- **Set context by**: Explaining production deployment differs from prototyping (scale, reliability, cost, security)
+- **Must mention**: Key considerations (scalability, cost management, latency, monitoring, security), deployment patterns (serverless, containers, managed services), CI/CD pipeline, canary deployments, error handling, feature flags
+- **Show depth by**: Discussing GDPR compliance, data retention, and how to handle rollbacks
+- **Avoid**: Only showing deployment config without explaining monitoring, security, and operational concerns
+
 ## Answer
 **Production deployment considerations:**
 

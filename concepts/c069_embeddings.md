@@ -7,6 +7,12 @@
 ## Question
 What are text embeddings and how are they used for semantic search and RAG?
 
+## What to Cover
+- **Set context by**: Explaining embeddings as dense vectors capturing semantic meaning
+- **Must mention**: How embeddings are trained (contrastive learning), popular models (OpenAI ada, Sentence-BERT, e5), applications (semantic search, RAG, clustering), vector databases
+- **Show depth by**: Discussing best practices (normalization, batch encoding, domain adaptation) and challenges (out-of-domain, short queries)
+- **Avoid**: Only describing what embeddings are without covering how they're used in retrieval systems
+
 ## Answer
 **Text Embedding**: Dense vector representation of text that captures semantic meaning.
 

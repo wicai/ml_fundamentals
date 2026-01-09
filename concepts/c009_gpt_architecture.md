@@ -7,6 +7,12 @@
 ## Question
 What defines a "decoder-only" architecture like GPT? How does it differ from BERT or T5?
 
+## What to Cover
+- **Set context by**: Framing the three main transformer variants (encoder-only, decoder-only, encoder-decoder)
+- **Must mention**: Causal self-attention, autoregressive training objective, contrast with BERT (bidirectional) and T5 (encoder-decoder)
+- **Show depth by**: Explaining why decoder-only won for LLMs (simplicity, scalability, in-context learning)
+- **Avoid**: Only describing GPT without contrasting against BERT/T5 architecture differences
+
 ## Answer
 **Decoder-Only (GPT, LLaMA, PaLM):**
 ```

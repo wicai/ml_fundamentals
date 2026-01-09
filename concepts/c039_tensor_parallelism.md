@@ -7,6 +7,12 @@
 ## Question
 What is tensor parallelism and when is it needed for training LLMs?
 
+## What to Cover
+- **Set context by**: Explaining TP is for when model doesn't fit in single GPU memory
+- **Must mention**: How layers are split (column-parallel, row-parallel), communication pattern (2 all-reduces per block), comparison with DP
+- **Show depth by**: Discussing hybrid TP+DP configurations (TP within node, DP across nodes) and interconnect requirements (NVLink)
+- **Avoid**: Only describing the concept without explaining the communication overhead or when to use TP vs other parallelism
+
 ## Answer
 **Tensor Parallelism (TP)**: Split individual layers across multiple GPUs.
 

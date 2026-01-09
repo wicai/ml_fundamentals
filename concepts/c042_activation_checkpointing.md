@@ -7,6 +7,12 @@
 ## Question
 What is activation checkpointing and when should you use it?
 
+## What to Cover
+- **Set context by**: Explaining that activations dominate memory during training (stored for backward pass)
+- **Must mention**: The tradeoff (recompute activations to save memory), memory vs compute cost, typical savings (2-4× batch size increase)
+- **Show depth by**: Mentioning checkpointing strategies (every k layers, selective) and when NOT to use (already compute-bound)
+- **Avoid**: Only describing the concept without quantifying the memory-compute tradeoff
+
 ## Answer
 **Problem**: Backpropagation needs activations from forward pass → stored in memory.
 

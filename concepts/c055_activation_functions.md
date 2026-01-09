@@ -7,6 +7,12 @@
 ## Question
 What activation functions are used in transformers and why GELU instead of ReLU?
 
+## What to Cover
+- **Set context by**: Comparing the common activations (ReLU, GELU, SiLU/Swish)
+- **Must mention**: Why GELU is preferred (smoothness, probabilistic interpretation, empirically better), where activations are applied in transformers (FFN only)
+- **Show depth by**: Mentioning gated variants (GLU, SwiGLU) used in modern models like LLaMA
+- **Avoid**: Only describing ReLU without explaining why transformers moved to GELU/SiLU
+
 ## Answer
 **Common activations:**
 

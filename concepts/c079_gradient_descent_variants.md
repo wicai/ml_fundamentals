@@ -7,6 +7,12 @@
 ## Question
 Compare SGD, Adam, and AdamW optimizers. When should you use each?
 
+## What to Cover
+- **Set context by**: Framing optimizer choice as critical for training convergence
+- **Must mention**: SGD (simple, momentum), Adam (adaptive per-parameter LR), AdamW (decoupled weight decay), when to use each (vision: SGD, NLP: AdamW)
+- **Show depth by**: Explaining why AdamW differs from Adam+L2 (normalization cancels L2), memory costs (3× for Adam), and modern LLM hyperparameter defaults
+- **Avoid**: Just describing algorithms without explaining *when* to use each and the AdamW insight
+
 ## Answer
 **Goal**: Update parameters to minimize loss.
 

@@ -7,6 +7,12 @@
 ## Question
 What is the difference between process supervision and outcome supervision for training reasoning models?
 
+## What to Cover
+- **Set context by**: Explaining the two approaches to reward modeling for multi-step reasoning
+- **Must mention**: How each works (outcome: reward final answer only; process: reward each step), why process is better (credit assignment, partial credit), data requirements
+- **Show depth by**: Giving a concrete example showing the difference, mentioning OpenAI's findings (78% vs 72%), and discussing labeling approaches
+- **Avoid**: Only describing definitions without explaining why process supervision produces better reasoners
+
 ## Answer
 **Two approaches to reward modeling for multi-step reasoning:**
 

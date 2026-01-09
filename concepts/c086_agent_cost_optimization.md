@@ -7,6 +7,12 @@
 ## Question
 How do you optimize AI agents for cost and latency in production?
 
+## What to Cover
+- **Set context by**: Giving a concrete cost breakdown (agents can cost $0.10-$1.00 per task)
+- **Must mention**: Cost strategies (model selection per task, caching, context optimization, batch processing, early stopping), latency strategies (parallel execution, streaming, smaller models)
+- **Show depth by**: Discussing production metrics to track, cost/quality tradeoffs, and when to optimize (early vs growth vs scale)
+- **Avoid**: Only describing optimization techniques without giving concrete numbers or discussing tradeoffs
+
 ## Answer
 **Problem**: Agents are expensive!
 - Many LLM calls per task (10-50+)

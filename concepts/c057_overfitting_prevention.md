@@ -7,6 +7,12 @@
 ## Question
 What are the main strategies to prevent overfitting in neural networks?
 
+## What to Cover
+- **Set context by**: Defining overfitting (memorization vs generalization) and its signs
+- **Must mention**: Main strategies (more data, regularization (L2/dropout), early stopping, data augmentation), the bias-variance tradeoff
+- **Show depth by**: Discussing how strategies differ for LLMs (less dropout, more focus on data quality) and when to use each strategy
+- **Avoid**: Just listing techniques without explaining when each is appropriate
+
 ## Answer
 **Overfitting**: Model memorizes training data instead of learning generalizable patterns.
 

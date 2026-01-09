@@ -7,6 +7,12 @@
 ## Question
 Why use multiple attention heads instead of one large attention mechanism?
 
+## What to Cover
+- **Set context by**: Noting this is about representation diversity, not computational efficiency
+- **Must mention**: Different representation subspaces, task specialization, the dimension math (d_k = d_model / h)
+- **Show depth by**: Giving examples of what different heads might learn (syntactic vs semantic vs positional patterns)
+- **Avoid**: Claiming multi-head reduces computation (it doesn't—same params, same compute)
+
 ## Answer
 Multi-head attention runs multiple attention mechanisms in parallel with different learned projections.
 

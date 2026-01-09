@@ -7,6 +7,12 @@
 ## Question
 How do you train a reward model for RLHF? What architecture is used?
 
+## What to Cover
+- **Set context by**: Explaining the RM's role in translating human preferences to a learnable signal
+- **Must mention**: Architecture (LLM with scalar head), Bradley-Terry loss, typical data size (50K-500K comparisons)
+- **Show depth by**: Discussing challenges (distribution shift, reward hacking, human disagreement) and mitigations (ensembles, iterative collection)
+- **Avoid**: Skipping the loss function or not mentioning that RM uses same architecture as policy
+
 ## Answer
 **Reward Model (RM)**: Predicts scalar score representing human preference.
 

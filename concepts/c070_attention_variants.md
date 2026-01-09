@@ -7,6 +7,12 @@
 ## Question
 What are the main approaches to making attention more efficient than O(n²)?
 
+## What to Cover
+- **Set context by**: Explaining the O(n²) bottleneck and why it matters for long sequences
+- **Must mention**: Main approaches (sparse attention/Longformer, Linformer, Performer/linear attention, Flash Attention, state space models/Mamba)
+- **Show depth by**: Comparing complexity, quality tradeoffs, and adoption; explaining that Flash Attention is now standard and most models still use full attention
+- **Avoid**: Treating all approaches as equally adopted—clarify which are widely used (Flash Attention) vs experimental
+
 ## Answer
 **Problem**: Standard attention is O(n²) in sequence length.
 ```

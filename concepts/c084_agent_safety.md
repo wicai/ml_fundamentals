@@ -7,6 +7,12 @@
 ## Question
 What are the key safety challenges for AI agents? How do you ensure they behave safely?
 
+## What to Cover
+- **Set context by**: Explaining why agents are riskier than chatbots (take actions, autonomous, tool access)
+- **Must mention**: Key challenges (unintended actions, prompt injection, goal misalignment, tool misuse), safety measures (confirmation for destructive ops, sandboxing, monitoring, circuit breakers)
+- **Show depth by**: Giving concrete examples of failure modes and a production safety checklist
+- **Avoid**: Only listing challenges without explaining specific mitigation strategies
+
 ## Answer
 **Agents are riskier than chatbots because:**
 - They take actions (not just generate text)

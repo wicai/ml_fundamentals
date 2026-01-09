@@ -7,6 +7,12 @@
 ## Question
 Explain backpropagation and why it's efficient for training neural networks.
 
+## What to Cover
+- **Set context by**: Explaining the naive approach (O(n) forward passes) that backprop solves
+- **Must mention**: Chain rule + dynamic programming, forward pass (build graph), backward pass (traverse reverse), O(1) per edge efficiency
+- **Show depth by**: Mentioning space cost (storing activations), vanishing/exploding gradients, and activation checkpointing tradeoff
+- **Avoid**: Just stating "chain rule" without explaining why it's efficient (the caching/reuse insight)
+
 ## Answer
 **Backpropagation**: Efficient algorithm for computing gradients using the chain rule.
 

@@ -7,6 +7,12 @@
 ## Question
 What are LLM agents and how do they differ from standard LLM applications?
 
+## What to Cover
+- **Set context by**: Distinguishing agents (can take actions, use tools, iterate) from standard LLMs (single prompt → response)
+- **Must mention**: Key components (reasoning loop, tools, memory, planning), frameworks (ReAct, LangChain), common challenges (reliability, cost, infinite loops)
+- **Show depth by**: Giving concrete examples (customer support, data analysis) and discussing best practices (limited action space, timeouts, human-in-the-loop)
+- **Avoid**: Only describing the concept abstractly without discussing practical challenges and when to use agents
+
 ## Answer
 **LLM Agent**: LLM that can take actions, use tools, and iterate toward a goal.
 

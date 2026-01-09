@@ -7,6 +7,12 @@
 ## Question
 What are residual connections and why are they critical for deep networks?
 
+## What to Cover
+- **Set context by**: Explaining the vanishing gradient problem that residuals solve
+- **Must mention**: The identity path (y = F(x) + x), how it preserves gradient flow, the ensemble interpretation, residuals in transformers (attention + residual, FFN + residual)
+- **Show depth by**: Discussing pre-norm vs post-norm, initialization considerations (scaled init), and historical context (ResNet enabling 152 layers)
+- **Avoid**: Only describing residuals without explaining *why* they enable training deep networks (gradient flow)
+
 ## Answer
 **Residual Connection (Skip Connection)**: Add input to output of a layer.
 

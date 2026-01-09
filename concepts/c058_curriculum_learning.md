@@ -7,6 +7,12 @@
 ## Question
 What is curriculum learning and does data ordering matter for training LLMs?
 
+## What to Cover
+- **Set context by**: Explaining curriculum learning as training on easier examples first
+- **Must mention**: How to define difficulty (length, perplexity), when it helps (small data, domain-specific), modern finding (data quality > ordering for large-scale training)
+- **Show depth by**: Discussing practical guidance (matters less for trillion-token training, more for fine-tuning) and anti-curriculum as alternative
+- **Avoid**: Overselling curriculum learning—modern research shows diminishing returns at scale
+
 ## Answer
 **Curriculum Learning**: Train on easier examples first, gradually increase difficulty.
 

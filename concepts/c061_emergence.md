@@ -7,6 +7,12 @@
 ## Question
 What are emergent abilities in LLMs and what causes them?
 
+## What to Cover
+- **Set context by**: Defining emergence (abilities appearing suddenly at scale, not present in smaller models)
+- **Must mention**: Examples (arithmetic, few-shot learning, CoT), hypotheses for why emergence happens (thresholds, measurement artifacts)
+- **Show depth by**: Discussing the debate (Schaeffer et al. arguing it's a measurement artifact) and practical implications (unpredictability, safety concerns)
+- **Avoid**: Treating emergence as settled science—it's actively debated
+
 ## Answer
 **Emergent Abilities**: Capabilities that appear suddenly at scale, not present in smaller models.
 

@@ -7,6 +7,12 @@
 ## Question
 What are the key research directions and future developments for AI agents?
 
+## What to Cover
+- **Set context by**: Summarizing current limitations (reliability, cost, speed, reasoning, safety)
+- **Must mention**: Near-term improvements (better reasoning, cost reduction, faster inference, multimodal, memory), medium-term (self-improvement, multi-agent, formal verification), long-term (general-purpose, human-level reliability, transparent reasoning), research directions (planning, memory, robustness, efficiency, safety)
+- **Show depth by**: Discussing potential breakthroughs (native agent models, neurosymbolic, embodied), challenges to solve, and opportunities
+- **Avoid**: Only describing future capabilities without grounding in current limitations and research challenges
+
 ## Answer
 **Current limitations (2024):**
 

@@ -7,6 +7,12 @@
 ## Question
 What is LoRA and why is it more efficient than full fine-tuning?
 
+## What to Cover
+- **Set context by**: Explaining the problem (full fine-tuning requires updating all parameters)
+- **Must mention**: The low-rank decomposition (W' = W + BA), efficiency gains (10-100× fewer params), typical rank values (4-64), where to apply (attention projections, FFN)
+- **Show depth by**: Mentioning variants (QLoRA, DoRA), hyperparameter guidance (rank, alpha, target modules), and inference options (merge or keep separate)
+- **Avoid**: Only describing the math without explaining practical considerations (rank selection, target modules)
+
 ## Answer
 **LoRA (Low-Rank Adaptation)**: Fine-tune by adding small trainable matrices instead of updating all weights.
 

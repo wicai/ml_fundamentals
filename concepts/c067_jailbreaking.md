@@ -7,6 +7,12 @@
 ## Question
 What is jailbreaking and how do adversarial prompts bypass safety training?
 
+## What to Cover
+- **Set context by**: Explaining why jailbreaking is possible (generalization gap, competing objectives)
+- **Must mention**: Common techniques (role-playing, encoding, many-shot, adversarial suffixes), defense strategies (detection, adversarial training, guardrails)
+- **Show depth by**: Discussing why perfect defense is hard (infinite attack surface, over-refusal tradeoff) and the current state of the field
+- **Avoid**: Only listing attack techniques without explaining defenses and the fundamental challenges
+
 ## Answer
 **Jailbreaking**: Crafting prompts that make aligned models produce harmful outputs.
 

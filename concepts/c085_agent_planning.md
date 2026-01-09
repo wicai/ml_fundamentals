@@ -7,6 +7,12 @@
 ## Question
 How do AI agents plan and break down complex tasks? What are the key planning approaches?
 
+## What to Cover
+- **Set context by**: Explaining why LLMs need explicit planning (greedy, myopic, poor at multi-step)
+- **Must mention**: Key approaches (CoT, ReAct, Tree-of-Thoughts, subgoal decomposition, plan-and-execute), when to use each
+- **Show depth by**: Discussing challenges (changing environments, overplanning, hallucinated plans, backtracking) and best practices (progressive elaboration, checkpoints)
+- **Avoid**: Only listing planning approaches without explaining when to use each and the challenges
+
 ## Answer
 **Problem**: LLMs are next-token predictors, not natural planners.
 - Greedy, myopic decisions

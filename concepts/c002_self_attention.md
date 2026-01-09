@@ -7,6 +7,12 @@
 ## Question
 What's the difference between self-attention and cross-attention? When is each used?
 
+## What to Cover
+- **Set context by**: Explaining that attention can operate within or across sequences
+- **Must mention**: Q, K, V source differences, concrete use cases (encoder self-attention, decoder self-attention, encoder-decoder cross-attention)
+- **Show depth by**: Explaining why decoder-only models (GPT) don't need cross-attention
+- **Avoid**: Giving abstract definitions without concrete architectural examples
+
 ## Answer
 **Self-Attention:**
 - Q, K, V all come from the same sequence

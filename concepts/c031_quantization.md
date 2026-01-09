@@ -7,6 +7,12 @@
 ## Question
 What is quantization and how is it applied to LLMs? What are the main approaches?
 
+## What to Cover
+- **Set context by**: Explaining the memory/speed benefits that motivate quantization
+- **Must mention**: PTQ vs QAT, symmetric vs asymmetric, modern techniques (GPTQ, AWQ, GGML), typical quality-memory tradeoffs
+- **Show depth by**: Noting that sensitivity varies by task (math/reasoning more affected) and mentioning weight-only vs activation quantization
+- **Avoid**: Only describing INT8—interviewers expect awareness of 4-bit methods and their tradeoffs
+
 ## Answer
 **Quantization**: Represent weights/activations in lower precision (int8, int4) instead of fp16/fp32.
 

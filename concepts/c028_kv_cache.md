@@ -7,6 +7,12 @@
 ## Question
 What is KV caching and why is it critical for efficient LLM inference?
 
+## What to Cover
+- **Set context by**: Explaining the recomputation waste in naive autoregressive generation
+- **Must mention**: How it works (cache K, V from previous tokens), the speedup (O(n) vs O(n²) per token), memory cost formula, memory as the bottleneck
+- **Show depth by**: Mentioning optimizations (MQA, GQA, PagedAttention) and concrete memory numbers
+- **Avoid**: Describing the concept without quantifying the memory cost (interviewers often ask for numbers)
+
 ## Answer
 **Problem**: Autoregressive generation recomputes attention for all previous tokens at every step.
 

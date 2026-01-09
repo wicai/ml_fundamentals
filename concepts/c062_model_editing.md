@@ -7,6 +7,12 @@
 ## Question
 How can you update specific facts in an LLM without full retraining?
 
+## What to Cover
+- **Set context by**: Explaining the problem (outdated or wrong facts in models)
+- **Must mention**: Main approaches (fine-tuning, locate-and-edit like ROME/MEMIT, RAG), evaluation criteria (efficacy, specificity, generalization)
+- **Show depth by**: Discussing challenges (ripple effects, verification) and comparing when to use each approach
+- **Avoid**: Only describing RAG without mentioning direct weight editing methods
+
 ## Answer
 **Problem**: Model has outdated or wrong fact.
 ```

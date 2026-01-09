@@ -7,6 +7,12 @@
 ## Question
 How do agents use retrieval (RAG)? What are the key patterns and challenges?
 
+## What to Cover
+- **Set context by**: Explaining how agent RAG differs from simple chat RAG (agents decide when and what to retrieve)
+- **Must mention**: Retrieval patterns (single, iterative, multi-query, agentic tool-based), advanced techniques (HyDE, Self-RAG), challenges (query formulation, relevance filtering, citation, handling no results)
+- **Show depth by**: Discussing production patterns and metrics for evaluating RAG quality in agents
+- **Avoid**: Only describing basic RAG without explaining agent-specific retrieval patterns and challenges
+
 ## Answer
 **Retrieval for agents** = Agent fetches relevant information to ground responses.
 

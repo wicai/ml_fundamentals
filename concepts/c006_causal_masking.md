@@ -7,6 +7,12 @@
 ## Question
 What is causal masking and why is it necessary for language models?
 
+## What to Cover
+- **Set context by**: Explaining the training=inference consistency requirement for autoregressive models
+- **Must mention**: How masking is implemented (-∞ in attention scores), why it prevents information leakage, how parallel training still works
+- **Show depth by**: Contrasting with bidirectional models (BERT) that don't need causal masking
+- **Avoid**: Describing only the mechanics without explaining *why* it's necessary
+
 ## Answer
 Causal masking prevents positions from attending to future positions during self-attention.
 

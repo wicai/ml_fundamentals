@@ -7,6 +7,12 @@
 ## Question
 What is Constitutional AI and how does it differ from standard RLHF?
 
+## What to Cover
+- **Set context by**: Explaining the problems with standard RLHF for harmlessness (expensive, traumatizing, inconsistent)
+- **Must mention**: The two phases (self-critique SL, RLAIF with AI preferences), the constitution concept, key benefits (scalability, consistency, transparency)
+- **Show depth by**: Noting the hybrid approach (human feedback for helpfulness, AI feedback for harmlessness)
+- **Avoid**: Conflating CAI with pure RLAIF—the constitution and self-critique phase are key
+
 ## Answer
 **Constitutional AI (CAI)**: Anthropic's method for training harmless AI using AI feedback instead of just human feedback.
 

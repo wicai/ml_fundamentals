@@ -7,6 +7,12 @@
 ## Question
 What are MQA and GQA? Why are they used in modern LLMs?
 
+## What to Cover
+- **Set context by**: Explaining the KV cache memory bottleneck that MQA/GQA solve
+- **Must mention**: How each works (MQA: 1 KV head, GQA: grouped KV heads), memory savings, quality tradeoff (MHA > GQA > MQA, but GQA is close to MHA)
+- **Show depth by**: Giving adoption examples (LLaMA 1 vs 2, Falcon) and the implementation detail (repeat_interleave)
+- **Avoid**: Describing the mechanisms without explaining *why* they matter (inference batch size scaling)
+
 ## Answer
 **Standard Multi-Head Attention:**
 ```

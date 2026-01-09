@@ -7,6 +7,12 @@
 ## Question
 What is Mixture of Experts and what are its advantages for LLMs?
 
+## What to Cover
+- **Set context by**: Explaining MoE as sparse computation (not all parameters used per token)
+- **Must mention**: The routing mechanism (top-k experts), efficiency benefit (more params with less compute), examples (Mixtral, Switch Transformer, GLaM)
+- **Show depth by**: Discussing challenges (load balancing, training instability, communication overhead) and their solutions
+- **Avoid**: Only describing the architecture without explaining the efficiency benefits or challenges
+
 ## Answer
 **MoE**: Replace dense feed-forward layers with multiple expert networks, route each token to subset of experts.
 

@@ -7,6 +7,12 @@
 ## Question
 How are multimodal models (text, image, audio) trained and architected?
 
+## What to Cover
+- **Set context by**: Distinguishing the main paradigms (contrastive like CLIP, generative like GPT-4V)
+- **Must mention**: Training stages (modality alignment, instruction tuning), architectures (dual-encoder, encoder-decoder), data challenges (paired data scarcity)
+- **Show depth by**: Mentioning specific models (CLIP, LLaVA, Gemini), modality-specific challenges (images=high-dim, audio=temporal), and modern trends
+- **Avoid**: Only describing one paradigm without comparing contrastive vs generative approaches
+
 ## Answer
 **Multimodal model**: Process and generate multiple modalities (text, image, audio, video).
 

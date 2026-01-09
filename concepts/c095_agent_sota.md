@@ -7,6 +7,12 @@
 ## Question
 What are the current state-of-the-art AI agent systems? What capabilities do they have?
 
+## What to Cover
+- **Set context by**: Distinguishing production systems from research systems
+- **Must mention**: Production systems (OpenAI Assistants, Claude with Tools, GPT-4 ADA, Gemini), research systems (Devin, Voyager, Toolformer, ReAct, AutoGPT), emerging capabilities (extended reasoning, multi-agent, computer use, multimodal)
+- **Show depth by**: Discussing current limitations (reliability, cost, speed), benchmark performance (SWE-bench), and frontier research directions
+- **Avoid**: Only listing systems without discussing their capabilities, limitations, and what's next
+
 ## Answer
 **Current production systems (2024):**
 

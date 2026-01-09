@@ -7,6 +7,12 @@
 ## Question
 What are the key principles and techniques for effective prompt engineering?
 
+## What to Cover
+- **Set context by**: Framing prompt engineering as crafting inputs to elicit desired behavior
+- **Must mention**: Core principles (be specific, use examples, specify format, give roles), key techniques (CoT, self-consistency, ReAct)
+- **Show depth by**: Mentioning gotchas (prompt sensitivity, model-specific differences) and best practices (test multiple phrasings, use delimiters)
+- **Avoid**: Just listing techniques without concrete examples or discussing limitations
+
 ## Answer
 **Prompt Engineering**: Crafting inputs to elicit desired LLM behavior.
 

@@ -7,6 +7,12 @@
 ## Question
 What are multi-agent systems? When and how do you use multiple agents together?
 
+## What to Cover
+- **Set context by**: Explaining why multiple agents can outperform a single agent (specialization, parallel work, verification)
+- **Must mention**: Architecture patterns (sequential pipeline, debate/multi-perspective, coordinator-worker, collaborative, adversarial), communication protocols (message passing, shared memory), when to use multi-agent vs single
+- **Show depth by**: Discussing challenges (coordination overhead, conflicting outputs, state synchronization) and design principles for production multi-agent systems
+- **Avoid**: Only describing one architecture without explaining when to use each and the tradeoffs vs single agent
+
 ## Answer
 **Multi-agent system** = Multiple AI agents working together to solve tasks.
 

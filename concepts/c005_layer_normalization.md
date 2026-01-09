@@ -7,6 +7,12 @@
 ## Question
 Why do transformers use Layer Norm instead of Batch Norm? What's the difference?
 
+## What to Cover
+- **Set context by**: Briefly explaining what normalization does (stabilize activations)
+- **Must mention**: The dimension difference (BN across batch, LN across features), batch size independence, variable sequence lengths, autoregressive generation constraints
+- **Show depth by**: Mentioning pre-norm vs post-norm placement and why pre-norm is now standard
+- **Avoid**: Only giving the formula without explaining *why* LN is needed for transformers specifically
+
 ## Answer
 **Batch Norm** (CNNs):
 - Normalizes across batch dimension for each feature

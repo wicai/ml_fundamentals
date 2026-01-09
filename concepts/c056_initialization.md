@@ -7,6 +7,12 @@
 ## Question
 How should you initialize weights in deep networks and why does it matter?
 
+## What to Cover
+- **Set context by**: Explaining the problems bad initialization causes (vanishing/exploding gradients, symmetry breaking)
+- **Must mention**: Key strategies (Xavier/Glorot, He), variance preservation principle, transformer-specific practices (Normal(0, 0.02), layer-wise scaling)
+- **Show depth by**: Noting that modern techniques (layer norm, residual connections) reduce initialization sensitivity
+- **Avoid**: Only describing the formulas without explaining *why* proper variance matters
+
 ## Answer
 **Goal**: Start with weights that allow gradients to flow without vanishing/exploding.
 

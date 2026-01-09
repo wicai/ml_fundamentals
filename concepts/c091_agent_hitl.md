@@ -7,6 +7,12 @@
 ## Question
 What is human-in-the-loop (HITL) for AI agents? When and how do you implement it?
 
+## What to Cover
+- **Set context by**: Explaining why HITL is needed (agents make mistakes, high-stakes decisions, trust building)
+- **Must mention**: HITL patterns (confirmation before action, review and edit, escalation on uncertainty, feedback loop), implementation approaches (synchronous vs async, tiered approval), when to require vs skip human approval
+- **Show depth by**: Discussing progressive autonomy (building trust over time), UX patterns, and measuring HITL effectiveness
+- **Avoid**: Only describing confirmation dialogs without discussing when to require approval and how to build trust over time
+
 ## Answer
 **Human-in-the-loop** = Human oversight and intervention in agent execution.
 

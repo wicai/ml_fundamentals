@@ -7,6 +7,12 @@
 ## Question
 What is temperature in language model sampling and what are the main sampling strategies?
 
+## What to Cover
+- **Set context by**: Explaining temperature as controlling the sharpness of the probability distribution
+- **Must mention**: Temperature formula and effects (T=0 greedy, T<1 focused, T>1 random), top-k, top-p (nucleus) sampling
+- **Show depth by**: Giving use-case recommendations (factual: low T, creative: high T) and mentioning hybrid strategies (top-p + temperature)
+- **Avoid**: Only describing temperature without covering the sampling strategies (top-k, top-p) that work with it
+
 ## Answer
 **Temperature**: Scale logits before softmax to control randomness.
 

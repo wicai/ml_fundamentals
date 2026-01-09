@@ -7,6 +7,12 @@
 ## Question
 What is DPO and how does it differ from PPO-based RLHF?
 
+## What to Cover
+- **Set context by**: Explaining the complexity/instability of PPO-based RLHF that DPO solves
+- **Must mention**: The key insight (reparameterize RM in terms of optimal policy), the loss function intuition, advantages (simplicity, stability, no RM needed)
+- **Show depth by**: Discussing tradeoffs (less flexible, tied to specific dataset) and adoption (LLaMA 3, Mistral)
+- **Avoid**: Skipping the comparison with PPO pipeline or not explaining *why* DPO works
+
 ## Answer
 **DPO**: Directly optimize policy on preference data without training separate reward model or using RL.
 

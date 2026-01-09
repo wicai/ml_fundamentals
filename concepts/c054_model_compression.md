@@ -7,6 +7,12 @@
 ## Question
 What are the main techniques for compressing LLMs for deployment?
 
+## What to Cover
+- **Set context by**: Explaining the deployment goal (reduce size/compute while preserving quality)
+- **Must mention**: Main techniques (quantization, pruning, distillation, architecture optimization), their tradeoffs (size vs speed vs quality vs training cost)
+- **Show depth by**: Discussing how techniques can be combined and giving concrete examples (DistilBERT, TinyLlama, Phi)
+- **Avoid**: Only describing quantization and ignoring other techniques like distillation or pruning
+
 ## Answer
 **Goal**: Reduce model size/compute while preserving quality.
 

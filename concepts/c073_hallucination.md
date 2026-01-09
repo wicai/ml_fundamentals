@@ -7,6 +7,12 @@
 ## Question
 What causes LLMs to hallucinate and how can you mitigate it?
 
+## What to Cover
+- **Set context by**: Defining hallucination (plausible but incorrect output) and its types (factual, intrinsic, extrinsic)
+- **Must mention**: Causes (training objective, knowledge limits), mitigation strategies (RAG, instruction tuning, citation forcing, uncertainty communication)
+- **Show depth by**: Discussing detection methods (consistency checks, verifiers) and the fundamental limitation (models don't know what they don't know)
+- **Avoid**: Only describing the problem without giving concrete mitigation strategies
+
 ## Answer
 **Hallucination**: Model generates plausible-sounding but factually incorrect or nonsensical output.
 

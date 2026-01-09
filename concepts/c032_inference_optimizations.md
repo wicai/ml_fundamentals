@@ -7,6 +7,12 @@
 ## Question
 What are the key techniques for optimizing LLM inference latency and throughput?
 
+## What to Cover
+- **Set context by**: Distinguishing latency (user experience) from throughput (cost)
+- **Must mention**: KV caching, batching (continuous batching), quantization, Flash Attention, speculative decoding, PagedAttention
+- **Show depth by**: Explaining the latency breakdown (prefill vs decode) and bottleneck differences (compute-bound small batch, memory-bound large batch)
+- **Avoid**: Just listing techniques without explaining *when* each matters or the latency/throughput tradeoff
+
 ## Answer
 **Two goals:**
 - **Latency**: Time to generate one response (matters for user experience)

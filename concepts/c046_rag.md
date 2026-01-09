@@ -7,6 +7,12 @@
 ## Question
 What is RAG and when should you use it vs fine-tuning?
 
+## What to Cover
+- **Set context by**: Explaining RAG as augmenting generation with retrieved context
+- **Must mention**: The pipeline (embed → retrieve → augment prompt → generate), components (retriever, vector DB, generator), RAG vs fine-tuning tradeoffs
+- **Show depth by**: Discussing challenges (retrieval quality, context length limits) and advanced techniques (reranking, HyDE)
+- **Avoid**: Only describing the pipeline without explaining when to use RAG vs fine-tuning
+
 ## Answer
 **RAG**: Retrieve relevant documents and include in context when generating.
 

@@ -7,6 +7,12 @@
 ## Question
 What is catastrophic forgetting and how do you mitigate it?
 
+## What to Cover
+- **Set context by**: Explaining what catastrophic forgetting is (fine-tuning overwrites old knowledge)
+- **Must mention**: Mitigation strategies (rehearsal/replay, EWC regularization, adapters/LoRA, distillation), their tradeoffs
+- **Show depth by**: Discussing LLM-specific practices (mixing tasks during instruction tuning, continual pretraining with replay)
+- **Avoid**: Only describing the problem without explaining practical solutions
+
 ## Answer
 **Catastrophic Forgetting**: When fine-tuning on new task, model forgets old tasks.
 

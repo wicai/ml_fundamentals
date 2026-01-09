@@ -7,6 +7,12 @@
 ## Question
 What is pipeline parallelism and how does it complement other parallelism strategies?
 
+## What to Cover
+- **Set context by**: Explaining PP splits model by layers across GPUs (vs TP which splits within layers)
+- **Must mention**: The pipeline bubble problem, micro-batching to reduce bubble, GPipe vs 1F1B schedules
+- **Show depth by**: Giving a hybrid 3D parallelism example (TP + PP + DP) and explaining when PP is appropriate
+- **Avoid**: Describing naive pipelining without mentioning the bubble problem and solutions
+
 ## Answer
 **Pipeline Parallelism (PP)**: Split model layers across GPUs, pipeline the micro-batches.
 

@@ -7,6 +7,12 @@
 ## Question
 What is chain-of-thought prompting and why does it improve reasoning?
 
+## What to Cover
+- **Set context by**: Showing a concrete example (standard vs CoT prompting)
+- **Must mention**: Why it works (more compute, explicit reasoning, error correction), emergence (only helps large models), variants (zero-shot CoT, self-consistency)
+- **Show depth by**: Discussing gotchas (hallucinated reasoning, unfaithful explanations, cost) and performance gains on specific benchmarks
+- **Avoid**: Only describing the technique without explaining *why* it works or the model size requirement
+
 ## Answer
 **Chain-of-Thought (CoT)**: Prompt model to show intermediate reasoning steps before final answer.
 

@@ -7,6 +7,12 @@
 ## Question
 Walk through the components of a standard transformer decoder block (as used in GPT).
 
+## What to Cover
+- **Set context by**: Noting this is the repeated building block that makes up GPT-style models
+- **Must mention**: The two sub-blocks (attention + FFN), residual connections, layer norm placement, FFN expansion ratio (4x)
+- **Show depth by**: Mentioning where most parameters live (FFN, not attention) and why pre-norm is preferred
+- **Avoid**: Forgetting residual connections or the LayerNorm steps
+
 ## Answer
 **Decoder Block (GPT-style):**
 

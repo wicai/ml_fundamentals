@@ -7,6 +7,12 @@
 ## Question
 How do you filter and curate data for pretraining LLMs? What makes "high-quality" data?
 
+## What to Cover
+- **Set context by**: Explaining the noise in internet data that makes filtering necessary
+- **Must mention**: Deduplication, quality filtering (heuristics + classifier-based), toxicity/safety, data mixing ratios
+- **Show depth by**: Mentioning modern approaches (Phi's "textbook-quality" data) and the insight that quality > quantity
+- **Avoid**: Only listing filtering steps without explaining *why* each matters or discussing the quality vs quantity tradeoff
+
 ## Answer
 **Problem**: Internet data is noisy, toxic, copyrighted, low-quality.
 

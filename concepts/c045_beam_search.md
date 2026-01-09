@@ -7,6 +7,12 @@
 ## Question
 What is beam search and when is it better than sampling?
 
+## What to Cover
+- **Set context by**: Explaining beam search as exploring multiple high-probability paths
+- **Must mention**: The algorithm (keep top-k sequences), comparison with greedy and sampling, length normalization, when to use (translation, summarization) vs not (chat, creative)
+- **Show depth by**: Discussing problems (generic outputs, no diversity) and the modern trend (sampling preferred for LLMs)
+- **Avoid**: Only describing the algorithm without explaining when it's appropriate vs inappropriate
+
 ## Answer
 **Beam Search**: Keep top-k most likely sequences at each step.
 

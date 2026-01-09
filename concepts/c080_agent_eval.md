@@ -7,6 +7,12 @@
 ## Question
 How do you evaluate AI agents? What are the key benchmarks and metrics?
 
+## What to Cover
+- **Set context by**: Explaining why agent evaluation is harder than LLM evaluation (multi-step, tools, non-determinism)
+- **Must mention**: Key metrics (success rate, efficiency, cost, tool accuracy), major benchmarks (WebArena, SWE-bench, GAIA, ToolBench) with approximate SOTA numbers
+- **Show depth by**: Discussing evaluation challenges (environment drift, partial credit, cost), and best practices (multi-metric, error analysis, cost tracking)
+- **Avoid**: Only listing benchmarks without explaining the metrics and practical challenges
+
 ## Answer
 **Challenge**: Agents are harder to evaluate than standard LLMs because:
 - Multi-step reasoning

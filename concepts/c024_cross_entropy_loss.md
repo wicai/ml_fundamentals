@@ -7,6 +7,12 @@
 ## Question
 Why is cross-entropy the standard loss function for language modeling?
 
+## What to Cover
+- **Set context by**: Connecting cross-entropy to maximum likelihood (minimizing CE = maximizing likelihood)
+- **Must mention**: The formula, probabilistic interpretation, why it penalizes confident wrong answers, the gradient (p_i - 1[i=y])
+- **Show depth by**: Contrasting with MSE (doesn't penalize confident mistakes enough) and mentioning label smoothing
+- **Avoid**: Only giving the formula without explaining *why* it's the right choice for classification
+
 ## Answer
 **Cross-Entropy Loss:**
 ```

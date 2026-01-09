@@ -7,6 +7,12 @@
 ## Question
 How do AI agents handle memory? What are the different memory architectures?
 
+## What to Cover
+- **Set context by**: Explaining the problem (LLMs have fixed context, agents need long-term memory)
+- **Must mention**: Memory types (short-term/working, long-term/episodic, entity/semantic, procedural/skills), implementation approaches (vector DB, summarization)
+- **Show depth by**: Discussing optimization strategies (summarization, compression, forgetting) and challenges (what to remember, privacy, consistency)
+- **Avoid**: Only describing memory types without explaining how they're implemented and the challenges
+
 ## Answer
 **Problem**: LLMs have fixed context windows, but agents need to remember:
 - Past conversations

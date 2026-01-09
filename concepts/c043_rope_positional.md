@@ -7,6 +7,12 @@
 ## Question
 What is RoPE (Rotary Position Embeddings) and why is it used in modern LLMs?
 
+## What to Cover
+- **Set context by**: Explaining that position encoding is needed because attention is permutation-invariant
+- **Must mention**: The rotation intuition, relative positioning property, extrapolation ability, no learned parameters
+- **Show depth by**: Comparing with alternatives (sinusoidal, learned absolute, ALiBi) and noting adoption (LLaMA, GPT-NeoX, PaLM)
+- **Avoid**: Getting lost in the math without explaining *why* RoPE is better than alternatives
+
 ## Answer
 **RoPE**: Encode position information by rotating query and key vectors.
 

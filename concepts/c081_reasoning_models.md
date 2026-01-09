@@ -7,6 +7,12 @@
 ## Question
 What are reasoning models like o1 and how do they differ from standard LLMs?
 
+## What to Cover
+- **Set context by**: Distinguishing reasoning models (extended thinking at inference) from standard LLMs (single forward pass)
+- **Must mention**: How they work (extended CoT, process supervision, test-time compute scaling), performance characteristics (strong at math/coding, slower, more expensive)
+- **Show depth by**: Discussing strengths/weaknesses, the test-time compute insight, and speculation about training approach (RL + process supervision)
+- **Avoid**: Only describing o1 capabilities without explaining *how* it achieves them (extended reasoning, RL)
+
 ## Answer
 **Reasoning models**: LLMs trained to think longer at inference time, generating internal reasoning traces before answering.
 

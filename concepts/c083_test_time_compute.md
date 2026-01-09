@@ -7,6 +7,12 @@
 ## Question
 What is test-time compute scaling and why is it important for reasoning models?
 
+## What to Cover
+- **Set context by**: Explaining the paradigm shift (more inference compute → better answers, not just training compute)
+- **Must mention**: Techniques (longer CoT, best-of-N sampling, beam search, self-consistency, iterative refinement), when it helps most (high-variance reasoning tasks)
+- **Show depth by**: Discussing scaling laws (log-linear improvements), cost tradeoffs, and when NOT to use (factual QA, simple tasks)
+- **Avoid**: Only describing techniques without explaining the paradigm shift or when test-time compute actually helps
+
 ## Answer
 **Test-time compute**: Using more computation during inference (not training) to improve answer quality.
 

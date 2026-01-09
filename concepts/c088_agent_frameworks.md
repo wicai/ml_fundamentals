@@ -7,6 +7,12 @@
 ## Question
 What are the major AI agent frameworks? How do they compare?
 
+## What to Cover
+- **Set context by**: Explaining why frameworks exist (speed up development, common patterns, ecosystem)
+- **Must mention**: Major frameworks (LangChain, LangGraph, AutoGPT, CrewAI, AutoGen, Semantic Kernel, Haystack), their strengths/weaknesses, and when to use each
+- **Show depth by**: Discussing when to use a framework vs build custom, framework overhead, and production deployment considerations
+- **Avoid**: Only listing frameworks without comparing them or explaining when to build custom
+
 ## Answer
 **Agent frameworks** = Libraries and tools for building AI agents faster.
 

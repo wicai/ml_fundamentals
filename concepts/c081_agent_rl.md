@@ -7,6 +7,12 @@
 ## Question
 How is reinforcement learning used to train AI agents? What are the key approaches?
 
+## What to Cover
+- **Set context by**: Explaining why RL is needed (LLMs poor at sequential decisions, tool use, learning from interaction)
+- **Must mention**: Key approaches (RLHF for tool use, ReAct + RL, Voyager-style skill learning, WebGPT), reward design challenges (sparse vs dense, reward hacking)
+- **Show depth by**: Discussing practical considerations (sample efficiency, safety, catastrophic forgetting) and online vs offline RL
+- **Avoid**: Only listing RL approaches without explaining reward design challenges and practical considerations
+
 ## Answer
 **Why RL for agents?**
 

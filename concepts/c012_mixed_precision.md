@@ -7,6 +7,12 @@
 ## Question
 What is mixed precision training (FP16/BF16) and why is it important for LLMs?
 
+## What to Cover
+- **Set context by**: Explaining the memory/compute constraints that make 16-bit necessary for large models
+- **Must mention**: The difference between FP16 and BF16 (range vs precision tradeoff), why FP32 master weights are kept, gradient scaling for FP16
+- **Show depth by**: Explaining which operations stay in FP32 (layer norm, softmax) and why BF16 is now standard
+- **Avoid**: Conflating FP16 and BF16 or missing the gradient scaling requirement for FP16
+
 ## Answer
 **Mixed Precision**: Use lower precision (16-bit) for most operations, higher precision (32-bit) where needed.
 

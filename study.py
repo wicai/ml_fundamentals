@@ -577,8 +577,23 @@ Keep the feedback constructive and specific."""
                         print(f"⚠ Could not read file: {e}")
                         user_answer = ''
             else:
-                print("\n[Type your answer below, or press ENTER to skip]")
-                user_answer = input("Your answer: ").strip()
+                print("\n[Type your answer below, press ENTER twice when done, or just ENTER to skip]")
+                lines = []
+                empty_count = 0
+                while True:
+                    line = input()
+                    if line == '':
+                        empty_count += 1
+                        if empty_count >= 2:
+                            break
+                        if len(lines) == 0:
+                            # First input is empty = skip
+                            break
+                        lines.append('')
+                    else:
+                        empty_count = 0
+                        lines.append(line)
+                user_answer = '\n'.join(lines).strip()
 
             print("\n" + "=" * 70)
             print("ANSWER")
@@ -600,6 +615,8 @@ Keep the feedback constructive and specific."""
                 if user_answer:
                     print("  a: Get your answer graded by Claude (MLE interview style)")
                 print("  c: Chat about this topic (deep dive with context)")
+                print("  n: Take notes on this topic")
+                print("  v: View existing notes")
                 print("  s: Skip to next item")
                 response = input("\nYour choice: ").strip().lower()
 
@@ -653,6 +670,79 @@ Keep the feedback constructive and specific."""
                     input("[Press ENTER when done chatting to continue...]")
                     continue
 
+                elif response == 'n':
+                    # Take notes mode
+                    print("\n" + "=" * 70)
+                    print("📝 NOTES")
+                    print("=" * 70)
+
+                    # Check for existing notes
+                    existing_notes = self.state['items'].get(item['id'], {}).get('notes', '')
+                    if existing_notes:
+                        print("\n📋 Existing notes:")
+                        print("-" * 40)
+                        print(existing_notes)
+                        print("-" * 40)
+                        print("\nNew notes will be appended below existing notes.")
+
+                    print("\n[Type your notes, then press ENTER twice to save]")
+                    lines = []
+                    empty_count = 0
+                    while True:
+                        line = input()
+                        if line == '':
+                            empty_count += 1
+                            if empty_count >= 2:
+                                break
+                            lines.append('')
+                        else:
+                            empty_count = 0
+                            lines.append(line)
+
+                    new_notes = '\n'.join(lines).strip()
+
+                    if new_notes:
+                        # Initialize item state if needed
+                        if item['id'] not in self.state['items']:
+                            self.state['items'][item['id']] = {
+                                'last_seen': datetime.now().isoformat(),
+                                'interval': 1,
+                                'ease_factor': 2.5,
+                                'correct_streak': 0
+                            }
+
+                        # Concatenate with existing notes
+                        if existing_notes:
+                            timestamp = datetime.now().strftime("%Y-%m-%d %H:%M")
+                            self.state['items'][item['id']]['notes'] = f"{existing_notes}\n\n--- {timestamp} ---\n{new_notes}"
+                        else:
+                            timestamp = datetime.now().strftime("%Y-%m-%d %H:%M")
+                            self.state['items'][item['id']]['notes'] = f"--- {timestamp} ---\n{new_notes}"
+
+                        self.save_state()
+                        print("\n✓ Notes saved!")
+                    else:
+                        print("\n⚠ No notes entered.")
+
+                    continue
+
+                elif response == 'v':
+                    # View notes mode
+                    print("\n" + "=" * 70)
+                    print("📋 EXISTING NOTES")
+                    print("=" * 70)
+
+                    existing_notes = self.state['items'].get(item['id'], {}).get('notes', '')
+                    if existing_notes:
+                        print()
+                        print(existing_notes)
+                    else:
+                        print("\nNo notes for this topic yet.")
+                        print("Use 'n' to add notes.")
+
+                    input("\n[Press ENTER to continue...]")
+                    continue
+
                 elif response == 's':
                     # Skip - treat as partial knowledge
                     response = '2'
@@ -662,9 +752,9 @@ Keep the feedback constructive and specific."""
                     break
 
                 if user_answer:
-                    print("Please enter 1, 2, 3, a, c, or s")
+                    print("Please enter 1, 2, 3, a, c, n, v, or s")
                 else:
-                    print("Please enter 1, 2, 3, c, or s")
+                    print("Please enter 1, 2, 3, c, n, v, or s")
 
             correct = response == '3'
             self.update_item_state(item['id'], correct)

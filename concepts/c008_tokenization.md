@@ -7,6 +7,12 @@
 ## Question
 What is BPE/SentencePiece tokenization and why is it used instead of word-level tokens?
 
+## What to Cover
+- **Set context by**: Explaining the tradeoffs between word-level (OOV problem), character-level (too long), and subword
+- **Must mention**: The BPE algorithm (iterative merging), why it handles OOV, morphological benefits
+- **Show depth by**: Naming variants (SentencePiece, WordPiece, Unigram) and noting tokenization differs across models
+- **Avoid**: Describing only BPE without mentioning the problems it solves or modern variants
+
 ## Answer
 **Byte-Pair Encoding (BPE):**
 Iteratively merge the most frequent pair of tokens to build a vocabulary.

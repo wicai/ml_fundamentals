@@ -7,6 +7,12 @@
 ## Question
 What is gradient accumulation and why is it used in LLM training?
 
+## What to Cover
+- **Set context by**: Explaining the memory constraint problem (can't fit large batch in GPU memory)
+- **Must mention**: The algorithm, effective batch size formula (micro_batch × accum_steps × num_gpus), loss scaling requirement
+- **Show depth by**: Noting it's mathematically equivalent to large batch and discussing wall-clock tradeoffs
+- **Avoid**: Forgetting to mention the loss scaling by 1/accumulation_steps (common bug)
+
 ## Answer
 **Problem**: Can't fit large batch size in GPU memory
 

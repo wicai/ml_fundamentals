@@ -7,6 +7,12 @@
 ## Question
 What is in-context learning and how does it differ from fine-tuning?
 
+## What to Cover
+- **Set context by**: Explaining that ICL requires no parameter updates—it's inference-time learning
+- **Must mention**: The comparison with fine-tuning (speed, cost, persistence), zero/one/few-shot variants, emergence (only works at scale)
+- **Show depth by**: Mentioning factors affecting performance (example selection, order, format) and gotchas (inconsistency, data leakage concerns)
+- **Avoid**: Treating ICL as equivalent to fine-tuning or not mentioning the scale requirement
+
 ## Answer
 **In-Context Learning (ICL)**: Model learns from examples in the prompt without parameter updates.
 

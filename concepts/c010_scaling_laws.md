@@ -7,6 +7,12 @@
 ## Question
 What are the key findings from scaling laws research? How should you allocate compute budget?
 
+## What to Cover
+- **Set context by**: Mentioning Kaplan et al. and Chinchilla as the key papers
+- **Must mention**: Power law relationship (loss vs N, D, C), Chinchilla-optimal ratios (N ∝ C^0.5, D ∝ C^0.5), practical implication that most models were undertrained
+- **Show depth by**: Giving concrete examples (GPT-3 vs Chinchilla, modern models like LLaMA)
+- **Avoid**: Only quoting the formulas without explaining the practical implications for training decisions
+
 ## Answer
 **Key Finding (Kaplan et al. 2020, Chinchilla 2022):**
 Loss scales as a power law with model size (N), data size (D), and compute (C).

@@ -7,6 +7,12 @@
 ## Question
 What are the main benchmarks for evaluating LLMs and what do they measure?
 
+## What to Cover
+- **Set context by**: Categorizing benchmarks by type (knowledge, reasoning, coding, safety, aggregate)
+- **Must mention**: Key benchmarks (MMLU, GSM8K, HumanEval, TruthfulQA), what each measures, approximate SOTA numbers
+- **Show depth by**: Discussing problems with benchmarks (contamination, saturation, Goodhart's law) and the trend toward human evaluation
+- **Avoid**: Just listing benchmarks without explaining what they measure or their limitations
+
 ## Answer
 **Categories of benchmarks:**
 
