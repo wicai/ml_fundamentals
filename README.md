@@ -5,9 +5,11 @@ Study system for ML/LLM interviews with spaced repetition (~130 items: concepts,
 ## Ask a Question
 
 ```bash
-./study              # Start session (10 items)
-./study -n 20        # Study 20 items
-./study -t concepts  # Focus on concepts, quiz, deep, or derive
+./study                                    # Start session (1 item)
+./study -n 20                              # Study 20 items
+./study -t concepts                        # Focus on concepts, quiz, deep, or derive
+./study -t coding                          # Focus on coding questions
+./study -s code021_llm_classifier_logits   # Study a specific item by ID
 ```
 
 **During study:**
@@ -16,6 +18,11 @@ Study system for ML/LLM interviews with spaced repetition (~130 items: concepts,
 - Press `a` to get AI grading on your answer
 - Press `c` to chat with Claude about the topic
 - Press `s` to skip
+
+**For coding questions:**
+- **First time**: Walkthrough mode - Claude explains the solution step-by-step
+- **After walkthrough**: Implementation mode - code it yourself from scratch
+- Press `w` anytime to see the walkthrough again
 
 ## Track Progress
 

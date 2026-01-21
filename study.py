@@ -123,8 +123,20 @@ class StudySession:
 
         return priority
 
-    def select_items(self, count=10, weights=None, tag_filter=None):
+    def select_items(self, count=10, weights=None, tag_filter=None, select_id=None):
         """Select items for study session"""
+        # If a specific item is selected, return only that item
+        if select_id:
+            all_items = self.get_all_items(tag_filter=tag_filter)
+            for item in all_items:
+                if item['id'] == select_id:
+                    return [item]
+            print(f"❌ Error: Item '{select_id}' not found")
+            print("\nAvailable items:")
+            for item in sorted(all_items, key=lambda x: x['id']):
+                print(f"  - {item['id']} ({item['category']}): {item['title']}")
+            return []
+
         if weights is None:
             weights = {'concepts': 0.6, 'quiz': 0.2, 'deep': 0.0, 'derive': 0.1, 'coding': 0.1}
 
@@ -173,6 +185,131 @@ class StudySession:
                 f.write(f"## Follow-up Questions\n\n{item['followup']}\n\n")
             f.write(f"## Related File\n\n")
             f.write(f"Full content: {item['filepath']}\n")
+
+    def launch_claude_walkthrough(self, item):
+        """Launch Claude Code to walk through the coding solution step by step"""
+        # Create a shorter prompt - the full question is in the file
+        prompt = f"""I'm studying: {item['title']}
+
+Please walk me through how to solve this step-by-step:
+1. Explain the approach and key insights
+2. Show the implementation with explanations
+3. Explain important PyTorch/NumPy functions used
+4. Cover edge cases and testing
+
+File: {item['filepath']}"""
+
+        # Platform-specific browser launch
+        if sys.platform == 'darwin':  # macOS
+            import urllib.parse
+            import time
+
+            # URL-encode the prompt
+            encoded_prompt = urllib.parse.quote(prompt)
+
+            # Open Claude.ai with the prompt pre-filled using URL parameter
+            url = f'https://claude.ai/new?q={encoded_prompt}'
+
+            subprocess.run(['open', url])
+
+            # Wait for browser to load, then auto-submit with AppleScript
+            time.sleep(3)  # Give browser time to load
+
+            applescript = '''
+            tell application "System Events"
+                keystroke return
+            end tell
+            '''
+
+            subprocess.run(['osascript', '-e', applescript])
+
+            return True
+
+        elif sys.platform == 'linux':
+            # Copy to clipboard (try xclip or xsel)
+            try:
+                subprocess.run(['xclip', '-selection', 'clipboard'], input=prompt.encode('utf-8'), check=True)
+            except FileNotFoundError:
+                try:
+                    subprocess.run(['xsel', '--clipboard'], input=prompt.encode('utf-8'), check=True)
+                except FileNotFoundError:
+                    return False
+            # Open Claude web
+            subprocess.run(['xdg-open', 'https://claude.ai/new'])
+            return True
+
+        elif sys.platform == 'win32':  # Windows
+            # Copy to clipboard
+            subprocess.run(['clip'], input=prompt.encode('utf-16le'), check=True)
+            # Open Claude web
+            subprocess.run(['start', 'https://claude.ai/new'], shell=True)
+            return True
+        else:
+            return False
+
+    def launch_claude_explain(self, item):
+        """Launch Claude web to explain the topic incrementally, like a patient tutor"""
+        prompt = f"""I'm learning about: {item['title']}
+
+Please explain this to me like a patient tutor having a conversation:
+
+IMPORTANT INSTRUCTIONS:
+1. Start with ONE short paragraph (2-3 sentences) explaining the most fundamental concept
+2. After that paragraph, STOP and ask "Does that make sense so far?"
+3. WAIT for my response before continuing
+4. When I confirm (yes/got it/makes sense), give me the NEXT piece (another 2-3 sentences)
+5. Keep building understanding incrementally - never dump multiple concepts at once
+6. Use simple analogies and examples
+7. If I ask questions, answer them before moving on
+
+DO NOT give me a wall of text. This should feel like a back-and-forth conversation where you check my understanding after each small piece.
+
+---
+The question I need to understand:
+{item['question']}
+
+---
+Start now with just the first piece - the single most important concept I need to grasp first."""
+
+        # Platform-specific browser launch
+        if sys.platform == 'darwin':  # macOS
+            import urllib.parse
+            import time
+
+            encoded_prompt = urllib.parse.quote(prompt)
+            url = f'https://claude.ai/new?q={encoded_prompt}'
+
+            subprocess.run(['open', url])
+
+            time.sleep(3)
+
+            applescript = '''
+            tell application "System Events"
+                keystroke return
+            end tell
+            '''
+
+            subprocess.run(['osascript', '-e', applescript])
+
+            return True
+
+        elif sys.platform == 'linux':
+            try:
+                subprocess.run(['xclip', '-selection', 'clipboard'], input=prompt.encode('utf-8'), check=True)
+            except FileNotFoundError:
+                try:
+                    subprocess.run(['xsel', '--clipboard'], input=prompt.encode('utf-8'), check=True)
+                except FileNotFoundError:
+                    return False
+            subprocess.run(['xdg-open', 'https://claude.ai/new'])
+            return True
+
+        elif sys.platform == 'win32':
+            subprocess.run(['clip'], input=prompt.encode('utf-16le'), check=True)
+            subprocess.run(['start', 'https://claude.ai/new'], shell=True)
+            return True
+        else:
+            return False
 
     def launch_claude_chat(self, item):
         """Launch Claude web in browser with context prompt via URL parameter"""
@@ -347,7 +484,8 @@ Keep the feedback constructive and specific."""
                 'last_seen': datetime.now().isoformat(),
                 'interval': 1,
                 'ease_factor': 2.5,
-                'correct_streak': 0
+                'correct_streak': 0,
+                'walkthrough_done': False
             }
 
         state = self.state['items'][item_id]
@@ -367,16 +505,18 @@ Keep the feedback constructive and specific."""
 
         state['last_seen'] = datetime.now().isoformat()
 
-    def run_session(self, num_items=10, tag_filter=None):
+    def run_session(self, num_items=10, tag_filter=None, select_id=None):
         """Run an interactive study session"""
         print("=" * 70)
         print("ML FUNDAMENTALS STUDY SESSION")
         if tag_filter:
             print(f"Filter: {tag_filter}")
+        if select_id:
+            print(f"Specific item: {select_id}")
         print("=" * 70)
         print()
 
-        items = self.select_items(num_items, tag_filter=tag_filter)
+        items = self.select_items(num_items, tag_filter=tag_filter, select_id=select_id)
 
         if not items:
             print("No study items found. Please add content to the directories.")
@@ -410,9 +550,86 @@ Keep the feedback constructive and specific."""
             if is_coding:
                 print("\n💻 CODING QUESTION")
 
+                # Check if this is the first time seeing this question
+                item_id = item['id']
+                if item_id not in self.state['items']:
+                    self.state['items'][item_id] = {
+                        'last_seen': datetime.now().isoformat(),
+                        'interval': 1,
+                        'ease_factor': 2.5,
+                        'correct_streak': 0,
+                        'walkthrough_done': False
+                    }
+
+                walkthrough_done = self.state['items'][item_id].get('walkthrough_done', False)
+
+                if not walkthrough_done:
+                    print("\n" + "=" * 70)
+                    print("🎓 FIRST TIME: WALKTHROUGH MODE")
+                    print("=" * 70)
+                    print("\nThis is your first time seeing this question.")
+                    print("Would you like Claude to walk you through the solution?")
+                    print("\nThis will:")
+                    print("  • Explain the approach and key insights")
+                    print("  • Walk through the implementation step-by-step")
+                    print("  • Explain important PyTorch/NumPy functions")
+                    print("  • Cover edge cases and testing")
+                    print("\nNext time you see this, you'll implement it yourself from scratch.")
+                    print()
+
+                    choice = input("Start walkthrough? (y/n): ").strip().lower()
+
+                    if choice == 'y':
+                        print("\n✓ Launching Claude for walkthrough...")
+                        self.launch_claude_walkthrough(item)
+
+                        print("\n" + "=" * 70)
+                        print("📚 Study the walkthrough, then press ENTER when done")
+                        print("=" * 70)
+                        input()
+
+                        # Mark walkthrough as done
+                        self.state['items'][item_id]['walkthrough_done'] = True
+                        self.save_state()
+
+                        print("\n✓ Walkthrough complete! Next time you'll code it yourself.")
+                        print("\nPress ENTER to see the reference solution, or 's' to skip.")
+
+                        choice = input("\nYour choice: ").strip().lower()
+                        if choice != 's':
+                            print("\n" + "=" * 70)
+                            print("📖 REFERENCE SOLUTION")
+                            print("=" * 70)
+                            print(item['answer'])
+
+                        # Don't require rating after walkthrough
+                        results.append({
+                            'item_id': item['id'],
+                            'rating': 2,  # Default to "learning" rating
+                            'walkthrough': True
+                        })
+                        current_session['results'].append({
+                            'item_id': item['id'],
+                            'rating': 2,
+                            'walkthrough': True
+                        })
+                        self.save_state()
+                        continue  # Skip to next item
+                    else:
+                        print("\n⏭ Skipping walkthrough. You'll code it yourself now.")
+
                 # Create coding directory if it doesn't exist
                 coding_dir = self.base_dir / 'coding'
                 coding_dir.mkdir(exist_ok=True)
+
+                # Show implementation mode message if walkthrough was already done
+                if walkthrough_done:
+                    print("\n" + "=" * 70)
+                    print("💪 IMPLEMENTATION MODE")
+                    print("=" * 70)
+                    print("\nYou've seen the walkthrough before. Now implement it from scratch!")
+                    print("Try to recall: the approach, key functions, and edge cases.")
+                    print()
 
                 # Create a file for this coding problem
                 coding_file = coding_dir / f"{item['id']}_solution.py"
@@ -468,9 +685,24 @@ Keep the feedback constructive and specific."""
                 print("\nOptions:")
                 print("  ENTER: Continue when ready (reads from file)")
                 print("  p: Paste your solution manually")
+                print("  w: See walkthrough again")
                 print("  s: Skip to see answer")
 
                 choice = input("\nYour choice: ").strip().lower()
+
+                if choice == 'w':
+                    # Show walkthrough again
+                    print("\n✓ Launching Claude for walkthrough...")
+                    self.launch_claude_walkthrough(item)
+
+                    print("\n" + "=" * 70)
+                    print("📚 Study the walkthrough, then come back to implement")
+                    print("=" * 70)
+                    print("\nPress ENTER when ready to implement")
+                    input()
+
+                    # Give them another chance to implement
+                    choice = input("\nTry implementing now? (ENTER/p/s): ").strip().lower()
 
                 if choice == 'p':
                     print("\n📝 Paste your code (type 'END' on a new line when done):")
@@ -577,6 +809,77 @@ Keep the feedback constructive and specific."""
                         print(f"⚠ Could not read file: {e}")
                         user_answer = ''
             else:
+                # Check if this is the first time seeing this non-coding question
+                item_id = item['id']
+                if item_id not in self.state['items']:
+                    self.state['items'][item_id] = {
+                        'last_seen': datetime.now().isoformat(),
+                        'interval': 1,
+                        'ease_factor': 2.5,
+                        'correct_streak': 0,
+                        'explain_done': False
+                    }
+
+                explain_done = self.state['items'][item_id].get('explain_done', False)
+
+                if not explain_done:
+                    print("\n" + "=" * 70)
+                    print("🎓 FIRST TIME: EXPLANATION MODE")
+                    print("=" * 70)
+                    print("\nThis is your first time seeing this question.")
+                    print("Would you like Claude to explain it to you step by step?")
+                    print("\nClaude will:")
+                    print("  • Explain one concept at a time (2-3 sentences)")
+                    print("  • Check your understanding before continuing")
+                    print("  • Answer any questions you have")
+                    print("  • Build up knowledge incrementally")
+                    print("\nNext time, you'll try to answer it yourself.")
+                    print()
+
+                    choice = input("Start explanation? (y/n): ").strip().lower()
+
+                    if choice == 'y':
+                        print("\n✓ Launching Claude for explanation...")
+                        self.launch_claude_explain(item)
+
+                        print("\n" + "=" * 70)
+                        print("📚 Work through the explanation, then press ENTER when done")
+                        print("=" * 70)
+                        input()
+
+                        # Mark explanation as done
+                        self.state['items'][item_id]['explain_done'] = True
+                        self.save_state()
+
+                        print("\n✓ Explanation complete! Next time you'll answer it yourself.")
+                        print("\nPress ENTER to see the reference answer, or 's' to skip.")
+
+                        choice = input("\nYour choice: ").strip().lower()
+                        if choice != 's':
+                            print("\n" + "=" * 70)
+                            print("📖 REFERENCE ANSWER")
+                            print("=" * 70)
+                            print(item['answer'])
+
+                        # Don't require rating after explanation
+                        results.append({
+                            'item_id': item['id'],
+                            'rating': 2,  # Default to "learning" rating
+                            'explanation': True
+                        })
+                        current_session['results'].append({
+                            'item_id': item['id'],
+                            'rating': 2,
+                            'explanation': True
+                        })
+                        self.save_state()
+                        continue  # Skip to next item
+                    else:
+                        print("\n⏭ Skipping explanation. You'll answer it yourself now.")
+                        # Mark as done so it doesn't ask again
+                        self.state['items'][item_id]['explain_done'] = True
+                        self.save_state()
+
                 print("\n[Type your answer below, press ENTER twice when done, or just ENTER to skip]")
                 lines = []
                 empty_count = 0
@@ -614,6 +917,7 @@ Keep the feedback constructive and specific."""
                 print("  1-3: Rate your understanding (1=no idea, 2=partial, 3=got it)")
                 if user_answer:
                     print("  a: Get your answer graded by Claude (MLE interview style)")
+                print("  e: Explain this to me (step-by-step tutoring)")
                 print("  c: Chat about this topic (deep dive with context)")
                 print("  n: Take notes on this topic")
                 print("  v: View existing notes")
@@ -636,6 +940,24 @@ Keep the feedback constructive and specific."""
                         print("⚠ Could not auto-launch browser.\n")
 
                     input("[Press ENTER when done reviewing to continue...]")
+                    continue
+
+                elif response == 'e':
+                    # Explain mode - step by step tutoring
+                    print("\n" + "=" * 70)
+                    print("🎓 EXPLANATION MODE")
+                    print("=" * 70)
+                    print(f"\nOpening Claude for step-by-step explanation: {item['title']}\n")
+
+                    success = self.launch_claude_explain(item)
+
+                    if success:
+                        print("✓ Claude web opened!")
+                        print("✓ Claude will explain one piece at a time and check your understanding.\n")
+                    else:
+                        print("⚠ Could not auto-launch browser.\n")
+
+                    input("[Press ENTER when done with explanation to continue...]")
                     continue
 
                 elif response == 'c':
@@ -752,9 +1074,9 @@ Keep the feedback constructive and specific."""
                     break
 
                 if user_answer:
-                    print("Please enter 1, 2, 3, a, c, n, v, or s")
+                    print("Please enter 1, 2, 3, a, e, c, n, v, or s")
                 else:
-                    print("Please enter 1, 2, 3, c, n, v, or s")
+                    print("Please enter 1, 2, 3, e, c, n, v, or s")
 
             correct = response == '3'
             self.update_item_state(item['id'], correct)
@@ -790,6 +1112,8 @@ def main():
                         help='Number of items to study (default: 1)')
     parser.add_argument('-t', '--type', choices=['concepts', 'quiz', 'deep', 'derive', 'coding'],
                         help='Focus on specific item type')
+    parser.add_argument('-s', '--select', type=str, metavar='ITEM_ID',
+                        help='Study a specific item by ID (e.g., code021_llm_classifier_logits)')
     parser.add_argument('--stats', action='store_true',
                         help='Show study statistics')
     parser.add_argument('tag', nargs='?', default=None,
@@ -819,9 +1143,9 @@ def main():
             weights = {args.type: 1.0}
 
         if weights:
-            session.run_session(args.num_items, tag_filter=args.tag)
+            session.run_session(args.num_items, tag_filter=args.tag, select_id=args.select)
         else:
-            session.run_session(args.num_items, tag_filter=args.tag)
+            session.run_session(args.num_items, tag_filter=args.tag, select_id=args.select)
 
 if __name__ == '__main__':
     main()

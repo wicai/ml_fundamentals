@@ -308,6 +308,13 @@
       "interval": 1,
       "ease_factor": 2.3,
       "correct_streak": 0
+    },
+    "c037_data_filtering": {
+      "last_seen": "2026-01-20T21:24:06.333528",
+      "interval": 1,
+      "ease_factor": 2.5,
+      "correct_streak": 0,
+      "explain_done": true
     }
   },
   "session_history": [
@@ -891,6 +898,17 @@
         }
       ],
       "avg_rating": 2.0
+    },
+    {
+      "timestamp": "2026-01-20T21:24:06.333513",
+      "num_items": 1,
+      "results": [
+        {
+          "item_id": "c037_data_filtering",
+          "rating": 2,
+          "explanation": true
+        }
+      ]
     }
   ]
 }
