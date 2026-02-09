@@ -315,6 +315,181 @@
       "ease_factor": 2.5,
       "correct_streak": 0,
       "explain_done": true
+    },
+    "c039_tensor_parallelism": {
+      "last_seen": "2026-01-26T13:02:55.730067",
+      "interval": 1,
+      "ease_factor": 2.5,
+      "correct_streak": 0,
+      "explain_done": true
+    },
+    "c040_pipeline_parallelism": {
+      "last_seen": "2026-01-26T13:03:03.945529",
+      "interval": 1,
+      "ease_factor": 2.5,
+      "correct_streak": 0,
+      "explain_done": true
+    },
+    "c042_activation_checkpointing": {
+      "last_seen": "2026-01-26T13:03:12.152516",
+      "interval": 1,
+      "ease_factor": 2.5,
+      "correct_streak": 0,
+      "explain_done": true
+    },
+    "c043_rope_positional": {
+      "last_seen": "2026-01-26T13:03:20.366577",
+      "interval": 1,
+      "ease_factor": 2.5,
+      "correct_streak": 0,
+      "explain_done": true
+    },
+    "c044_temperature_sampling": {
+      "last_seen": "2026-01-26T13:03:28.559198",
+      "interval": 1,
+      "ease_factor": 2.5,
+      "correct_streak": 0,
+      "explain_done": true
+    },
+    "c046_rag": {
+      "last_seen": "2026-01-29T20:02:48.163619",
+      "interval": 1,
+      "ease_factor": 2.5,
+      "correct_streak": 0,
+      "explain_done": true
+    },
+    "c047_prompt_engineering": {
+      "last_seen": "2026-01-29T20:02:55.399944",
+      "interval": 1,
+      "ease_factor": 2.5,
+      "correct_streak": 0,
+      "explain_done": true
+    },
+    "c049_mixture_of_experts": {
+      "last_seen": "2026-01-29T20:03:02.611894",
+      "interval": 1,
+      "ease_factor": 2.5,
+      "correct_streak": 0,
+      "explain_done": true
+    },
+    "c050_model_merging": {
+      "last_seen": "2026-01-29T20:03:09.845713",
+      "interval": 1,
+      "ease_factor": 2.5,
+      "correct_streak": 0,
+      "explain_done": true
+    },
+    "c051_lora_peft": {
+      "last_seen": "2026-01-29T20:03:17.070282",
+      "interval": 1,
+      "ease_factor": 2.5,
+      "correct_streak": 0,
+      "explain_done": true
+    },
+    "c052_safety_alignment": {
+      "last_seen": "2026-01-29T20:03:24.285197",
+      "interval": 1,
+      "ease_factor": 2.5,
+      "correct_streak": 0,
+      "explain_done": true
+    },
+    "c053_context_length": {
+      "last_seen": "2026-01-29T20:03:31.504570",
+      "interval": 1,
+      "ease_factor": 2.5,
+      "correct_streak": 0,
+      "explain_done": true
+    },
+    "c054_model_compression": {
+      "last_seen": "2026-01-29T20:03:38.727144",
+      "interval": 1,
+      "ease_factor": 2.5,
+      "correct_streak": 0,
+      "explain_done": true
+    },
+    "c055_activation_functions": {
+      "last_seen": "2026-01-29T20:03:45.926842",
+      "interval": 1,
+      "ease_factor": 2.5,
+      "correct_streak": 0,
+      "explain_done": true
+    },
+    "c057_overfitting_prevention": {
+      "last_seen": "2026-01-29T20:03:53.158505",
+      "interval": 1,
+      "ease_factor": 2.5,
+      "correct_streak": 0,
+      "explain_done": true
+    },
+    "c058_curriculum_learning": {
+      "last_seen": "2026-01-29T20:04:00.411130",
+      "interval": 1,
+      "ease_factor": 2.5,
+      "correct_streak": 0,
+      "explain_done": true
+    },
+    "c059_continual_learning": {
+      "last_seen": "2026-01-29T20:04:07.643541",
+      "interval": 1,
+      "ease_factor": 2.5,
+      "correct_streak": 0,
+      "explain_done": true
+    },
+    "c060_vision_language_models": {
+      "last_seen": "2026-01-29T20:04:14.868727",
+      "interval": 1,
+      "ease_factor": 2.5,
+      "correct_streak": 0,
+      "explain_done": true
+    },
+    "c061_emergence": {
+      "last_seen": "2026-01-29T20:04:22.096063",
+      "interval": 1,
+      "ease_factor": 2.5,
+      "correct_streak": 0,
+      "explain_done": true
+    },
+    "c062_model_editing": {
+      "last_seen": "2026-01-29T20:04:29.314197",
+      "interval": 1,
+      "ease_factor": 2.5,
+      "correct_streak": 0,
+      "explain_done": true
+    },
+    "c063_speculative_decoding": {
+      "last_seen": "2026-01-29T20:04:36.568800",
+      "interval": 1,
+      "ease_factor": 2.5,
+      "correct_streak": 0,
+      "explain_done": true
+    },
+    "c064_watermarking": {
+      "last_seen": "2026-01-29T20:04:43.792526",
+      "interval": 1,
+      "ease_factor": 2.5,
+      "correct_streak": 0,
+      "explain_done": true
+    },
+    "c065_llm_agents": {
+      "last_seen": "2026-01-29T20:04:51.055593",
+      "interval": 1,
+      "ease_factor": 2.5,
+      "correct_streak": 0,
+      "explain_done": true
+    },
+    "c066_interpretability": {
+      "last_seen": "2026-01-29T20:04:58.297741",
+      "interval": 1,
+      "ease_factor": 2.5,
+      "correct_streak": 0,
+      "explain_done": true
+    },
+    "c067_jailbreaking": {
+      "last_seen": "2026-01-29T20:05:05.548357",
+      "interval": 1,
+      "ease_factor": 2.5,
+      "correct_streak": 0,
+      "explain_done": true
     }
   },
   "session_history": [
