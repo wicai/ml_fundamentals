@@ -490,6 +490,265 @@
       "ease_factor": 2.5,
       "correct_streak": 0,
       "explain_done": true
+    },
+    "c068_serving_infrastructure": {
+      "last_seen": "2026-02-09T12:08:11.632465",
+      "interval": 1,
+      "ease_factor": 2.5,
+      "correct_streak": 0,
+      "explain_done": true
+    },
+    "c069_embeddings": {
+      "last_seen": "2026-02-09T12:08:11.632465",
+      "interval": 1,
+      "ease_factor": 2.5,
+      "correct_streak": 0,
+      "explain_done": true
+    },
+    "c070_attention_variants": {
+      "last_seen": "2026-02-09T12:08:11.632465",
+      "interval": 1,
+      "ease_factor": 2.5,
+      "correct_streak": 0,
+      "explain_done": true
+    },
+    "c071_mamba_ssm": {
+      "last_seen": "2026-02-09T12:08:11.632465",
+      "interval": 1,
+      "ease_factor": 2.5,
+      "correct_streak": 0,
+      "explain_done": true
+    },
+    "c072_fine_tuning_strategies": {
+      "last_seen": "2026-02-09T12:08:11.632465",
+      "interval": 1,
+      "ease_factor": 2.5,
+      "correct_streak": 0,
+      "explain_done": true
+    },
+    "c073_hallucination": {
+      "last_seen": "2026-02-09T12:08:11.632465",
+      "interval": 1,
+      "ease_factor": 2.5,
+      "correct_streak": 0,
+      "explain_done": true
+    },
+    "c074_multimodal_training": {
+      "last_seen": "2026-02-09T12:08:11.632465",
+      "interval": 1,
+      "ease_factor": 2.5,
+      "correct_streak": 0,
+      "explain_done": true
+    },
+    "c075_api_design": {
+      "last_seen": "2026-02-09T12:08:11.632465",
+      "interval": 1,
+      "ease_factor": 2.5,
+      "correct_streak": 0,
+      "explain_done": true
+    },
+    "c076_softmax_details": {
+      "last_seen": "2026-02-09T12:08:11.632465",
+      "interval": 1,
+      "ease_factor": 2.5,
+      "correct_streak": 0,
+      "explain_done": true
+    },
+    "c077_cnn_vs_transformer": {
+      "last_seen": "2026-02-09T12:08:11.632465",
+      "interval": 1,
+      "ease_factor": 2.5,
+      "correct_streak": 0,
+      "explain_done": true
+    },
+    "c078_batch_normalization": {
+      "last_seen": "2026-02-09T12:08:11.632465",
+      "interval": 1,
+      "ease_factor": 2.5,
+      "correct_streak": 0,
+      "explain_done": true
+    },
+    "c079_gradient_descent_variants": {
+      "last_seen": "2026-02-09T12:08:11.632465",
+      "interval": 1,
+      "ease_factor": 2.5,
+      "correct_streak": 0,
+      "explain_done": true
+    },
+    "c080_residual_connections": {
+      "last_seen": "2026-02-09T12:08:11.632465",
+      "interval": 1,
+      "ease_factor": 2.5,
+      "correct_streak": 0,
+      "explain_done": true
+    },
+    "c081_agent_rl": {
+      "last_seen": "2026-02-09T12:08:11.632465",
+      "interval": 1,
+      "ease_factor": 2.5,
+      "correct_streak": 0,
+      "explain_done": true
+    },
+    "c081_reasoning_models": {
+      "last_seen": "2026-02-09T12:08:11.632465",
+      "interval": 1,
+      "ease_factor": 2.5,
+      "correct_streak": 0,
+      "explain_done": true
+    },
+    "c082_agent_tool_use": {
+      "last_seen": "2026-02-09T12:08:11.632465",
+      "interval": 1,
+      "ease_factor": 2.5,
+      "correct_streak": 0,
+      "explain_done": true
+    },
+    "c082_process_supervision": {
+      "last_seen": "2026-02-09T12:08:11.632465",
+      "interval": 1,
+      "ease_factor": 2.5,
+      "correct_streak": 0,
+      "explain_done": true
+    },
+    "c083_agent_memory": {
+      "last_seen": "2026-02-09T12:08:11.632465",
+      "interval": 1,
+      "ease_factor": 2.5,
+      "correct_streak": 0,
+      "explain_done": true
+    },
+    "c083_test_time_compute": {
+      "last_seen": "2026-02-09T12:08:11.632465",
+      "interval": 1,
+      "ease_factor": 2.5,
+      "correct_streak": 0,
+      "explain_done": true
+    },
+    "c084_moe_load_balancing": {
+      "last_seen": "2026-02-09T12:08:11.632465",
+      "interval": 1,
+      "ease_factor": 2.5,
+      "correct_streak": 0,
+      "explain_done": true
+    },
+    "c085_agent_planning": {
+      "last_seen": "2026-02-09T12:08:11.632465",
+      "interval": 1,
+      "ease_factor": 2.5,
+      "correct_streak": 0,
+      "explain_done": true
+    },
+    "c086_agent_cost_optimization": {
+      "last_seen": "2026-02-09T12:08:11.632465",
+      "interval": 1,
+      "ease_factor": 2.5,
+      "correct_streak": 0,
+      "explain_done": true
+    },
+    "c087_multi_agent": {
+      "last_seen": "2026-02-09T12:08:11.632465",
+      "interval": 1,
+      "ease_factor": 2.5,
+      "correct_streak": 0,
+      "explain_done": true
+    },
+    "c088_agent_frameworks": {
+      "last_seen": "2026-02-09T12:08:11.632465",
+      "interval": 1,
+      "ease_factor": 2.5,
+      "correct_streak": 0,
+      "explain_done": true
+    },
+    "c089_agent_monitoring": {
+      "last_seen": "2026-02-09T12:08:11.632465",
+      "interval": 1,
+      "ease_factor": 2.5,
+      "correct_streak": 0,
+      "explain_done": true
+    },
+    "c090_agent_prompt_injection": {
+      "last_seen": "2026-02-09T12:08:11.632465",
+      "interval": 1,
+      "ease_factor": 2.5,
+      "correct_streak": 0,
+      "explain_done": true
+    },
+    "c091_agent_hitl": {
+      "last_seen": "2026-02-09T12:08:11.632465",
+      "interval": 1,
+      "ease_factor": 2.5,
+      "correct_streak": 0,
+      "explain_done": true
+    },
+    "c092_agent_failure_modes": {
+      "last_seen": "2026-02-09T12:08:11.632465",
+      "interval": 1,
+      "ease_factor": 2.5,
+      "correct_streak": 0,
+      "explain_done": true
+    },
+    "c093_agent_state_management": {
+      "last_seen": "2026-02-09T12:08:11.632465",
+      "interval": 1,
+      "ease_factor": 2.5,
+      "correct_streak": 0,
+      "explain_done": true
+    },
+    "c094_agent_rag": {
+      "last_seen": "2026-02-09T12:08:11.632465",
+      "interval": 1,
+      "ease_factor": 2.5,
+      "correct_streak": 0,
+      "explain_done": true
+    },
+    "c095_agent_sota": {
+      "last_seen": "2026-02-09T12:08:11.632465",
+      "interval": 1,
+      "ease_factor": 2.5,
+      "correct_streak": 0,
+      "explain_done": true
+    },
+    "c096_agent_deployment": {
+      "last_seen": "2026-02-09T12:08:11.632465",
+      "interval": 1,
+      "ease_factor": 2.5,
+      "correct_streak": 0,
+      "explain_done": true
+    },
+    "c097_agent_context": {
+      "last_seen": "2026-02-09T12:08:11.632465",
+      "interval": 1,
+      "ease_factor": 2.5,
+      "correct_streak": 0,
+      "explain_done": true
+    },
+    "c098_agent_future": {
+      "last_seen": "2026-02-09T12:08:11.632465",
+      "interval": 1,
+      "ease_factor": 2.5,
+      "correct_streak": 0,
+      "explain_done": true
+    },
+    "c098_agent_graders": {
+      "last_seen": "2026-02-09T12:08:11.632465",
+      "interval": 1,
+      "ease_factor": 2.5,
+      "correct_streak": 0,
+      "explain_done": true
+    },
+    "c099_agent_eval_metrics": {
+      "last_seen": "2026-02-09T12:08:11.632465",
+      "interval": 1,
+      "ease_factor": 2.5,
+      "correct_streak": 0,
+      "explain_done": true
+    },
+    "c100_agent_eval_design": {
+      "last_seen": "2026-02-09T12:08:11.632465",
+      "interval": 1,
+      "ease_factor": 2.5,
+      "correct_streak": 0,
+      "explain_done": true
     }
   },
   "session_history": [
