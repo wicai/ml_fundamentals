@@ -301,13 +301,15 @@
       "last_seen": "2026-01-08T19:03:11.077110",
       "interval": 1,
       "ease_factor": 2.3,
-      "correct_streak": 0
+      "correct_streak": 0,
+      "explain_done": true
     },
     "c084_agent_safety": {
       "last_seen": "2026-01-08T20:16:08.190126",
       "interval": 1,
       "ease_factor": 2.3,
-      "correct_streak": 0
+      "correct_streak": 0,
+      "explain_done": true
     },
     "c037_data_filtering": {
       "last_seen": "2026-01-20T21:24:06.333528",
