@@ -25,12 +25,5 @@ def cross_entropy_loss(logits: torch.Tensor, targets: torch.Tensor) -> torch.Ten
     Returns:
         scalar loss value (mean over batch)
     """
-    # We want to compute something of 
-    #(batch_size,) which has for each item, 
-    # sum_i^n 1_targets==i * -log(logits_i)
-
-    # One way would be to select the ith score of logits, and reduce it down to batch_size
-    # Another way would be to targets to be one hot instead of the class index, and then do some multiplication with logits to get the correct score, then do negative log
-    
     pass
 

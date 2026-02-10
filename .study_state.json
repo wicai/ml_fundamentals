@@ -751,6 +751,27 @@
       "ease_factor": 2.5,
       "correct_streak": 0,
       "explain_done": true
+    },
+    "code002_softmax": {
+      "last_seen": "2026-02-10T00:04:42.195943",
+      "interval": 1,
+      "ease_factor": 2.5,
+      "correct_streak": 0,
+      "walkthrough_done": true
+    },
+    "code005_dropout": {
+      "last_seen": "2026-02-10T00:12:17.118384",
+      "interval": 1,
+      "ease_factor": 2.5,
+      "correct_streak": 0,
+      "walkthrough_done": false
+    },
+    "code004_cross_entropy": {
+      "last_seen": "2026-02-10T00:15:06.989627",
+      "interval": 1,
+      "ease_factor": 2.5,
+      "correct_streak": 0,
+      "walkthrough_done": true
     }
   },
   "session_history": [
@@ -1345,6 +1366,21 @@
           "explanation": true
         }
       ]
+    },
+    {
+      "timestamp": "2026-02-10T00:04:42.195925",
+      "num_items": 1,
+      "results": []
+    },
+    {
+      "timestamp": "2026-02-10T00:12:17.118363",
+      "num_items": 1,
+      "results": []
+    },
+    {
+      "timestamp": "2026-02-10T00:15:06.989608",
+      "num_items": 1,
+      "results": []
     }
   ]
 }

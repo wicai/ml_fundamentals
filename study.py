@@ -187,64 +187,82 @@ class StudySession:
             f.write(f"Full content: {item['filepath']}\n")
 
     def launch_claude_walkthrough(self, item):
-        """Launch Claude Code to walk through the coding solution step by step"""
-        # Create a shorter prompt - the full question is in the file
-        prompt = f"""I'm studying: {item['title']}
+        """Open VS Code with solution file + launch interactive Claude Code as a step-by-step tutor"""
 
-Please walk me through how to solve this step-by-step:
-1. Explain the approach and key insights
-2. Show the implementation with explanations
-3. Explain important PyTorch/NumPy functions used
-4. Cover edge cases and testing
+        # 1. Create the solution file
+        coding_dir = self.base_dir / 'coding'
+        coding_dir.mkdir(exist_ok=True)
+        coding_file = coding_dir / f"{item['id']}_solution.py"
 
-File: {item['filepath']}"""
+        question_text = item['question']
+        code_blocks = []
+        parts = question_text.split('```python')
+        description = parts[0]
+        for part in parts[1:]:
+            if '```' in part:
+                code, rest = part.split('```', 1)
+                code_blocks.append(code.strip())
+                description += rest
+            else:
+                description += part
 
-        # Platform-specific browser launch
-        if sys.platform == 'darwin':  # macOS
-            import urllib.parse
-            import time
+        with open(coding_file, 'w') as f:
+            f.write(f"# {item['title']}\n")
+            f.write("# " + "=" * 68 + "\n#\n")
+            for line in description.strip().split('\n'):
+                f.write(f"# {line}\n")
+            f.write("#\n")
+            f.write("# " + "=" * 68 + "\n\n")
+            if code_blocks:
+                for code_block in code_blocks:
+                    f.write(code_block)
+                    f.write("\n\n")
+            else:
+                f.write("# Your solution here:\n\n")
 
-            # URL-encode the prompt
-            encoded_prompt = urllib.parse.quote(prompt)
+        # 2. Open in VS Code
+        try:
+            if sys.platform == 'darwin':
+                subprocess.run(['open', '-a', 'Visual Studio Code', str(coding_file)])
+            else:
+                subprocess.run(['code', str(coding_file)])
+            print(f"✓ Opened {coding_file.name} in VS Code")
+        except Exception as e:
+            print(f"⚠ Could not open VS Code: {e}")
+            print(f"  File created at: {coding_file}")
 
-            # Open Claude.ai with the prompt pre-filled using URL parameter
-            url = f'https://claude.ai/new?q={encoded_prompt}'
+        # 3. Launch interactive Claude Code session as tutor
+        initial_message = f"""I have {coding_file.name} open in VS Code. Walk me through this problem like a patient tutor.
 
-            subprocess.run(['open', url])
+PROBLEM:
+{item['question']}
 
-            # Wait for browser to load, then auto-submit with AppleScript
-            time.sleep(3)  # Give browser time to load
+CRITICAL RULES FOR YOUR RESPONSES:
+- Your FIRST response should ONLY be 2-3 sentences explaining what we're building and why. Then say "Ready to start?" and STOP.
+- Each subsequent response: give me ONE small step (3-5 lines of code max). Explain why, show the code, then STOP and wait for me.
+- NEVER give multiple steps in one response. NEVER show the full solution.
+- Keep each response SHORT — under 15 lines total.
+- When I say I wrote it, give me the next step."""
 
-            applescript = '''
-            tell application "System Events"
-                keystroke return
-            end tell
-            '''
+        print("\n" + "=" * 70)
+        print("🎓 INTERACTIVE WALKTHROUGH")
+        print("=" * 70)
+        print(f"\n  VS Code: {coding_file.name}")
+        print(f"  Tutor:   Claude Code (interactive session)")
+        print(f"\n  Write code in VS Code, chat with Claude here.")
+        print(f"  Type /exit when you're done with the walkthrough.")
+        print("\n" + "=" * 70 + "\n")
+        sys.stdout.flush()
 
-            subprocess.run(['osascript', '-e', applescript])
-
-            return True
-
-        elif sys.platform == 'linux':
-            # Copy to clipboard (try xclip or xsel)
-            try:
-                subprocess.run(['xclip', '-selection', 'clipboard'], input=prompt.encode('utf-8'), check=True)
-            except FileNotFoundError:
-                try:
-                    subprocess.run(['xsel', '--clipboard'], input=prompt.encode('utf-8'), check=True)
-                except FileNotFoundError:
-                    return False
-            # Open Claude web
-            subprocess.run(['xdg-open', 'https://claude.ai/new'])
-            return True
-
-        elif sys.platform == 'win32':  # Windows
-            # Copy to clipboard
-            subprocess.run(['clip'], input=prompt.encode('utf-16le'), check=True)
-            # Open Claude web
-            subprocess.run(['start', 'https://claude.ai/new'], shell=True)
-            return True
-        else:
+        try:
+            result = subprocess.run(
+                ['claude', initial_message],
+                check=False
+            )
+            return result.returncode == 0
+        except FileNotFoundError:
+            print("⚠ Claude Code CLI not found.")
+            print("  Install it: npm install -g @anthropic-ai/claude-code")
             return False
 
     def launch_claude_explain(self, item):
@@ -505,7 +523,7 @@ Keep the feedback constructive and specific."""
 
         state['last_seen'] = datetime.now().isoformat()
 
-    def run_session(self, num_items=10, tag_filter=None, select_id=None):
+    def run_session(self, num_items=10, tag_filter=None, select_id=None, weights=None):
         """Run an interactive study session"""
         print("=" * 70)
         print("ML FUNDAMENTALS STUDY SESSION")
@@ -516,7 +534,7 @@ Keep the feedback constructive and specific."""
         print("=" * 70)
         print()
 
-        items = self.select_items(num_items, tag_filter=tag_filter, select_id=select_id)
+        items = self.select_items(num_items, weights=weights, tag_filter=tag_filter, select_id=select_id)
 
         if not items:
             print("No study items found. Please add content to the directories.")
@@ -565,34 +583,33 @@ Keep the feedback constructive and specific."""
 
                 if not walkthrough_done:
                     print("\n" + "=" * 70)
-                    print("🎓 FIRST TIME: WALKTHROUGH MODE")
+                    print("🎓 FIRST TIME SEEING THIS PROBLEM")
                     print("=" * 70)
-                    print("\nThis is your first time seeing this question.")
-                    print("Would you like Claude to walk you through the solution?")
-                    print("\nThis will:")
-                    print("  • Explain the approach and key insights")
-                    print("  • Walk through the implementation step-by-step")
-                    print("  • Explain important PyTorch/NumPy functions")
-                    print("  • Cover edge cases and testing")
-                    print("\nNext time you see this, you'll implement it yourself from scratch.")
+                    print("\nHow do you want to approach this?")
+                    print()
+                    print("  h) Hand-held walkthrough — Claude walks you through the")
+                    print("     implementation step by step (like a patient tutor)")
+                    print("  t) Try it yourself — jump straight to coding with no help")
+                    print()
+                    print("Next time this comes up, you'll implement it from scratch.")
                     print()
 
-                    choice = input("Start walkthrough? (y/n): ").strip().lower()
+                    choice = input("Your choice (h/t): ").strip().lower()
 
-                    if choice == 'y':
-                        print("\n✓ Launching Claude for walkthrough...")
-                        self.launch_claude_walkthrough(item)
+                    if choice != 't':
+                        success = self.launch_claude_walkthrough(item)
 
-                        print("\n" + "=" * 70)
-                        print("📚 Study the walkthrough, then press ENTER when done")
-                        print("=" * 70)
-                        input()
+                        if not success:
+                            print("\n⚠ Walkthrough failed to launch. Try again next time.")
+                            continue
 
                         # Mark walkthrough as done
                         self.state['items'][item_id]['walkthrough_done'] = True
                         self.save_state()
 
-                        print("\n✓ Walkthrough complete! Next time you'll code it yourself.")
+                        print("\n" + "=" * 70)
+                        print("✓ Walkthrough complete! Next time you'll code it yourself.")
+                        print("=" * 70)
                         print("\nPress ENTER to see the reference solution, or 's' to skip.")
 
                         choice = input("\nYour choice: ").strip().lower()
@@ -616,7 +633,7 @@ Keep the feedback constructive and specific."""
                         self.save_state()
                         continue  # Skip to next item
                     else:
-                        print("\n⏭ Skipping walkthrough. You'll code it yourself now.")
+                        print("\n💪 Going straight to implementation. Good luck!")
 
                 # Create coding directory if it doesn't exist
                 coding_dir = self.base_dir / 'coding'
@@ -1142,10 +1159,7 @@ def main():
         if args.type:
             weights = {args.type: 1.0}
 
-        if weights:
-            session.run_session(args.num_items, tag_filter=args.tag, select_id=args.select)
-        else:
-            session.run_session(args.num_items, tag_filter=args.tag, select_id=args.select)
+        session.run_session(args.num_items, tag_filter=args.tag, select_id=args.select, weights=weights)
 
 if __name__ == '__main__':
     main()
