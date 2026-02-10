@@ -772,6 +772,13 @@
       "ease_factor": 2.5,
       "correct_streak": 0,
       "walkthrough_done": true
+    },
+    "code003_attention": {
+      "last_seen": "2026-02-10T14:08:19.712665",
+      "interval": 1,
+      "ease_factor": 2.5,
+      "correct_streak": 0,
+      "walkthrough_done": true
     }
   },
   "session_history": [
@@ -1381,6 +1388,17 @@
       "timestamp": "2026-02-10T00:15:06.989608",
       "num_items": 1,
       "results": []
+    },
+    {
+      "timestamp": "2026-02-10T14:08:19.712575",
+      "num_items": 1,
+      "results": [
+        {
+          "item_id": "code003_attention",
+          "rating": 2,
+          "walkthrough": true
+        }
+      ]
     }
   ]
 }

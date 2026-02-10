@@ -239,10 +239,12 @@ PROBLEM:
 
 CRITICAL RULES FOR YOUR RESPONSES:
 - Your FIRST response should ONLY be 2-3 sentences explaining what we're building and why. Then say "Ready to start?" and STOP.
-- Each subsequent response: give me ONE small step (3-5 lines of code max). Explain why, show the code, then STOP and wait for me.
+- Each subsequent response: give me ONE small step (3-5 lines of code max). Explain what I should do, then STOP and wait for me to write the code in the chat.
+- When asking me to write code, ALWAYS print the relevant function/class signature so I can see what I'm filling in. For example, show `def __init__(self, d_model: int, num_heads: int) -> None:` before asking me to implement __init__.
+- The user works in the chat, NOT in the file. Don't write code for them — describe what they need to do, let them attempt it, and tell them if they got it right.
 - NEVER give multiple steps in one response. NEVER show the full solution.
 - Keep each response SHORT — under 15 lines total.
-- When I say I wrote it, give me the next step."""
+- When I say I wrote it or share my code attempt, check it and give me the next step."""
 
         print("\n" + "=" * 70)
         print("🎓 INTERACTIVE WALKTHROUGH")
