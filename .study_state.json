@@ -779,6 +779,13 @@
       "ease_factor": 2.5,
       "correct_streak": 0,
       "walkthrough_done": true
+    },
+    "code006_multihead_attention": {
+      "last_seen": "2026-02-10T16:18:09.527827",
+      "interval": 1,
+      "ease_factor": 2.5,
+      "correct_streak": 0,
+      "walkthrough_done": true
     }
   },
   "session_history": [
@@ -1395,6 +1402,17 @@
       "results": [
         {
           "item_id": "code003_attention",
+          "rating": 2,
+          "walkthrough": true
+        }
+      ]
+    },
+    {
+      "timestamp": "2026-02-10T16:18:09.527654",
+      "num_items": 1,
+      "results": [
+        {
+          "item_id": "code006_multihead_attention",
           "rating": 2,
           "walkthrough": true
         }
