@@ -37,6 +37,8 @@ class AttentionWithKVCache(nn.Module):
         """
         Args:
             x: input tokens, shape (batch, seq_len, d_model)
+               - On the first call (kv_cache is None): seq_len is the full prompt length
+               - On subsequent calls (kv_cache provided): seq_len is 1 (single new token)
             kv_cache: optional tuple of (cached_keys, cached_values)
                       each of shape (batch, num_heads, prev_seq_len, d_k)
             use_cache: whether to return updated cache

@@ -37,7 +37,7 @@ def llm_binary_classifier(
     length_normalize: bool = True
 ) -> float:
     """
-    Classify text using log-likelihood ratio between two prompts.
+    Compute raw log-likelihood ratio between two prompts.
 
     Args:
         text: input text to classify
@@ -47,7 +47,7 @@ def llm_binary_classifier(
         length_normalize: whether to normalize by text length
 
     Returns:
-        probability: P(class=A|text) in [0, 1]
+        llr: raw log-likelihood ratio (not a probability)
     """
     pass
 
@@ -59,11 +59,35 @@ def platt_scaling_calibration(
     Learn temperature and bias for Platt scaling calibration.
 
     Args:
-        scores: uncalibrated scores from classifier
+        scores: raw log-likelihood ratio scores from classifier
         labels: binary labels (0 or 1)
 
     Returns:
         (temperature, bias): calibration parameters
+    """
+    pass
+
+def inference_pipeline(
+    val_texts: List[str],
+    val_labels: List[int],
+    test_texts: List[str],
+    prompt_a: str,
+    prompt_b: str,
+    score_tokens_fn,
+) -> List[float]:
+    """
+    Full pipeline: score validation data, fit Platt scaling, run inference.
+
+    Args:
+        val_texts: validation texts for calibration
+        val_labels: validation binary labels
+        test_texts: texts to classify
+        prompt_a: system prompt for class A
+        prompt_b: system prompt for class B
+        score_tokens_fn: function(prompt, text) -> List[log_probs]
+
+    Returns:
+        calibrated_probs: list of P(class=A|text) for each test text
     """
     pass
 ```

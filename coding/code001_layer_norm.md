@@ -56,16 +56,23 @@ class LayerNorm(nn.Module):
     def __init__(self, normalized_shape: Union[int, tuple], eps: float = 1e-5) -> None:
         super().__init__()
         self.eps = eps
+        if isinstance(normalized_shape, int):
+            normalized_shape = (normalized_shape,)
+        self.normalized_shape = normalized_shape
 
         # Learnable parameters
         self.gamma = nn.Parameter(torch.ones(normalized_shape))
         self.beta = nn.Parameter(torch.zeros(normalized_shape))
 
     def forward(self, x: torch.Tensor) -> torch.Tensor:
-        # Compute mean and variance across last dimension
+        # Normalize over the last N dims, where N = len(normalized_shape)
+        # e.g. normalized_shape=(512,) -> dim=(-1,)
+        #      normalized_shape=(10, 512) -> dim=(-2, -1)
+        dims = tuple(range(-len(self.normalized_shape), 0))
+
         # keepdim=True maintains shape for broadcasting
-        mean = x.mean(dim=-1, keepdim=True)
-        var = x.var(dim=-1, keepdim=True, unbiased=False)
+        mean = x.mean(dim=dims, keepdim=True)
+        var = x.var(dim=dims, keepdim=True, unbiased=False)
 
         # Normalize
         x_norm = (x - mean) / torch.sqrt(var + self.eps)
@@ -105,6 +112,7 @@ print(f"Max difference: {(out_custom - out_pytorch).abs().max().item():.2e}")
 2. ❌ Forgetting `eps` in sqrt - causes NaN when variance is 0
 3. ❌ Wrong dimension for mean/var - should be over features (dim=-1), not batch
 4. ❌ Not using `keepdim=True` - breaks broadcasting
+5. ❌ Always using `dim=-1` when `normalized_shape` is a tuple - normalize over all dims in the shape, e.g. `normalized_shape=(10, 512)` → `dim=(-2, -1)`
 
 **Why it works:**
 ```

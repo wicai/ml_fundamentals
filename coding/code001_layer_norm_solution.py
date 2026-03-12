@@ -24,9 +24,11 @@ class LayerNorm(nn.Module):
             normalized_shape: int or tuple, the shape to normalize over
             eps: float, epsilon for numerical stability
         """
-        super().__init__()  # ✅ MUST call this first!
+        super().__init__()
         self.normalized_shape = normalized_shape
-        self.eps = eps        
+        self.eps = eps       
+        self.gamma = nn.Parameter(torch.ones(normalized_shape))
+        self.beta = nn.Parameter(torch.zeros(normalized_shape))
 
     def forward(self, x: torch.Tensor) -> torch.Tensor:
         """
@@ -35,15 +37,11 @@ class LayerNorm(nn.Module):
         Returns:
             normalized tensor of same shape as x
         """
-        # Compute the mean and variance
-        # To compute means, we need to compute the mean for each sample.
-        # So if normalized_shape = (2,3) and x is (..., normalized_shape)
-        norm_shape_dims = list(range(-len(self.normalized_shape), 0))
-        x_means = x.mean(norm_shape_dims, keepdim=True) #(..., (1,1,...))
-        x_vars = x.var(norm_shape_dims, keepdim=True, unbiased=False)  # ✅ Use biased variance
+        n_dims = len(self.normalized_shape) if isinstance(self.normalized_shape, tuple) else 1
+        dims_to_normalize = list(range(n_dims)) #0, 1, 2 
+        dims_to_normalize = tuple([-1 * i - 1 for i in dims_to_normalize])
+        x_mu = x.mean(dim=dims_to_normalize, keepdim=True)
+        x_var = x.var(dim=dims_to_normalize, keepdim=True, unbiased=False)
+        x_norm = (x-x_mu) / torch.sqrt(x_var + self.eps)
+        return x_norm * self.gamma + self.beta
 
-        # Normalize
-        x_norm = (x - x_means) / torch.sqrt(x_vars + self.eps)
-
-        # ✅ Apply scale (gamma) and shift (beta)
-        return self.gamma * x_norm + self.beta

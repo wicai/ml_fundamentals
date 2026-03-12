@@ -111,6 +111,8 @@ class StudySession:
             return 1000
 
         state = self.state['items'][item_id]
+        if not state.get('last_seen'):
+            return 1000
         last_seen = datetime.fromisoformat(state['last_seen'])
         interval_days = state.get('interval', 1)
 
@@ -154,10 +156,8 @@ class StudySession:
             # Sort by priority (SRS)
             items.sort(key=self.calculate_priority, reverse=True)
 
-            # Take top N, with some randomness
-            pool_size = min(len(items), n * 3)
-            pool = items[:pool_size]
-            selected.extend(random.sample(pool, min(n, len(pool))))
+            # Take top N items directly (preserves order for unseen items)
+            selected.extend(items[:n])
 
         # Ensure we always return at least one item if requested and available
         if count > 0 and len(selected) == 0:
@@ -244,7 +244,8 @@ CRITICAL RULES FOR YOUR RESPONSES:
 - The user works in the chat, NOT in the file. Don't write code for them — describe what they need to do, let them attempt it, and tell them if they got it right.
 - NEVER give multiple steps in one response. NEVER show the full solution.
 - Keep each response SHORT — under 15 lines total.
-- When I say I wrote it or share my code attempt, check it and give me the next step."""
+- When I say I wrote it or share my code attempt, check it and give me the next step.
+- When a common idiom or best-practice pattern appears (e.g., `.cpu().numpy()` for tensor conversion, guard clauses, numpy broadcasting tricks), briefly highlight it so I learn the idiomatic way."""
 
         print("\n" + "=" * 70)
         print("🎓 INTERACTIVE WALKTHROUGH")
@@ -397,6 +398,64 @@ Difficulty: {item['difficulty']}/5
             # Note: Auto-paste on Windows would require additional setup
             return True
         else:
+            return False
+
+    def grade_in_claude_code(self, item, user_answer):
+        """Grade the user's coding solution via Claude Code CLI (inline, no browser)"""
+        is_coding = item['category'] == 'coding' or 'coding' in item['tags']
+
+        if is_coding:
+            prompt = f"""You are conducting an MLE (Machine Learning Engineer) coding interview. Please review the following implementation.
+
+**Coding Task:**
+{item['question']}
+
+**Candidate's Implementation:**
+```python
+{user_answer}
+```
+
+**Reference Implementation:**
+{item['answer']}
+
+Please provide:
+1. **Score**: Rate 1-5 (1=doesn't work, 5=excellent implementation)
+2. **Correctness**: Does it work? Any bugs or logical errors?
+3. **Code quality**: Clean, readable, well-structured?
+4. **What was good**: Highlight strengths in the implementation
+5. **What could be improved**: Missing edge cases, efficiency issues, style issues
+6. **Interview feedback**: Would this pass an MLE interview? What would make it stronger?
+
+Keep the feedback constructive and specific."""
+        else:
+            prompt = f"""You are conducting an MLE (Machine Learning Engineer) interview. Please grade the following answer.
+
+**Interview Question:**
+{item['question']}
+
+**Candidate's Answer:**
+{user_answer}
+
+**Reference Answer:**
+{item['answer']}
+
+Please provide:
+1. **Score**: Rate 1-5 (1=insufficient, 5=excellent)
+2. **What was good**: Highlight correct points and strong aspects
+3. **What was missing**: Key concepts or details that should have been mentioned
+4. **Interview feedback**: Would this answer pass an MLE interview? What would make it stronger?
+
+Keep the feedback constructive and specific."""
+
+        try:
+            result = subprocess.run(
+                ['claude', '--print', prompt],
+                check=False
+            )
+            return result.returncode == 0
+        except FileNotFoundError:
+            print("⚠ Claude Code CLI not found.")
+            print("  Install it: npm install -g @anthropic-ai/claude-code")
             return False
 
     def launch_claude_grading(self, item, user_answer):
@@ -566,6 +625,7 @@ Keep the feedback constructive and specific."""
 
             # Handle coding questions differently
             is_coding = item['category'] == 'coding' or 'coding' in item['tags']
+            coding_file = None
 
             if is_coding:
                 print("\n💻 CODING QUESTION")
@@ -581,7 +641,9 @@ Keep the feedback constructive and specific."""
                         'walkthrough_done': False
                     }
 
-                walkthrough_done = self.state['items'][item_id].get('walkthrough_done', False)
+                # Items that existed before the walkthrough feature was added
+                # won't have this key — treat them as already walked-through.
+                walkthrough_done = self.state['items'][item_id].get('walkthrough_done', True)
 
                 if not walkthrough_done:
                     print("\n" + "=" * 70)
@@ -745,84 +807,20 @@ Keep the feedback constructive and specific."""
                             else:
                                 user_answer = content
 
-                        # Auto-test the solution if user wrote code
+                        # Auto-grade the solution via Claude if user wrote code
                         if user_answer.strip():
                             print("\n" + "=" * 70)
-                            print("🧪 TESTING YOUR SOLUTION")
+                            print("📊 GRADING YOUR SOLUTION")
                             print("=" * 70 + "\n")
+                            print(f"Opening Claude to review your implementation of: {item['title']}\n")
 
-                            # Create test file with user's solution + test code from answer
-                            test_file = coding_dir / f"{item['id']}_test.py"
+                            success = self.grade_in_claude_code(item, user_answer)
 
-                            # Extract test code from answer section (between Testing and next ##)
-                            test_code_match = re.search(r'\*\*Testing[^*]*?\*\*.*?```python\s*(.*?)```', item['answer'], re.DOTALL)
-
-                            if test_code_match:
-                                test_code = test_code_match.group(1).strip()
-
-                                # Write test file
-                                with open(test_file, 'w') as f:
-                                    # Standard imports with error handling
-                                    f.write("from typing import *\n")
-                                    f.write("try:\n")
-                                    f.write("    import torch\n")
-                                    f.write("    import torch.nn as nn\n")
-                                    f.write("    import torch.nn.functional as F\n")
-                                    f.write("except ImportError:\n")
-                                    f.write("    print('ERROR: PyTorch not installed. Run: pip3 install torch')\n")
-                                    f.write("    exit(1)\n")
-                                    f.write("import math\n")
-                                    f.write("try:\n")
-                                    f.write("    import numpy as np\n")
-                                    f.write("except ImportError:\n")
-                                    f.write("    print('ERROR: NumPy not installed. Run: pip3 install numpy')\n")
-                                    f.write("    exit(1)\n\n")
-                                    f.write("# User's solution\n")
-                                    f.write(user_answer)
-                                    f.write("\n\n# Tests\n")
-                                    f.write(test_code)
-
-                                # Run tests
-                                try:
-                                    # Try python3 first, fall back to python
-                                    python_cmd = 'python3' if subprocess.run(['which', 'python3'], capture_output=True).returncode == 0 else 'python'
-
-                                    result = subprocess.run(
-                                        [python_cmd, str(test_file)],
-                                        capture_output=True,
-                                        text=True,
-                                        timeout=10,
-                                        cwd=str(coding_dir)
-                                    )
-
-                                    if result.returncode == 0:
-                                        print("✅ Tests passed!")
-                                        print("\nOutput:")
-                                        print(result.stdout)
-                                    else:
-                                        print("❌ Tests failed!")
-                                        if result.stderr:
-                                            print("\nError:")
-                                            print(result.stderr[:500])  # Limit error output
-                                        if result.stdout:
-                                            print("\nOutput:")
-                                            print(result.stdout[:500])
-
-                                except subprocess.TimeoutExpired:
-                                    print("⚠ Tests timed out (>10s)")
-                                except Exception as e:
-                                    print(f"⚠ Could not run tests: {e}")
-
-                                # Clean up test file
-                                try:
-                                    test_file.unlink()
-                                except:
-                                    pass
-                            else:
-                                print("⚠ No tests found in problem description")
+                            if not success:
+                                print("⚠ Claude Code CLI grading failed.\n")
 
                             print("\n" + "=" * 70)
-                            input("\n[Press ENTER to see reference answer...]")
+                            input("\n[Press ENTER when done reviewing to see reference answer...]")
 
                     except Exception as e:
                         print(f"⚠ Could not read file: {e}")
@@ -936,6 +934,8 @@ Keep the feedback constructive and specific."""
                 print("  1-3: Rate your understanding (1=no idea, 2=partial, 3=got it)")
                 if user_answer:
                     print("  a: Get your answer graded by Claude (MLE interview style)")
+                if coding_file is not None:
+                    print("  r: Regrade from file (after editing your solution)")
                 print("  e: Explain this to me (step-by-step tutoring)")
                 print("  c: Chat about this topic (deep dive with context)")
                 print("  n: Take notes on this topic")
@@ -943,7 +943,34 @@ Keep the feedback constructive and specific."""
                 print("  s: Skip to next item")
                 response = input("\nYour choice: ").strip().lower()
 
-                if response == 'a' and user_answer:
+                if response == 'r' and coding_file is not None:
+                    # Regrade from file
+                    try:
+                        with open(coding_file, 'r') as f:
+                            content = f.read()
+                        if '# Your solution here:' in content:
+                            regrade_answer = content.split('# Your solution here:')[1].strip()
+                        else:
+                            regrade_answer = content
+
+                        if not regrade_answer.strip():
+                            print("\n⚠ No code found in file yet. Write your solution first.\n")
+                        else:
+                            print("\n" + "=" * 70)
+                            print("📊 GRADING YOUR SOLUTION")
+                            print("=" * 70 + "\n")
+                            print(f"Opening Claude to review your implementation of: {item['title']}\n")
+
+                            self.grade_in_claude_code(item, regrade_answer)
+                            user_answer = regrade_answer  # update so 'a' option also works
+
+                            print("\n" + "=" * 70)
+                            input("\n[Press ENTER when done reviewing...]")
+                    except Exception as e:
+                        print(f"\n⚠ Could not read file: {e}\n")
+                    continue
+
+                elif response == 'a' and user_answer:
                     # Answer grading mode
                     print("\n" + "=" * 70)
                     print("📊 ANSWER GRADING MODE")
