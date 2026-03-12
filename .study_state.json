@@ -292,10 +292,10 @@
       "correct_streak": 1
     },
     "code001_layer_norm": {
-      "last_seen": "2026-01-06T17:39:52.663767",
-      "interval": 2.5,
-      "ease_factor": 2.6,
-      "correct_streak": 1
+      "last_seen": "2026-03-09T15:24:07.804649",
+      "interval": 1,
+      "ease_factor": 2.4,
+      "correct_streak": 0
     },
     "c080_agent_eval": {
       "last_seen": "2026-01-08T19:03:11.077110",
@@ -753,39 +753,256 @@
       "explain_done": true
     },
     "code002_softmax": {
-      "last_seen": "2026-02-10T00:04:42.195943",
+      "last_seen": "2026-03-09T00:00:00.000000",
+      "interval": 6.5,
+      "ease_factor": 2.7,
+      "correct_streak": 2,
+      "walkthrough_done": true
+    },
+    "code004_cross_entropy": {
+      "last_seen": "2026-03-09T00:00:00.000000",
+      "interval": 2.5,
+      "ease_factor": 2.6,
+      "correct_streak": 1,
+      "walkthrough_done": true
+    },
+    "code003_attention": {
+      "last_seen": "2026-03-09T00:00:00.000000",
+      "interval": 2.5,
+      "ease_factor": 2.6,
+      "correct_streak": 1,
+      "walkthrough_done": true
+    },
+    "code006_multihead_attention": {
+      "last_seen": "2026-03-09T00:00:00.000000",
+      "interval": 2.5,
+      "ease_factor": 2.6,
+      "correct_streak": 1,
+      "walkthrough_done": true
+    },
+    "code007_positional_encoding": {
+      "last_seen": "2026-03-09T00:00:00.000000",
+      "interval": 2.5,
+      "ease_factor": 2.6,
+      "correct_streak": 1,
+      "walkthrough_done": true
+    },
+    "code009_adamw": {
+      "last_seen": "2026-03-09T15:56:22.075852",
+      "interval": 1,
+      "ease_factor": 2.3,
+      "correct_streak": 0,
+      "walkthrough_done": true
+    },
+    "code008_topk_sampling": {
+      "last_seen": "2026-03-09T17:39:35.709170",
+      "interval": 1,
+      "ease_factor": 2.3,
+      "correct_streak": 0,
+      "walkthrough_done": true
+    },
+    "code012_rmsnorm": {
+      "last_seen": "2026-03-10T10:25:03.293374",
+      "interval": 1,
+      "ease_factor": 2.3,
+      "correct_streak": 0,
+      "walkthrough_done": true
+    },
+    "code010_kv_cache": {
+      "last_seen": "2026-03-10T09:42:13.049818",
+      "interval": 1,
+      "ease_factor": 2.3,
+      "correct_streak": 0,
+      "walkthrough_done": true
+    },
+    "code016_beam_search": {
+      "last_seen": "2026-02-16T10:30:02.012258",
       "interval": 1,
       "ease_factor": 2.5,
       "correct_streak": 0,
       "walkthrough_done": true
     },
-    "code005_dropout": {
-      "last_seen": "2026-02-10T00:12:17.118384",
+    "code014_gradient_clipping": {
+      "last_seen": "2026-02-16T10:44:49.261825",
+      "interval": 1,
+      "ease_factor": 2.5,
+      "correct_streak": 0,
+      "walkthrough_done": true
+    },
+    "code017_rope": {
+      "last_seen": "2026-02-18T04:10:07.614222",
+      "interval": 1,
+      "ease_factor": 2.5,
+      "correct_streak": 0,
+      "walkthrough_done": true
+    },
+    "code019_transformer_block": {
+      "last_seen": "2026-02-19T10:59:28.837707",
+      "interval": 1,
+      "ease_factor": 2.5,
+      "correct_streak": 0,
+      "walkthrough_done": true
+    },
+    "code022_loss_functions": {
+      "last_seen": "2026-02-21T09:06:10.144366",
+      "interval": 1,
+      "ease_factor": 2.5,
+      "correct_streak": 0,
+      "walkthrough_done": true
+    },
+    "code021_llm_classifier_logits": {
+      "last_seen": "2026-02-22T13:49:34.811003",
+      "interval": 1,
+      "ease_factor": 2.5,
+      "correct_streak": 0,
+      "walkthrough_done": true
+    },
+    "code024_training_loop": {
+      "last_seen": "2026-02-23T00:32:37.161421",
+      "interval": 1,
+      "ease_factor": 2.5,
+      "correct_streak": 0,
+      "walkthrough_done": true
+    },
+    "code018_einsum": {
+      "last_seen": "2026-02-23T00:42:47.129071",
+      "interval": 1,
+      "ease_factor": 2.5,
+      "correct_streak": 0,
+      "walkthrough_done": true
+    },
+    "code025_gradient_accumulation": {
+      "last_seen": "2026-02-23T01:12:15.624371",
+      "interval": 1,
+      "ease_factor": 2.5,
+      "correct_streak": 0,
+      "walkthrough_done": true
+    },
+    "code023_sigmoid": {
+      "last_seen": "2026-02-23T01:14:01.390964",
+      "interval": 1,
+      "ease_factor": 2.5,
+      "correct_streak": 0,
+      "walkthrough_done": true
+    },
+    "code026_torch_losses": {
+      "last_seen": "2026-02-23T12:28:57.357323",
+      "interval": 1,
+      "ease_factor": 2.5,
+      "correct_streak": 0,
+      "walkthrough_done": true
+    },
+    "code028_train_eval_modes": {
+      "last_seen": "2026-02-24T17:35:06.170660",
+      "interval": 1,
+      "ease_factor": 2.5,
+      "correct_streak": 0,
+      "walkthrough_done": true
+    },
+    "code029_reward_model_loss": {
+      "last_seen": "2026-02-24T20:38:56.770255",
+      "interval": 1,
+      "ease_factor": 2.5,
+      "correct_streak": 0,
+      "walkthrough_done": true
+    },
+    "code027_backprop_manual": {
+      "last_seen": "2026-02-24T21:19:31.472911",
+      "interval": 1,
+      "ease_factor": 2.5,
+      "correct_streak": 0,
+      "walkthrough_done": true
+    },
+    "code030_dpo_loss": {
+      "last_seen": "2026-02-25T13:08:27.245168",
+      "interval": 1,
+      "ease_factor": 2.5,
+      "correct_streak": 0,
+      "walkthrough_done": true
+    },
+    "code031_token_log_probs": {
+      "last_seen": "2026-02-26T18:12:52.537969",
+      "interval": 1,
+      "ease_factor": 2.5,
+      "correct_streak": 0,
+      "walkthrough_done": true
+    },
+    "code032_lora": {
+      "last_seen": "2026-02-27T02:24:05.351839",
+      "interval": 1,
+      "ease_factor": 2.5,
+      "correct_streak": 0,
+      "walkthrough_done": true
+    },
+    "code033_best_of_n": {
+      "last_seen": "2026-02-27T12:10:12.886070",
+      "interval": 1,
+      "ease_factor": 2.5,
+      "correct_streak": 0,
+      "walkthrough_done": true
+    },
+    "code034_perplexity": {
+      "last_seen": "2026-02-27T13:59:47.960684",
+      "interval": 1,
+      "ease_factor": 2.5,
+      "correct_streak": 0,
+      "walkthrough_done": true
+    },
+    "code035_cosine_similarity": {
+      "last_seen": "2026-03-02T17:43:23.496015",
+      "interval": 1,
+      "ease_factor": 2.5,
+      "correct_streak": 0,
+      "walkthrough_done": true
+    },
+    "code036_bpe_tokenizer": {
+      "last_seen": "2026-03-02T23:55:38.296400",
+      "interval": 1,
+      "ease_factor": 2.5,
+      "correct_streak": 0,
+      "walkthrough_done": true
+    },
+    "code037_supervised_classifier": {
+      "last_seen": "2026-03-04T21:12:38.017020",
+      "interval": 1,
+      "ease_factor": 2.5,
+      "correct_streak": 0,
+      "walkthrough_done": true
+    },
+    "code038_tabular_mlp": {
+      "last_seen": "2026-03-06T12:23:16.998446",
+      "interval": 1,
+      "ease_factor": 2.5,
+      "correct_streak": 0,
+      "walkthrough_done": true
+    },
+    "code039_kl_divergence": {
+      "last_seen": null,
       "interval": 1,
       "ease_factor": 2.5,
       "correct_streak": 0,
       "walkthrough_done": false
     },
-    "code004_cross_entropy": {
-      "last_seen": "2026-02-10T00:15:06.989627",
+    "code040_ppo_loss": {
+      "last_seen": null,
       "interval": 1,
       "ease_factor": 2.5,
       "correct_streak": 0,
-      "walkthrough_done": true
+      "walkthrough_done": false
     },
-    "code003_attention": {
-      "last_seen": "2026-02-10T14:08:19.712665",
+    "code041_steering_vectors": {
+      "last_seen": null,
       "interval": 1,
       "ease_factor": 2.5,
       "correct_streak": 0,
-      "walkthrough_done": true
+      "walkthrough_done": false
     },
-    "code006_multihead_attention": {
-      "last_seen": "2026-02-10T16:18:09.527827",
+    "code042_linear_probe": {
+      "last_seen": null,
       "interval": 1,
       "ease_factor": 2.5,
       "correct_streak": 0,
-      "walkthrough_done": true
+      "walkthrough_done": false
     }
   },
   "session_history": [
@@ -1417,6 +1634,430 @@
           "walkthrough": true
         }
       ]
+    },
+    {
+      "timestamp": "2026-02-12T16:15:32.749543",
+      "num_items": 1,
+      "results": [
+        {
+          "item_id": "code007_positional_encoding",
+          "rating": 2,
+          "walkthrough": true
+        }
+      ]
+    },
+    {
+      "timestamp": "2026-02-14T13:02:53.208671",
+      "num_items": 1,
+      "results": [
+        {
+          "item_id": "code009_adamw",
+          "rating": 2,
+          "walkthrough": true
+        }
+      ]
+    },
+    {
+      "timestamp": "2026-02-14T18:43:33.673900",
+      "num_items": 1,
+      "results": [
+        {
+          "item_id": "code008_topk_sampling",
+          "rating": 2,
+          "walkthrough": true
+        }
+      ]
+    },
+    {
+      "timestamp": "2026-02-15T13:58:33.503629",
+      "num_items": 1,
+      "results": [
+        {
+          "item_id": "code012_rmsnorm",
+          "rating": 2,
+          "walkthrough": true
+        }
+      ]
+    },
+    {
+      "timestamp": "2026-02-15T15:41:47.344591",
+      "num_items": 1,
+      "results": [
+        {
+          "item_id": "code013_gelu",
+          "rating": 2,
+          "walkthrough": true
+        }
+      ]
+    },
+    {
+      "timestamp": "2026-02-15T15:59:38.316065",
+      "num_items": 1,
+      "results": [
+        {
+          "item_id": "code010_kv_cache",
+          "rating": 2,
+          "walkthrough": true
+        }
+      ]
+    },
+    {
+      "timestamp": "2026-02-16T10:15:58.805669",
+      "num_items": 1,
+      "results": [
+        {
+          "item_id": "code015_lr_warmup",
+          "rating": 2,
+          "walkthrough": true
+        }
+      ]
+    },
+    {
+      "timestamp": "2026-02-16T10:30:02.012034",
+      "num_items": 1,
+      "results": [
+        {
+          "item_id": "code016_beam_search",
+          "rating": 2,
+          "walkthrough": true
+        }
+      ]
+    },
+    {
+      "timestamp": "2026-02-16T10:44:49.261715",
+      "num_items": 1,
+      "results": [
+        {
+          "item_id": "code014_gradient_clipping",
+          "rating": 2,
+          "walkthrough": true
+        }
+      ]
+    },
+    {
+      "timestamp": "2026-02-16T11:00:36.457382",
+      "num_items": 1,
+      "results": [
+        {
+          "item_id": "code011_batch_norm",
+          "rating": 2,
+          "walkthrough": true
+        }
+      ]
+    },
+    {
+      "timestamp": "2026-02-18T04:10:07.614024",
+      "num_items": 1,
+      "results": [
+        {
+          "item_id": "code017_rope",
+          "rating": 2,
+          "walkthrough": true
+        }
+      ]
+    },
+    {
+      "timestamp": "2026-02-19T10:59:28.837663",
+      "num_items": 1,
+      "results": [
+        {
+          "item_id": "code019_transformer_block",
+          "rating": 2,
+          "walkthrough": true
+        }
+      ]
+    },
+    {
+      "timestamp": "2026-02-19T19:33:05.129057",
+      "num_items": 1,
+      "results": [
+        {
+          "item_id": "code020_metrics",
+          "rating": 2,
+          "walkthrough": true
+        }
+      ]
+    },
+    {
+      "timestamp": "2026-02-21T09:06:10.142779",
+      "num_items": 1,
+      "results": [
+        {
+          "item_id": "code022_loss_functions",
+          "rating": 2,
+          "walkthrough": true
+        }
+      ]
+    },
+    {
+      "timestamp": "2026-02-22T13:49:34.810826",
+      "num_items": 1,
+      "results": [
+        {
+          "item_id": "code021_llm_classifier_logits",
+          "rating": 2,
+          "walkthrough": true
+        }
+      ]
+    },
+    {
+      "timestamp": "2026-02-23T00:32:37.161092",
+      "num_items": 1,
+      "results": []
+    },
+    {
+      "timestamp": "2026-02-23T00:42:47.129024",
+      "num_items": 1,
+      "results": [
+        {
+          "item_id": "code018_einsum",
+          "rating": 2,
+          "walkthrough": true
+        }
+      ]
+    },
+    {
+      "timestamp": "2026-02-23T01:12:15.624202",
+      "num_items": 1,
+      "results": []
+    },
+    {
+      "timestamp": "2026-02-23T01:14:01.390850",
+      "num_items": 1,
+      "results": [
+        {
+          "item_id": "code023_sigmoid",
+          "rating": 2,
+          "walkthrough": true
+        }
+      ]
+    },
+    {
+      "timestamp": "2026-02-23T12:28:57.357044",
+      "num_items": 1,
+      "results": [
+        {
+          "item_id": "code026_torch_losses",
+          "rating": 2,
+          "walkthrough": true
+        }
+      ]
+    },
+    {
+      "timestamp": "2026-02-24T17:35:06.170564",
+      "num_items": 1,
+      "results": [
+        {
+          "item_id": "code028_train_eval_modes",
+          "rating": 2,
+          "walkthrough": true
+        }
+      ]
+    },
+    {
+      "timestamp": "2026-02-24T20:38:56.770163",
+      "num_items": 1,
+      "results": [
+        {
+          "item_id": "code029_reward_model_loss",
+          "rating": 2,
+          "walkthrough": true
+        }
+      ]
+    },
+    {
+      "timestamp": "2026-02-24T21:19:31.472599",
+      "num_items": 1,
+      "results": [
+        {
+          "item_id": "code027_backprop_manual",
+          "rating": 2,
+          "walkthrough": true
+        }
+      ]
+    },
+    {
+      "timestamp": "2026-02-25T13:08:27.245027",
+      "num_items": 1,
+      "results": [
+        {
+          "item_id": "code030_dpo_loss",
+          "rating": 2,
+          "walkthrough": true
+        }
+      ]
+    },
+    {
+      "timestamp": "2026-02-26T18:12:52.537877",
+      "num_items": 1,
+      "results": [
+        {
+          "item_id": "code031_token_log_probs",
+          "rating": 2,
+          "walkthrough": true
+        }
+      ]
+    },
+    {
+      "timestamp": "2026-02-27T02:24:05.351723",
+      "num_items": 1,
+      "results": [
+        {
+          "item_id": "code032_lora",
+          "rating": 2,
+          "walkthrough": true
+        }
+      ]
+    },
+    {
+      "timestamp": "2026-02-27T12:10:12.885963",
+      "num_items": 1,
+      "results": [
+        {
+          "item_id": "code033_best_of_n",
+          "rating": 2,
+          "walkthrough": true
+        }
+      ]
+    },
+    {
+      "timestamp": "2026-02-27T13:59:47.960489",
+      "num_items": 1,
+      "results": [
+        {
+          "item_id": "code034_perplexity",
+          "rating": 2,
+          "walkthrough": true
+        }
+      ]
+    },
+    {
+      "timestamp": "2026-03-02T17:43:23.495864",
+      "num_items": 1,
+      "results": [
+        {
+          "item_id": "code035_cosine_similarity",
+          "rating": 2,
+          "walkthrough": true
+        }
+      ]
+    },
+    {
+      "timestamp": "2026-03-02T23:55:38.295757",
+      "num_items": 1,
+      "results": [
+        {
+          "item_id": "code036_bpe_tokenizer",
+          "rating": 2,
+          "walkthrough": true
+        }
+      ]
+    },
+    {
+      "timestamp": "2026-03-04T21:12:38.016794",
+      "num_items": 1,
+      "results": [
+        {
+          "item_id": "code037_supervised_classifier",
+          "rating": 2,
+          "walkthrough": true
+        }
+      ]
+    },
+    {
+      "timestamp": "2026-03-06T12:23:16.998285",
+      "num_items": 1,
+      "results": [
+        {
+          "item_id": "code038_tabular_mlp",
+          "rating": 2,
+          "walkthrough": true
+        }
+      ]
+    },
+    {
+      "timestamp": "2026-03-06T16:24:05.183121",
+      "num_items": 1,
+      "results": [
+        {
+          "item_id": "code002_softmax",
+          "title": "Implement Softmax",
+          "rating": 3
+        }
+      ],
+      "avg_rating": 3.0
+    },
+    {
+      "timestamp": "2026-03-09T15:10:45.854212",
+      "num_items": 1,
+      "results": [
+        {
+          "item_id": "code001_layer_norm",
+          "title": "Implement Layer Normalization",
+          "rating": 2
+        }
+      ],
+      "avg_rating": 2.0
+    },
+    {
+      "timestamp": "2026-03-09T15:24:11.075808",
+      "num_items": 1,
+      "results": [
+        {
+          "item_id": "code009_adamw",
+          "title": "Implement AdamW Optimizer Step",
+          "rating": 2
+        }
+      ],
+      "avg_rating": 2.0
+    },
+    {
+      "timestamp": "2026-03-09T17:11:54.270045",
+      "num_items": 1,
+      "results": [
+        {
+          "item_id": "code008_topk_sampling",
+          "title": "Implement Top-k and Top-p Sampling",
+          "rating": 2
+        }
+      ],
+      "avg_rating": 2.0
+    },
+    {
+      "timestamp": "2026-03-09T17:39:39.250246",
+      "num_items": 1,
+      "results": [
+        {
+          "item_id": "code010_kv_cache",
+          "title": "Implement KV Cache for Autoregressive Generation",
+          "rating": 2
+        }
+      ],
+      "avg_rating": 2.0
+    },
+    {
+      "timestamp": "2026-03-10T09:45:18.063662",
+      "num_items": 1,
+      "results": [
+        {
+          "item_id": "code012_rmsnorm",
+          "title": "Implement RMSNorm (Llama)",
+          "rating": 2
+        }
+      ],
+      "avg_rating": 2.0
+    },
+    {
+      "timestamp": "2026-03-10T10:25:05.697972",
+      "num_items": 1,
+      "results": [
+        {
+          "item_id": "code013_gelu",
+          "title": "Implement GELU Activation",
+          "rating": 3
+        }
+      ],
+      "avg_rating": 3.0
     }
   ]
 }
